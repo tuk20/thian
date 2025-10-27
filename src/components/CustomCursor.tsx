@@ -53,25 +53,25 @@ const CustomCursor = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className={`transition-all duration-300 ${
-          isHovering ? "scale-150 rotate-12" : "scale-100"
+          isHovering ? "scale-150 rotate-6" : "scale-100"
         }`}
       >
+        {/* Mountain peaks */}
         <path
-          d="M12 2C12 2 8 6 8 10C8 12.21 9.79 14 12 14C14.21 14 16 12.21 16 10C16 6 12 2 12 2Z"
+          d="M2 20L8 8L12 14L16 6L22 20H2Z"
           fill="hsl(var(--primary))"
           opacity="0.9"
         />
         <path
-          d="M12 14C12 14 10 15 10 17C10 18.1 10.9 19 12 19C13.1 19 14 18.1 14 17C14 15 12 14 12 14Z"
+          d="M8 8L12 14L16 6L22 20H16L12 14L8 20H2L8 8Z"
           fill="hsl(var(--primary))"
-          opacity="0.7"
-        />
-        <path
-          d="M12 14L12 22"
-          stroke="hsl(var(--primary))"
-          strokeWidth="1.5"
-          strokeLinecap="round"
           opacity="0.6"
+        />
+        {/* Snow cap on main peak */}
+        <path
+          d="M16 6L14 10L18 10L16 6Z"
+          fill="white"
+          opacity="0.8"
         />
       </svg>
     </div>
