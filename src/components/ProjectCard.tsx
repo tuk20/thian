@@ -20,7 +20,7 @@ const ProjectCard = ({ title, description, tags, imageUrl, size = "medium", to =
   return (
     <Link to={to}>
       <div
-        className={`${sizeClasses[size]} group relative overflow-hidden rounded-2xl bg-card/80 backdrop-blur-sm border border-border transition-all duration-500 hover:shadow-[var(--shadow-hover)]`}
+        className={`${sizeClasses[size]} group relative overflow-hidden rounded-2xl bg-card/80 backdrop-blur-sm border border-border transition-all duration-500 hover:shadow-[var(--shadow-hover)] hover:-translate-y-1`}
       >
         <div className="relative h-full flex flex-col p-6 md:p-8">
           {/* Tags */}
@@ -44,7 +44,7 @@ const ProjectCard = ({ title, description, tags, imageUrl, size = "medium", to =
               <img 
                 src={imageUrl} 
                 alt={title}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-95"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
             </div>
