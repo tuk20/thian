@@ -13,10 +13,7 @@ const AnimatedName = ({ name, className = "" }: AnimatedNameProps) => {
       {name.split("").map((char, index) => (
         <span
           key={index}
-          className="inline-block transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-110 hover:text-primary cursor-default"
-          style={{
-            animation: hoveredIndex === index ? "float 0.6s ease-in-out" : undefined,
-          }}
+          className="inline-block transition-all duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:text-primary cursor-default"
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         >

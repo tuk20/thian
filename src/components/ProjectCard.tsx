@@ -20,14 +20,10 @@ const ProjectCard = ({ title, description, tags, imageUrl, size = "medium", to =
   return (
     <Link to={to}>
       <div
-        className={`${sizeClasses[size]} group relative overflow-hidden rounded-2xl bg-card border border-border p-6 md:p-8 transition-all duration-500 hover:shadow-[var(--shadow-hover)] hover:-translate-y-1`}
-        style={{
-          backgroundImage: imageUrl ? `linear-gradient(135deg, rgba(0, 104, 56, 0.05), rgba(0, 104, 56, 0.02)), url(${imageUrl})` : undefined,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className={`${sizeClasses[size]} group relative overflow-hidden rounded-2xl bg-card/80 backdrop-blur-sm border border-border transition-all duration-500 hover:shadow-[var(--shadow-hover)] hover:-translate-y-1`}
       >
-        <div className="relative h-full flex flex-col justify-between">
+        <div className="relative h-full flex flex-col p-6 md:p-8">
+          {/* Tags */}
           <div className="flex items-start justify-between mb-4">
             <div className="flex flex-wrap gap-2">
               {tags.map((tag) => (
@@ -42,11 +38,24 @@ const ProjectCard = ({ title, description, tags, imageUrl, size = "medium", to =
             <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-1 group-hover:-translate-y-1 duration-300" />
           </div>
 
-          <div>
+          {/* Image */}
+          {imageUrl && (
+            <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden">
+              <img 
+                src={imageUrl} 
+                alt={title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+            </div>
+          )}
+
+          {/* Title and Description */}
+          <div className="mt-auto">
             <h3 className="text-2xl md:text-3xl font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
               {title}
             </h3>
-            <p className="text-muted-foreground leading-relaxed">{description}</p>
+            <p className="text-muted-foreground leading-relaxed line-clamp-3">{description}</p>
           </div>
         </div>
       </div>
