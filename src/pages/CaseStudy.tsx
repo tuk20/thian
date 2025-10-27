@@ -1,6 +1,10 @@
 import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import InteractivePrototype from "@/components/InteractivePrototype";
+import DesignDecisionTooltip from "@/components/DesignDecisionTooltip";
+import { Button } from "@/components/ui/button";
 
 const CaseStudy = () => {
   return (
@@ -95,23 +99,75 @@ const CaseStudy = () => {
 
             {/* Design Process */}
             <CaseStudySection id="design-process" title="Design Process">
-              <div className="space-y-6">
+              <div className="space-y-8">
                 <p>
                   The design process involved iterative cycles of ideation, prototyping, and testing to ensure we were creating the best possible solution.
                 </p>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Information Architecture</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground flex items-center gap-2">
+                    Information Architecture
+                    <DesignDecisionTooltip 
+                      decision="Why lifestyle categories?"
+                      reasoning="User research showed that customers think in terms of occasions and activities ('work outfits', 'weekend wear') rather than technical product types. This cognitive model significantly reduced navigation time."
+                    />
+                  </h3>
                   <p>
                     We restructured the navigation to reduce cognitive load, grouping products by lifestyle categories rather than technical specifications. This approach aligned better with how users actually shop.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Wireframes & Prototyping</h3>
-                  <p>
-                    Low-fidelity wireframes were created to quickly test concepts with users. High-fidelity prototypes were then developed in Figma, incorporating the brand's visual identity and design system.
-                  </p>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Before & After Comparison</h3>
+                  <BeforeAfterSlider 
+                    beforeImage="/placeholder.svg"
+                    afterImage="/placeholder.svg"
+                    beforeLabel="Old Navigation"
+                    afterLabel="New Navigation"
+                  />
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Interactive Prototypes</h3>
+                  <div className="space-y-4">
+                    <InteractivePrototype
+                      title="Smart Filter System"
+                      description="Try our new filter interface that adapts to user preferences"
+                    >
+                      <div className="space-y-4">
+                        <div className="flex gap-2 flex-wrap">
+                          {["All", "Casual", "Formal", "Athletic"].map((category) => (
+                            <Button key={category} variant="outline" size="sm" className="button-pulse">
+                              {category}
+                            </Button>
+                          ))}
+                        </div>
+                        <p className="text-sm text-muted-foreground">
+                          This prototype demonstrates how filters adapt based on user behavior and preferences.
+                        </p>
+                      </div>
+                    </InteractivePrototype>
+
+                    <InteractivePrototype
+                      title="Sustainability Scorecard"
+                      description="Explore how we visualize environmental impact"
+                    >
+                      <div className="space-y-4">
+                        <div className="grid grid-cols-3 gap-4">
+                          {[
+                            { label: "Carbon", score: "A+" },
+                            { label: "Water", score: "A" },
+                            { label: "Materials", score: "A+" }
+                          ].map((item) => (
+                            <div key={item.label} className="text-center p-4 bg-primary/10 rounded-lg">
+                              <div className="text-2xl font-bold text-primary">{item.score}</div>
+                              <div className="text-sm text-muted-foreground">{item.label}</div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </InteractivePrototype>
+                  </div>
                 </div>
 
                 <div>
