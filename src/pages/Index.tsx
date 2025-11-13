@@ -12,13 +12,23 @@ import designSystemImage from "@/assets/design-system-project.jpg";
 
 const Index = () => {
   const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const projectsSection = useScrollAnimation(0.1);
   const aboutSection = useScrollAnimation(0.2);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouseMove);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   const works = [
@@ -74,10 +84,29 @@ const Index = () => {
           }}
         />
         
-        {/* Animated Glass Panels */}
+        {/* Interactive Animated Glass Panels */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 animate-fade-in" style={{ animationDelay: "0.2s" }} />
-          <div className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-3xl -rotate-12 animate-fade-in" style={{ animationDelay: "0.4s" }} />
+          <div 
+            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 animate-fade-in transition-transform duration-700" 
+            style={{ 
+              animationDelay: "0.2s",
+              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px) rotate(12deg)`
+            }} 
+          />
+          <div 
+            className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-3xl -rotate-12 animate-fade-in transition-transform duration-700" 
+            style={{ 
+              animationDelay: "0.4s",
+              transform: `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03}px) rotate(-12deg)`
+            }} 
+          />
+          <div 
+            className="absolute top-1/2 left-1/3 w-48 h-48 bg-accent/10 backdrop-blur-3xl rounded-full animate-fade-in transition-transform duration-500" 
+            style={{ 
+              animationDelay: "0.6s",
+              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
+            }} 
+          />
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto">
@@ -90,7 +119,12 @@ const Index = () => {
                 animationDelay: "0.1s"
               }}
             >
-              <div className="relative w-48 h-48 rounded-full overflow-hidden backdrop-blur-sm bg-card/30 border border-border/50 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] transition-all duration-500 hover:scale-105">
+              <div 
+                className="relative w-48 h-48 rounded-full overflow-hidden backdrop-blur-sm bg-card/30 border border-border/50 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] transition-all duration-500 hover:scale-105 hover:rotate-3"
+                style={{
+                  transform: `perspective(1000px) rotateY(${(mousePosition.x - window.innerWidth / 2) * 0.01}deg) rotateX(${-(mousePosition.y - window.innerHeight / 2) * 0.01}deg)`
+                }}
+              >
                 <img 
                   src={portraitImage} 
                   alt="Thian Uk - UX Designer" 
@@ -145,9 +179,12 @@ const Index = () => {
             About Me
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            I'm Thian Uk, a UX Designer passionate about creating meaningful digital experiences. 
-            With years of experience across various industries, I specialize in transforming complex 
-            problems into intuitive, user-centered solutions that drive real business impact.
+            My journey into UX design started with pure curiosity and a burning desire to learn. 
+            I taught myself design principles through YouTube tutorials, mastered Figma through countless 
+            hours of practice, and transformed my passion into a career. This self-taught path has given 
+            me a unique perspective on design—one that's rooted in continuous learning and user empathy. 
+            Today, I create meaningful digital experiences across various industries, turning complex 
+            problems into intuitive solutions.
           </p>
         </div>
       </section>
