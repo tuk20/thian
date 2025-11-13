@@ -132,7 +132,7 @@ const Index = () => {
 
 
       {/* About Section */}
-      <section className="py-20 px-6 bg-secondary">
+      <section id="about" className="py-20 px-6 bg-secondary">
         <div 
           ref={aboutSection.ref}
           className={`container mx-auto max-w-4xl text-center transition-all duration-1000 ${
@@ -142,6 +142,20 @@ const Index = () => {
           }`}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            About Me
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            I'm Thian Uk, a UX Designer passionate about creating meaningful digital experiences. 
+            With years of experience across various industries, I specialize in transforming complex 
+            problems into intuitive, user-centered solutions that drive real business impact.
+          </p>
+        </div>
+      </section>
+
+      {/* Philosophy Section */}
+      <section id="philosophy" className="py-20 px-6">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
             Design Philosophy
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8">
@@ -150,31 +164,64 @@ const Index = () => {
             and ends with impact.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className={`transition-all duration-700 delay-100 ${
-              aboutSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}>
+            <div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">Research-Driven</h3>
               <p className="text-muted-foreground">
                 Deep user insights inform every design decision
               </p>
             </div>
-            <div className={`transition-all duration-700 delay-300 ${
-              aboutSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}>
+            <div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">Collaborative</h3>
               <p className="text-muted-foreground">
                 Working closely with cross-functional teams
               </p>
             </div>
-            <div className={`transition-all duration-700 delay-500 ${
-              aboutSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-            }`}>
+            <div>
               <h3 className="text-xl font-semibold mb-3 text-foreground">Impact-Focused</h3>
               <p className="text-muted-foreground">
                 Measuring success through user outcomes
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Works Section */}
+      <section id="works" className="py-20 px-6 bg-secondary">
+        <div 
+          ref={projectsSection.ref}
+          className={`container mx-auto max-w-7xl transition-all duration-1000 ${
+            projectsSection.isVisible 
+              ? "opacity-100 translate-y-0" 
+              : "opacity-0 translate-y-10"
+          }`}
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
+            Selected Works
+          </h2>
+          <div className="space-y-2">
+            {works.map((work, index) => (
+              <WorkItem key={index} {...work} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            Let's Work Together
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+          </p>
+          <a 
+            href="mailto:hello@thianuk.com" 
+            className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+          >
+            Get In Touch
+          </a>
         </div>
       </section>
 
