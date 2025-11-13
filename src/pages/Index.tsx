@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 import Navigation from "@/components/Navigation";
-import ProjectCard from "@/components/ProjectCard";
+import WorkItem from "@/components/WorkItem";
 import AnimatedName from "@/components/AnimatedName";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowDown } from "lucide-react";
 import portraitImage from "@/assets/portrait.jpg";
-import ecommerceImage from "@/assets/ecommerce-project.jpg";
-import healthcareImage from "@/assets/healthcare-project.jpg";
 import fintechImage from "@/assets/fintech-project.jpg";
 import edtechImage from "@/assets/edtech-project.jpg";
 import travelImage from "@/assets/travel-project.jpg";
@@ -23,30 +21,76 @@ const Index = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const works = [
+    {
+      industry: "Fitness Coaching",
+      title: "Everfit",
+      timeline: "(22)-(Present)",
+      description: "Redesigned the fitness coaching platform to improve trainer-client interactions and streamline workout planning.",
+      imageUrl: fintechImage,
+    },
+    {
+      industry: "EdTech",
+      title: "Sumenki",
+      timeline: "(23)-(25)",
+      description: "Created an engaging learning experience for students with interactive lessons and progress tracking.",
+      imageUrl: edtechImage,
+    },
+    {
+      industry: "Blockchain",
+      title: "Flux Labs",
+      timeline: "(24)-(25)",
+      description: "Designed a crypto trading platform with real-time data visualization and seamless transaction flows.",
+      imageUrl: designSystemImage,
+    },
+    {
+      industry: "Travel",
+      title: "Wanderlust",
+      timeline: "(21)-(23)",
+      description: "Built a travel planning app that helps users discover destinations and create personalized itineraries.",
+      imageUrl: travelImage,
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-hidden">
+      {/* Animated Background Gradients */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-float" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px] animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] animate-float" style={{ animationDelay: "4s" }} />
+      </div>
+
       <Navigation />
 
-      {/* Hero Section with Parallax */}
+      {/* Hero Section with Immersive Entry Animation */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
+        {/* Glass Effect Background */}
         <div
-          className="absolute inset-0 opacity-30"
+          className="absolute inset-0 opacity-40"
           style={{
             backgroundImage: "var(--gradient-subtle)",
             transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
         
+        {/* Animated Glass Panels */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 animate-fade-in" style={{ animationDelay: "0.2s" }} />
+          <div className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-3xl -rotate-12 animate-fade-in" style={{ animationDelay: "0.4s" }} />
+        </div>
+        
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="animate-fade-in">
-            {/* Portrait Image */}
+          <div className="animate-scale-in">
+            {/* Portrait Image with Glass Effect */}
             <div 
-              className="mb-8 flex justify-center"
+              className="mb-8 flex justify-center animate-fade-in"
               style={{
                 transform: `translateY(${scrollY * 0.2}px)`,
+                animationDelay: "0.1s"
               }}
             >
-              <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] transition-all duration-500 hover:scale-105">
+              <div className="relative w-48 h-48 rounded-full overflow-hidden backdrop-blur-sm bg-card/30 border border-border/50 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] transition-all duration-500 hover:scale-105">
                 <img 
                   src={portraitImage} 
                   alt="Thian Uk - UX Designer" 
@@ -55,24 +99,26 @@ const Index = () => {
               </div>
             </div>
             
-            <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm">
+            <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm animate-fade-in" style={{ animationDelay: "0.2s" }}>
               UX Designer
             </p>
-            <AnimatedName 
-              name="Thian Uk" 
-              className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground"
-            />
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto">
+            <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <AnimatedName 
+                name="Thian Uk" 
+                className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground"
+              />
+            </div>
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
               Crafting meaningful digital experiences that connect people with purpose-driven products.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium">
+            <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-transform duration-300">
                 User Research
               </span>
-              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium">
+              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-transform duration-300">
                 Interaction Design
               </span>
-              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium">
+              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-transform duration-300">
                 Design Systems
               </span>
             </div>
@@ -84,81 +130,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Projects - Bento Grid */}
-      <section className="py-20 px-6">
-        <div className="container mx-auto max-w-7xl">
-          <div 
-            ref={projectsSection.ref}
-            className={`mb-12 transition-all duration-1000 ${
-              projectsSection.isVisible 
-                ? "opacity-100 translate-y-0" 
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Featured Work</h2>
-            <p className="text-xl text-muted-foreground">
-              A selection of recent projects showcasing user-centered design solutions.
-            </p>
-          </div>
-
-          <div 
-            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto transition-all duration-1000 delay-300 ${
-              projectsSection.isVisible 
-                ? "opacity-100 translate-y-0" 
-                : "opacity-0 translate-y-10"
-            }`}
-          >
-            <ProjectCard
-              size="large"
-              title="E-Commerce Redesign"
-              description="Transforming the shopping experience for a sustainable fashion brand with improved accessibility and engagement."
-              tags={["UX Research", "UI Design", "Prototyping"]}
-              imageUrl={ecommerceImage}
-              to="/case-study"
-            />
-            
-            <ProjectCard
-              size="medium"
-              title="Healthcare Portal"
-              description="Streamlining patient experience with intuitive appointment scheduling and medical records access."
-              tags={["Healthcare", "Accessibility"]}
-              imageUrl={healthcareImage}
-            />
-            
-            <ProjectCard
-              size="small"
-              title="Fintech App"
-              description="Simplifying personal finance management for Gen Z users."
-              tags={["Mobile", "Finance"]}
-              imageUrl={fintechImage}
-            />
-            
-            <ProjectCard
-              size="small"
-              title="EdTech Platform"
-              description="Creating engaging learning experiences for remote education."
-              tags={["Education", "Remote"]}
-              imageUrl={edtechImage}
-            />
-            
-            <ProjectCard
-              size="medium"
-              title="Travel Booking"
-              description="Reimagining the journey from inspiration to booking with AI-powered recommendations."
-              tags={["Travel", "AI", "Mobile"]}
-              imageUrl={travelImage}
-            />
-
-            <ProjectCard
-              size="small"
-              title="Design System"
-              description="Building scalable component libraries for enterprise products."
-              tags={["Systems", "Enterprise"]}
-              imageUrl={designSystemImage}
-            />
-          </div>
-        </div>
-      </section>
 
       {/* About Section */}
       <section className="py-20 px-6 bg-secondary">
