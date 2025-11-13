@@ -1,9 +1,12 @@
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
-  const location = useLocation();
-  const isActive = (path: string) => location.pathname === path;
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -14,25 +17,30 @@ const Navigation = () => {
           </Link>
           
           <div className="flex items-center gap-6">
-            <Link 
-              to="/" 
-              className={`text-sm font-medium transition-colors ${
-                isActive('/') ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-              }`}
+            <button 
+              onClick={() => scrollToSection('about')}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Work
-            </Link>
-            <Link 
-              to="/case-study" 
-              className={`text-sm font-medium transition-colors ${
-                isActive('/case-study') ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
-              }`}
+              About
+            </button>
+            <button 
+              onClick={() => scrollToSection('philosophy')}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Case Studies
-            </Link>
-            <Button size="sm" variant="default" className="bg-primary hover:bg-primary/90">
+              Philosophy
+            </button>
+            <button 
+              onClick={() => scrollToSection('works')}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Works
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
               Contact
-            </Button>
+            </button>
           </div>
         </div>
       </div>
