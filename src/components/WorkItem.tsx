@@ -44,30 +44,33 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
           </div>
 
           {/* Hover State - Eyelid opening effect that covers entire row */}
-          <div className="absolute inset-0 -left-6 -right-6 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 -left-[100vw] -right-[100vw] overflow-hidden pointer-events-none">
             {/* Content that gets revealed */}
             <div
               className={`absolute inset-0 transition-opacity duration-700 ${
                 isHovered ? "opacity-100" : "opacity-0"
               }`}
             >
-              <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card border border-border/30 p-8 h-full flex items-center justify-center gap-6">
+              <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card border border-border/30 px-[100vw] py-8 h-full flex items-center justify-center gap-6">
                 {/* Glass Effect Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
                 
-                {/* Image */}
-                <div className="w-40 h-40 rounded-lg overflow-hidden flex-shrink-0 relative z-10">
-                  <img
-                    src={imageUrl}
-                    alt={title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                {/* Content Container */}
+                <div className="flex items-center gap-6 max-w-7xl mx-auto w-full px-8">
+                  {/* Image */}
+                  <div className="w-40 h-40 rounded-lg overflow-hidden flex-shrink-0 relative z-10">
+                    <img
+                      src={imageUrl}
+                      alt={title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-                {/* Description */}
-                <p className="text-muted-foreground text-lg leading-relaxed flex-1 relative z-10 max-w-2xl">
-                  {description}
-                </p>
+                  {/* Description */}
+                  <p className="text-muted-foreground text-lg leading-relaxed flex-1 relative z-10">
+                    {description}
+                  </p>
+                </div>
               </div>
             </div>
 
