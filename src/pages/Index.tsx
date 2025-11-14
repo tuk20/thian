@@ -15,6 +15,7 @@ const Index = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const projectsSection = useScrollAnimation(0.1);
   const aboutSection = useScrollAnimation(0.2);
+  const tagsSection = useScrollAnimation(0.3);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -66,9 +67,9 @@ const Index = () => {
     <div className="min-h-screen bg-background overflow-hidden">
       {/* Animated Background Gradients */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px] animate-float" style={{ animationDelay: "2s" }} />
-        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] animate-float" style={{ animationDelay: "4s" }} />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-float opacity-0 animate-[float_6s_ease-in-out_infinite,fade-out_8s_ease-in_forwards]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px] opacity-0 animate-[float_6s_ease-in-out_infinite_2s,fade-out_8s_ease-in_2s_forwards]" />
+        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] opacity-0 animate-[float_6s_ease-in-out_infinite_4s,fade-out_8s_ease-in_4s_forwards]" />
       </div>
 
       <Navigation />
@@ -87,24 +88,24 @@ const Index = () => {
         {/* Interactive Animated Glass Panels */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div 
-            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 animate-fade-in transition-transform duration-700" 
+            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 transition-all duration-1000"
             style={{ 
-              animationDelay: "0.2s",
-              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px) rotate(12deg)`
+              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`,
+              opacity: Math.max(0, 1 - scrollY * 0.003)
             }} 
           />
           <div 
-            className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-3xl -rotate-12 animate-fade-in transition-transform duration-700" 
+            className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-3xl -rotate-12 opacity-100 transition-all duration-1000" 
             style={{ 
-              animationDelay: "0.4s",
-              transform: `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03}px) rotate(-12deg)`
+              transform: `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03 + scrollY * 0.6}px) rotate(-12deg)`,
+              opacity: Math.max(0, 1 - scrollY * 0.003)
             }} 
           />
           <div 
-            className="absolute top-1/2 left-1/3 w-48 h-48 bg-accent/10 backdrop-blur-3xl rounded-full animate-fade-in transition-transform duration-500" 
+            className="absolute top-1/2 left-1/3 w-48 h-48 bg-accent/10 backdrop-blur-3xl rounded-full opacity-100 transition-all duration-1000" 
             style={{ 
-              animationDelay: "0.6s",
-              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015}px)`
+              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`,
+              opacity: Math.max(0, 1 - scrollY * 0.003)
             }} 
           />
         </div>
@@ -139,20 +140,35 @@ const Index = () => {
             <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
               <AnimatedName 
                 name="Thian Uk" 
-                className="text-6xl md:text-7xl lg:text-8xl font-bold mb-6 text-foreground"
+                className="text-6xl md:text-7xl lg:text-8xl font-bold mb-12 text-foreground"
               />
             </div>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 leading-relaxed max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              Crafting meaningful digital experiences that connect people with purpose-driven products.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4 animate-fade-in" style={{ animationDelay: "0.5s" }}>
-              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-transform duration-300">
+            <div 
+              ref={tagsSection.ref}
+              className="flex flex-wrap justify-center gap-4 mb-8"
+            >
+              <span 
+                className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
+                  tagsSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "0.2s" }}
+              >
                 User Research
               </span>
-              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-transform duration-300">
+              <span 
+                className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
+                  tagsSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "0.5s" }}
+              >
                 Interaction Design
               </span>
-              <span className="px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-transform duration-300">
+              <span 
+                className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
+                  tagsSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "0.8s" }}
+              >
                 Design Systems
               </span>
             </div>
@@ -178,13 +194,17 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
             About Me
           </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            My journey into UX design started with pure curiosity and a burning desire to learn. 
-            I taught myself design principles through YouTube tutorials, mastered Figma through countless 
-            hours of practice, and transformed my passion into a career. This self-taught path has given 
-            me a unique perspective on design—one that's rooted in continuous learning and user empathy. 
-            Today, I create meaningful digital experiences across various industries, turning complex 
-            problems into intuitive solutions.
+          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+            {`My path into UX started with curiosity. I taught myself design through YouTube, spent hours practicing in Figma, and turned that passion into a career. That self-taught start shaped how I work. I stay curious, focus on people, and break down tough problems into simple, usable experiences. I'm now earning my master's in human-computer interaction to deepen that foundation.`
+              .split(" ")
+              .map((word, index) => (
+                <span
+                  key={index}
+                  className="inline-block transition-all duration-200 hover:scale-110 hover:text-foreground cursor-default mx-[0.25em]"
+                >
+                  {word}
+                </span>
+              ))}
           </p>
         </div>
       </section>
@@ -236,6 +256,11 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
             Selected Works
           </h2>
+          <div className="mb-4 px-6 grid grid-cols-[1fr_2fr_1fr] gap-4 text-xs uppercase tracking-wider text-muted-foreground">
+            <div>Industry</div>
+            <div>Work</div>
+            <div className="text-right">Timeline</div>
+          </div>
           <div className="space-y-2">
             {works.map((work, index) => (
               <WorkItem key={index} {...work} />
