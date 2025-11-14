@@ -103,46 +103,81 @@ const Index = () => {
         
         {/* Interactive Animated Glass Panels with Hover Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-auto">
+          {/* Shape 1 - Left Square */}
           <div 
-            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 transition-all duration-1000 group hover:scale-110 cursor-pointer"
+            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 transition-all duration-700 cursor-pointer hover:bg-primary/20"
             style={{ 
               transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003)
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '40% 60% 60% 40% / 60% 40% 60% 40%';
+              e.currentTarget.style.borderRadius = '45% 55% 60% 40% / 55% 45% 55% 45%';
+              e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.3)';
               setTimeout(() => {
                 e.currentTarget.style.opacity = '0';
-                e.currentTarget.style.transform = 'scale(1.5)';
-              }, 300);
+                e.currentTarget.style.transform = 'scale(1.8) rotate(45deg)';
+                e.currentTarget.style.filter = 'blur(20px)';
+              }, 400);
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderRadius = '1.5rem';
+              e.currentTarget.style.transform = `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`;
+              e.currentTarget.style.opacity = String(Math.max(0, 1 - scrollY * 0.003));
+              e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.1)';
+              e.currentTarget.style.filter = 'none';
             }}
           />
+          
+          {/* Shape 2 - Bottom Right Circle */}
           <div 
-            className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-3xl -rotate-12 opacity-100 transition-all duration-1000 group hover:scale-110 cursor-pointer" 
+            className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 transition-all duration-700 cursor-pointer hover:bg-secondary/20" 
             style={{ 
-              transform: `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03 + scrollY * 0.6}px) rotate(-12deg)`,
+              transform: `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03 + scrollY * 0.6}px)`,
               opacity: Math.max(0, 1 - scrollY * 0.003)
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '50% 50% 40% 60% / 40% 60% 50% 50%';
+              e.currentTarget.style.borderRadius = '55% 45% 40% 60% / 45% 55% 45% 55%';
+              e.currentTarget.style.backgroundColor = 'hsl(var(--secondary) / 0.3)';
               setTimeout(() => {
                 e.currentTarget.style.opacity = '0';
-                e.currentTarget.style.transform = 'scale(1.5)';
-              }, 300);
+                e.currentTarget.style.transform = 'scale(1.8) rotate(-30deg)';
+                e.currentTarget.style.filter = 'blur(20px)';
+              }, 400);
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderRadius = '9999px';
+              e.currentTarget.style.transform = `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03 + scrollY * 0.6}px)`;
+              e.currentTarget.style.opacity = String(Math.max(0, 1 - scrollY * 0.003));
+              e.currentTarget.style.backgroundColor = 'hsl(var(--secondary) / 0.1)';
+              e.currentTarget.style.filter = 'none';
             }}
           />
+          
+          {/* Shape 3 - Right Triangle-ish */}
           <div 
-            className="absolute top-1/2 left-1/3 w-48 h-48 bg-accent/10 backdrop-blur-3xl rounded-full opacity-100 transition-all duration-1000 group hover:scale-110 cursor-pointer" 
+            className="absolute top-1/3 right-32 w-56 h-56 bg-accent/10 backdrop-blur-3xl rounded-[2rem] opacity-100 transition-all duration-700 cursor-pointer hover:bg-accent/20"
             style={{ 
-              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`,
-              opacity: Math.max(0, 1 - scrollY * 0.003)
+              transform: `translate(${mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.45}px) rotate(-20deg)`,
+              opacity: Math.max(0, 1 - scrollY * 0.003),
+              clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '60% 40% 50% 50% / 50% 60% 40% 50%';
+              e.currentTarget.style.borderRadius = '50% 40% 60% 50% / 40% 60% 40% 60%';
+              e.currentTarget.style.clipPath = 'polygon(50% 10%, 90% 90%, 10% 90%)';
+              e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.3)';
               setTimeout(() => {
                 e.currentTarget.style.opacity = '0';
-                e.currentTarget.style.transform = 'scale(1.5)';
-              }, 300);
+                e.currentTarget.style.transform = 'scale(1.8) rotate(20deg)';
+                e.currentTarget.style.filter = 'blur(20px)';
+              }, 400);
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderRadius = '2rem';
+              e.currentTarget.style.clipPath = 'polygon(50% 0%, 100% 100%, 0% 100%)';
+              e.currentTarget.style.transform = `translate(${mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.45}px) rotate(-20deg)`;
+              e.currentTarget.style.opacity = String(Math.max(0, 1 - scrollY * 0.003));
+              e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.1)';
+              e.currentTarget.style.filter = 'none';
             }}
           />
         </div>
