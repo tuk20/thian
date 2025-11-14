@@ -14,14 +14,25 @@ const Index = () => {
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [tagsVisible, setTagsVisible] = useState(false);
-  const projectsSection = useScrollAnimation(0.1);
+  const [allTagsAppeared, setAllTagsAppeared] = useState(false);
+  const [scrollLocked, setScrollLocked] = useState(false);
+  const projectsSection = useScrollAnimation(0.3);
   const aboutSection = useScrollAnimation(0.2);
 
   useEffect(() => {
     const handleScroll = () => {
+      if (scrollLocked) {
+        window.scrollTo(0, 0);
+        return;
+      }
       setScrollY(window.scrollY);
       if (window.scrollY > 50 && !tagsVisible) {
         setTagsVisible(true);
+        setScrollLocked(true);
+        setTimeout(() => {
+          setAllTagsAppeared(true);
+          setScrollLocked(false);
+        }, 1200); // Wait for all 3 tags to appear (0.2s + 0.5s + 0.8s delays)
       }
     };
     const handleMouseMove = (e: MouseEvent) => {
@@ -35,7 +46,7 @@ const Index = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [tagsVisible]);
+  }, [tagsVisible, scrollLocked]);
 
   const works = [
     {
