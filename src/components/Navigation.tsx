@@ -26,7 +26,7 @@ const Navigation = () => {
               Philosophy
             </button>
             <Link to="/" className="text-xl font-semibold text-foreground hover:text-primary transition-all duration-300 hover:scale-110">
-              Portfolio
+              Thian
             </Link>
             <button 
               onClick={() => scrollToSection('works')}
