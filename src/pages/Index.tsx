@@ -153,8 +153,8 @@ const Index = () => {
               clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '50% 40% 60% 50% / 40% 60% 40% 60%';
-              e.currentTarget.style.clipPath = 'polygon(50% 5%, 60% 38%, 95% 38%, 66% 58%, 76% 88%, 50% 68%, 24% 88%, 34% 58%, 5% 38%, 40% 38%)';
+              e.currentTarget.style.borderRadius = '60% 40% 30% 70% / 60% 30% 70% 40%';
+              e.currentTarget.style.clipPath = 'circle(50% at 50% 50%)';
               e.currentTarget.style.backgroundColor = 'hsl(45 85% 55% / 0.3)';
               setTimeout(() => {
                 e.currentTarget.style.opacity = '0';
@@ -168,6 +168,31 @@ const Index = () => {
               e.currentTarget.style.transform = `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`;
               e.currentTarget.style.opacity = String(Math.max(0, 1 - scrollY * 0.003));
               e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.1)';
+              e.currentTarget.style.filter = 'none';
+            }}
+          />
+          
+          {/* Shape 4 - Bottom Left Liquid Circle */}
+          <div 
+            className="absolute bottom-32 left-1/4 w-72 h-72 bg-primary/10 backdrop-blur-3xl rounded-full opacity-100 transition-all duration-700 cursor-pointer hover:bg-primary/20"
+            style={{ 
+              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`,
+              opacity: Math.max(0, 1 - scrollY * 0.003)
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderRadius = '63% 37% 54% 46% / 55% 48% 52% 45%';
+              e.currentTarget.style.backgroundColor = 'hsl(200 70% 50% / 0.3)';
+              setTimeout(() => {
+                e.currentTarget.style.opacity = '0';
+                e.currentTarget.style.transform = 'scale(1.8) rotate(-45deg)';
+                e.currentTarget.style.filter = 'blur(20px)';
+              }, 400);
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderRadius = '9999px';
+              e.currentTarget.style.transform = `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`;
+              e.currentTarget.style.opacity = String(Math.max(0, 1 - scrollY * 0.003));
+              e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.1)';
               e.currentTarget.style.filter = 'none';
             }}
           />
