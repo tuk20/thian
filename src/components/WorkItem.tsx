@@ -44,14 +44,14 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
           </div>
 
           {/* Hover State - Eyelid opening effect that covers entire row */}
-          <div className="absolute inset-0 -left-[10vw] -right-[10vw] -top-4 -bottom-4 overflow-hidden pointer-events-none">
+          <div className="absolute -inset-6 -left-[10vw] -right-[10vw] overflow-hidden pointer-events-none">
             {/* Content that gets revealed */}
             <div
               className={`absolute inset-0 transition-opacity duration-700 ${
                 isHovered ? "opacity-100" : "opacity-0"
               }`}
             >
-              <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card/50 border border-border/30 p-8 h-full flex items-center gap-6">
+              <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card border border-border/30 p-8 h-full flex items-center gap-6">
                 {/* Glass Effect Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
                 
