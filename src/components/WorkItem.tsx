@@ -22,19 +22,19 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
       >
         <div className="grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative">
           {/* Industry Column */}
-          <div className="text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-100 transition-opacity duration-500 relative z-20">
+          <div className="text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-0 transition-opacity duration-500 relative z-20">
             {industry}
           </div>
 
           {/* Work Column with Eyelid Opening Effect */}
           <div className="relative overflow-visible">
             <div className="relative">
-              {/* Title - Always Visible */}
-              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground transition-all duration-700 group-hover:text-primary relative z-20">
+              {/* Title - Visible by default, hidden on hover */}
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground transition-all duration-700 group-hover:opacity-0 relative z-20">
                 {title}
               </h3>
 
-              {/* Rectangle that appears with Eyelid Opening Effect */}
+              {/* Rectangle that appears with Eyelid Opening Effect - Hidden by default */}
               <div className="absolute inset-0 -left-8 -right-8 -top-4 -bottom-4 overflow-hidden pointer-events-none">
                 {/* Content that gets revealed */}
                 <div
@@ -62,7 +62,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
                   </div>
                 </div>
 
-                {/* Top Eyelid */}
+                {/* Top Eyelid - Covers everything by default */}
                 <div
                   className="absolute top-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-top"
                   style={{
@@ -71,7 +71,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
                   }}
                 />
 
-                {/* Bottom Eyelid */}
+                {/* Bottom Eyelid - Covers everything by default */}
                 <div
                   className="absolute bottom-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-bottom"
                   style={{
@@ -84,7 +84,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
           </div>
 
           {/* Timeline Column */}
-          <div className="text-right text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-100 transition-opacity duration-500 relative z-20">
+          <div className="text-right text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-0 transition-opacity duration-500 relative z-20">
             {timeline}
           </div>
         </div>

@@ -13,12 +13,17 @@ import designSystemImage from "@/assets/design-system-project.jpg";
 const Index = () => {
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [tagsVisible, setTagsVisible] = useState(false);
   const projectsSection = useScrollAnimation(0.1);
   const aboutSection = useScrollAnimation(0.2);
-  const tagsSection = useScrollAnimation(0.3);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+      if (window.scrollY > 50 && !tagsVisible) {
+        setTagsVisible(true);
+      }
+    };
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -30,7 +35,7 @@ const Index = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []);
+  }, [tagsVisible]);
 
   const works = [
     {
@@ -85,28 +90,49 @@ const Index = () => {
           }}
         />
         
-        {/* Interactive Animated Glass Panels */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Interactive Animated Glass Panels with Hover Effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-auto">
           <div 
-            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 transition-all duration-1000"
+            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 transition-all duration-1000 group hover:scale-110 cursor-pointer"
             style={{ 
               transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003)
-            }} 
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderRadius = '40% 60% 60% 40% / 60% 40% 60% 40%';
+              setTimeout(() => {
+                e.currentTarget.style.opacity = '0';
+                e.currentTarget.style.transform = 'scale(1.5)';
+              }, 300);
+            }}
           />
           <div 
-            className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-3xl -rotate-12 opacity-100 transition-all duration-1000" 
+            className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-3xl -rotate-12 opacity-100 transition-all duration-1000 group hover:scale-110 cursor-pointer" 
             style={{ 
               transform: `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03 + scrollY * 0.6}px) rotate(-12deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003)
-            }} 
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderRadius = '50% 50% 40% 60% / 40% 60% 50% 50%';
+              setTimeout(() => {
+                e.currentTarget.style.opacity = '0';
+                e.currentTarget.style.transform = 'scale(1.5)';
+              }, 300);
+            }}
           />
           <div 
-            className="absolute top-1/2 left-1/3 w-48 h-48 bg-accent/10 backdrop-blur-3xl rounded-full opacity-100 transition-all duration-1000" 
+            className="absolute top-1/2 left-1/3 w-48 h-48 bg-accent/10 backdrop-blur-3xl rounded-full opacity-100 transition-all duration-1000 group hover:scale-110 cursor-pointer" 
             style={{ 
               transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`,
               opacity: Math.max(0, 1 - scrollY * 0.003)
-            }} 
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderRadius = '60% 40% 50% 50% / 50% 60% 40% 50%';
+              setTimeout(() => {
+                e.currentTarget.style.opacity = '0';
+                e.currentTarget.style.transform = 'scale(1.5)';
+              }, 300);
+            }}
           />
         </div>
         
@@ -143,13 +169,10 @@ const Index = () => {
                 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-12 text-foreground"
               />
             </div>
-            <div 
-              ref={tagsSection.ref}
-              className="flex flex-wrap justify-center gap-4 mb-8"
-            >
+            <div className="flex flex-wrap justify-center gap-4 mb-8">
               <span 
                 className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                  tagsSection.isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
+                  tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
                 }`}
                 style={{ transitionDelay: "0.2s" }}
               >
@@ -157,7 +180,7 @@ const Index = () => {
               </span>
               <span 
                 className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                  tagsSection.isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
+                  tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
                 }`}
                 style={{ transitionDelay: "0.5s" }}
               >
@@ -165,7 +188,7 @@ const Index = () => {
               </span>
               <span 
                 className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                  tagsSection.isVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
+                  tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
                 }`}
                 style={{ transitionDelay: "0.8s" }}
               >
@@ -185,16 +208,16 @@ const Index = () => {
       <section id="about" className="py-20 px-6 bg-secondary">
         <div 
           ref={aboutSection.ref}
-          className={`container mx-auto max-w-4xl text-center transition-all duration-1000 ${
+          className={`container mx-auto max-w-4xl transition-all duration-1000 ${
             aboutSection.isVisible 
               ? "opacity-100 translate-y-0" 
               : "opacity-0 translate-y-20"
           }`}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground opacity-70 text-center">
             About Me
           </h2>
-          <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed">
+          <p className="text-2xl md:text-3xl text-muted-foreground leading-relaxed text-justify">
             {`My path into UX started with curiosity. I taught myself design through YouTube, spent hours practicing in Figma, and turned that passion into a career. That self-taught start shaped how I work. I stay curious, focus on people, and break down tough problems into simple, usable experiences. I'm now earning my master's in human-computer interaction to deepen that foundation.`
               .split(" ")
               .map((word, index) => (
@@ -215,12 +238,12 @@ const Index = () => {
           ref={projectsSection.ref}
           className="container mx-auto max-w-4xl text-center"
         >
-          <h2 className={`text-3xl md:text-4xl font-bold mb-6 text-foreground transition-all duration-1000 ${
+          <h2 className={`text-3xl md:text-4xl font-bold mb-6 text-foreground opacity-70 transition-all duration-1000 ${
             projectsSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}>
             Design Philosophy
           </h2>
-          <p className={`text-lg text-muted-foreground leading-relaxed mb-8 transition-all duration-1000 delay-150 ${
+          <p className={`text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 transition-all duration-1000 delay-150 ${
             projectsSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}>
             I believe great design is invisible. It guides users naturally, anticipates their needs, 
