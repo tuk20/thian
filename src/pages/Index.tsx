@@ -256,12 +256,12 @@ const Index = () => {
           ref={projectsSection.ref}
           className="container mx-auto max-w-4xl text-center"
         >
-          <h2 className={`text-3xl md:text-4xl font-bold mb-6 text-foreground opacity-70 transition-all duration-1000 ${
+          <h2 className={`text-3xl md:text-4xl font-bold mb-6 text-foreground opacity-70 transition-all duration-700 ${
             projectsSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}>
             Design Philosophy
           </h2>
-          <p className={`text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 transition-all duration-1000 delay-150 ${
+          <p className={`text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 transition-all duration-700 ${
             projectsSection.isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}>
             I believe great design is invisible. It guides users naturally, anticipates their needs, 
@@ -269,7 +269,7 @@ const Index = () => {
             and ends with impact.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className={`transition-all duration-1000 delay-300 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
+            <div className={`transition-all duration-700 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
               projectsSection.isVisible ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-90 -rotate-3"
             }`}>
               <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Research-Driven</h3>
@@ -277,7 +277,7 @@ const Index = () => {
                 Deep user insights inform every design decision
               </p>
             </div>
-            <div className={`transition-all duration-1000 delay-500 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
+            <div className={`transition-all duration-700 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
               projectsSection.isVisible ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-90 rotate-3"
             }`}>
               <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Collaborative</h3>
@@ -285,7 +285,7 @@ const Index = () => {
                 Working closely with cross-functional teams
               </p>
             </div>
-            <div className={`transition-all duration-1000 delay-700 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
+            <div className={`transition-all duration-700 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
               projectsSection.isVisible ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-90 -rotate-3"
             }`}>
               <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Impact-Focused</h3>

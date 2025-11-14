@@ -16,11 +16,11 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
   return (
     <Link to={to}>
       <div
-        className="group relative border-t border-border/50 transition-all duration-700"
+        className="group relative transition-all duration-700"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative py-12">
+        <div className="relative py-12 border-t border-border/50">
           {/* Default State - Text visible on clean background */}
           <div className={`grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative z-20 transition-opacity duration-700 ${
             isHovered ? "opacity-0" : "opacity-100"
@@ -94,12 +94,8 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
           </div>
         </div>
 
-        {/* Hover Gradient Line */}
-        <div
-          className={`absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-transparent via-primary to-transparent transition-all duration-700 ${
-            isHovered ? "w-full opacity-100" : "w-0 opacity-0"
-          }`}
-        />
+        {/* Full width bottom border - no hover effect */}
+        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border/50" />
       </div>
     </Link>
   );
