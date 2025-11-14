@@ -16,11 +16,11 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
   return (
     <Link to={to}>
       <div
-        className="group relative border-t border-border/50 py-12 transition-all duration-700"
+        className="group relative border-t border-border/50 transition-all duration-700"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative">
+        <div className="relative py-12">
           {/* Default State - Text visible on clean background */}
           <div className={`grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative z-20 transition-opacity duration-700 ${
             isHovered ? "opacity-0" : "opacity-100"
@@ -44,7 +44,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
           </div>
 
           {/* Hover State - Eyelid opening effect that covers entire row */}
-          <div className="absolute -inset-6 -left-[10vw] -right-[10vw] overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 -left-[10vw] -right-[10vw] overflow-hidden pointer-events-none">
             {/* Content that gets revealed */}
             <div
               className={`absolute inset-0 transition-opacity duration-700 ${
