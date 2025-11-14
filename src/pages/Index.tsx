@@ -172,43 +172,43 @@ const Index = () => {
             }}
           />
         </div>
-            </div>
-            
-            <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              UX Designer
-            </p>
-            <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <AnimatedName 
-                name="Thian Uk" 
-                className="text-6xl md:text-7xl lg:text-8xl font-bold mb-12 text-foreground"
-              />
-            </div>
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              <span 
-                className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                  tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
-                }`}
-                style={{ transitionDelay: "0.2s" }}
-              >
-                User Research
-              </span>
-              <span 
-                className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                  tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
-                }`}
-                style={{ transitionDelay: "0.5s" }}
-              >
-                Interaction Design
-              </span>
-              <span 
-                className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                  tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
-                }`}
-                style={{ transitionDelay: "0.8s" }}
-              >
-                Design Systems
-              </span>
-            </div>
+        
+        {/* Hero Content */}
+        <div className="relative z-10 text-center max-w-4xl mx-auto">
+          <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            UX Designer
+          </p>
+          <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            <AnimatedName 
+              name="Thian Uk" 
+              className="text-6xl md:text-7xl lg:text-8xl font-bold mb-12 text-foreground"
+            />
+          </div>
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            <span 
+              className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
+                tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
+              }`}
+              style={{ transitionDelay: "0.2s" }}
+            >
+              User Research
+            </span>
+            <span 
+              className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
+                tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
+              }`}
+              style={{ transitionDelay: "0.5s" }}
+            >
+              Interaction Design
+            </span>
+            <span 
+              className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
+                tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
+              }`}
+              style={{ transitionDelay: "0.8s" }}
+            >
+              Design Systems
+            </span>
           </div>
         </div>
 
