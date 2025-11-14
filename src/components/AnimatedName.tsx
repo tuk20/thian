@@ -13,7 +13,7 @@ const AnimatedName = ({ name, className = "" }: AnimatedNameProps) => {
       {name.split("").map((char, index) => (
         <span
           key={index}
-          className="inline-block transition-all duration-500 ease-in-out hover:-translate-y-1 hover:scale-105 hover:text-primary cursor-default"
+          className="inline-block transition-all duration-500 ease-in-out hover:-translate-y-3 hover:scale-125 hover:text-primary cursor-default hover:drop-shadow-[0_0_15px_hsl(var(--primary))]"
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
