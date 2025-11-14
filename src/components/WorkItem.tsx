@@ -73,7 +73,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
 
             {/* Top Eyelid */}
             <div
-              className="absolute top-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-top"
+              className="absolute top-0 left-0 right-0 bg-secondary z-10 transition-all duration-700 ease-in-out origin-top"
               style={{
                 height: isHovered ? "0%" : "50%",
                 transform: isHovered ? "scaleY(0)" : "scaleY(1)",
@@ -82,7 +82,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
 
             {/* Bottom Eyelid */}
             <div
-              className="absolute bottom-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-bottom"
+              className="absolute bottom-0 left-0 right-0 bg-secondary z-10 transition-all duration-700 ease-in-out origin-bottom"
               style={{
                 height: isHovered ? "0%" : "50%",
                 transform: isHovered ? "scaleY(0)" : "scaleY(1)",
