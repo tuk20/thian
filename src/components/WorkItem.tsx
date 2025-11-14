@@ -20,72 +20,72 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative">
-          {/* Industry Column */}
-          <div className="text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-0 transition-opacity duration-500 relative z-20">
-            {industry}
-          </div>
+        <div className="relative">
+          {/* Default State - Text visible on clean background */}
+          <div className="grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative z-20">
+            {/* Industry Column */}
+            <div className="text-muted-foreground text-sm md:text-base font-medium transition-opacity duration-500">
+              {industry}
+            </div>
 
-          {/* Work Column with Eyelid Opening Effect */}
-          <div className="relative overflow-visible">
-            <div className="relative">
-              {/* Title - Visible by default, hidden on hover */}
-              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground transition-all duration-700 group-hover:opacity-0 relative z-20">
+            {/* Work Column */}
+            <div>
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground transition-all duration-700">
                 {title}
               </h3>
+            </div>
 
-              {/* Rectangle that appears with Eyelid Opening Effect - Hidden by default */}
-              <div className="absolute inset-0 -left-8 -right-8 -top-4 -bottom-4 overflow-hidden pointer-events-none">
-                {/* Content that gets revealed */}
-                <div
-                  className={`absolute inset-0 transition-opacity duration-700 ${
-                    isHovered ? "opacity-100" : "opacity-0"
-                  }`}
-                >
-                  <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card/50 border border-border/30 p-6 h-full flex items-center gap-6">
-                    {/* Glass Effect Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
-                    
-                    {/* Image */}
-                    <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 relative z-10">
-                      <img
-                        src={imageUrl}
-                        alt={title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground leading-relaxed flex-1 relative z-10">
-                      {description}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Top Eyelid - Covers everything by default */}
-                <div
-                  className="absolute top-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-top"
-                  style={{
-                    height: isHovered ? "0%" : "50%",
-                    transform: isHovered ? "scaleY(0)" : "scaleY(1)",
-                  }}
-                />
-
-                {/* Bottom Eyelid - Covers everything by default */}
-                <div
-                  className="absolute bottom-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-bottom"
-                  style={{
-                    height: isHovered ? "0%" : "50%",
-                    transform: isHovered ? "scaleY(0)" : "scaleY(1)",
-                  }}
-                />
-              </div>
+            {/* Timeline Column */}
+            <div className="text-right text-muted-foreground text-sm md:text-base font-medium transition-opacity duration-500">
+              {timeline}
             </div>
           </div>
 
-          {/* Timeline Column */}
-          <div className="text-right text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-0 transition-opacity duration-500 relative z-20">
-            {timeline}
+          {/* Hover State - Eyelid opening effect that covers entire row */}
+          <div className="absolute inset-0 -left-[10vw] -right-[10vw] -top-4 -bottom-4 overflow-hidden pointer-events-none">
+            {/* Content that gets revealed */}
+            <div
+              className={`absolute inset-0 transition-opacity duration-700 ${
+                isHovered ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card/50 border border-border/30 p-6 h-full flex items-center gap-6">
+                {/* Glass Effect Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
+                
+                {/* Image */}
+                <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 relative z-10">
+                  <img
+                    src={imageUrl}
+                    alt={title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Description */}
+                <p className="text-muted-foreground leading-relaxed flex-1 relative z-10">
+                  {description}
+                </p>
+              </div>
+            </div>
+
+            {/* Top Eyelid */}
+            <div
+              className="absolute top-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-top"
+              style={{
+                height: isHovered ? "0%" : "50%",
+                transform: isHovered ? "scaleY(0)" : "scaleY(1)",
+              }}
+            />
+
+            {/* Bottom Eyelid */}
+            <div
+              className="absolute bottom-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-bottom"
+              style={{
+                height: isHovered ? "0%" : "50%",
+                transform: isHovered ? "scaleY(0)" : "scaleY(1)",
+              }}
+            />
           </div>
         </div>
 
