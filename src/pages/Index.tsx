@@ -141,16 +141,14 @@ const Index = () => {
               transform: `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
               clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-              transition: 'all 1.2s cubic-bezier(0.4, 0, 0.2, 1)'
+              transition: 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '50%';
-              e.currentTarget.style.clipPath = 'circle(45% at 50% 50%)';
+              e.currentTarget.style.clipPath = 'polygon(50% 0%, 100% 100%, 0% 100%)';
               e.currentTarget.style.backgroundColor = 'hsl(45 85% 55% / 0.35)';
-              e.currentTarget.style.transform = 'scale(1.2) rotate(180deg)';
+              e.currentTarget.style.transform = 'scale(1.15) rotate(0deg)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderRadius = '0';
               e.currentTarget.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
               e.currentTarget.style.transform = `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`;
               e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.1)';
