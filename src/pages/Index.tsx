@@ -269,26 +269,26 @@ const Index = () => {
             and ends with impact.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className={`transition-all duration-1000 delay-300 ${
+            <div className={`transition-all duration-1000 delay-300 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
               projectsSection.isVisible ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-90 -rotate-3"
             }`}>
-              <h3 className="text-xl font-semibold mb-3 text-foreground">Research-Driven</h3>
+              <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Research-Driven</h3>
               <p className="text-muted-foreground">
                 Deep user insights inform every design decision
               </p>
             </div>
-            <div className={`transition-all duration-1000 delay-500 ${
+            <div className={`transition-all duration-1000 delay-500 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
               projectsSection.isVisible ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-90 rotate-3"
             }`}>
-              <h3 className="text-xl font-semibold mb-3 text-foreground">Collaborative</h3>
+              <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Collaborative</h3>
               <p className="text-muted-foreground">
                 Working closely with cross-functional teams
               </p>
             </div>
-            <div className={`transition-all duration-1000 delay-700 ${
+            <div className={`transition-all duration-1000 delay-700 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
               projectsSection.isVisible ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-90 -rotate-3"
             }`}>
-              <h3 className="text-xl font-semibold mb-3 text-foreground">Impact-Focused</h3>
+              <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Impact-Focused</h3>
               <p className="text-muted-foreground">
                 Measuring success through user outcomes
               </p>
