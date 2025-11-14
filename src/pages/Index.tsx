@@ -216,15 +216,16 @@ const Index = () => {
 
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 bg-secondary">
-        <div 
-          ref={aboutSection.ref}
-          className={`container mx-auto max-w-4xl transition-all duration-1000 ${
-            aboutSection.isVisible 
-              ? "opacity-100 translate-y-0" 
-              : "opacity-0 translate-y-32"
-          }`}
-        >
+      <section 
+        id="about" 
+        ref={aboutSection.ref}
+        className={`py-20 px-6 bg-secondary transition-all duration-1000 ${
+          aboutSection.isVisible 
+            ? "opacity-100 translate-y-0" 
+            : "opacity-0 translate-y-32"
+        }`}
+      >
+        <div className="container mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground opacity-70 text-center">
             About Me
           </h2>
