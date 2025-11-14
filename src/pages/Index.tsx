@@ -96,7 +96,7 @@ const Index = () => {
         <div className="absolute inset-0 overflow-hidden pointer-events-auto">
           {/* Shape 1 - Left Square */}
           <div 
-            className="absolute top-20 left-10 w-64 h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 cursor-pointer hover:bg-primary/20"
+            className="absolute top-20 left-10 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 cursor-pointer hover:bg-primary/20"
             style={{ 
               transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
@@ -116,7 +116,7 @@ const Index = () => {
           
           {/* Shape 2 - Center Circle */}
           <div 
-            className="absolute top-1/3 left-1/2 -translate-x-1/2 w-56 h-56 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-secondary/20" 
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-secondary/20" 
             style={{ 
               transform: `translate(calc(-50% + ${mousePosition.x * 0.02}px), ${mousePosition.y * 0.02 + scrollY * 0.45}px)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
@@ -136,7 +136,7 @@ const Index = () => {
           
           {/* Shape 3 - Right Star */}
           <div 
-            className="absolute top-40 right-20 w-64 h-64 bg-accent/10 backdrop-blur-3xl opacity-100 cursor-pointer hover:bg-accent/20"
+            className="absolute top-40 right-20 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-accent/10 backdrop-blur-3xl opacity-100 cursor-pointer hover:bg-accent/20"
             style={{ 
               transform: `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
@@ -157,7 +157,7 @@ const Index = () => {
           
           {/* Shape 4 - Bottom Left Liquid Circle */}
           <div 
-            className="absolute bottom-32 left-1/4 w-72 h-72 bg-primary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-primary/20"
+            className="absolute bottom-32 left-1/4 w-36 h-36 md:w-52 md:h-52 lg:w-72 lg:h-72 bg-primary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-primary/20"
             style={{ 
               transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
