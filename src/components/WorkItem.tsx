@@ -16,27 +16,29 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
   return (
     <Link to={to}>
       <div
-        className="group relative border-t border-border/50 py-8 transition-all duration-700"
+        className="group relative border-t border-border/50 py-12 transition-all duration-700"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="relative">
           {/* Default State - Text visible on clean background */}
-          <div className="grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative z-20">
+          <div className={`grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative z-20 transition-opacity duration-700 ${
+            isHovered ? "opacity-0" : "opacity-100"
+          }`}>
             {/* Industry Column */}
-            <div className="text-muted-foreground text-sm md:text-base font-medium transition-opacity duration-500">
+            <div className="text-muted-foreground text-sm md:text-base font-medium">
               {industry}
             </div>
 
             {/* Work Column */}
             <div>
-              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground transition-all duration-700">
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 {title}
               </h3>
             </div>
 
             {/* Timeline Column */}
-            <div className="text-right text-muted-foreground text-sm md:text-base font-medium transition-opacity duration-500">
+            <div className="text-right text-muted-foreground text-sm md:text-base font-medium">
               {timeline}
             </div>
           </div>
@@ -49,12 +51,12 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
                 isHovered ? "opacity-100" : "opacity-0"
               }`}
             >
-              <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card/50 border border-border/30 p-6 h-full flex items-center gap-6">
+              <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card/50 border border-border/30 p-8 h-full flex items-center gap-6">
                 {/* Glass Effect Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
                 
                 {/* Image */}
-                <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 relative z-10">
+                <div className="w-40 h-40 rounded-lg overflow-hidden flex-shrink-0 relative z-10">
                   <img
                     src={imageUrl}
                     alt={title}
@@ -63,7 +65,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
                 </div>
 
                 {/* Description */}
-                <p className="text-muted-foreground leading-relaxed flex-1 relative z-10">
+                <p className="text-muted-foreground text-lg leading-relaxed flex-1 relative z-10">
                   {description}
                 </p>
               </div>
