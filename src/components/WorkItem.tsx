@@ -20,7 +20,9 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="relative py-12 border-t border-border/50">
+        {/* Full-width top border */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-px bg-border/50 pointer-events-none" />
+        <div className="relative py-12">
           {/* Default State - Text visible on clean background */}
           <div className={`grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative z-20 transition-opacity duration-700 ${
             isHovered ? "opacity-0" : "opacity-100"
@@ -95,7 +97,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
         </div>
 
         {/* Full width bottom border - no hover effect */}
-        <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-border/50" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-[1px] bg-border/50 pointer-events-none" />
       </div>
     </Link>
   );
