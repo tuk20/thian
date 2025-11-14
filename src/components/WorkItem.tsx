@@ -16,13 +16,13 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
   return (
     <Link to={to}>
       <div
-        className="group relative border-t border-border/50 py-8 transition-all duration-700 hover:bg-card/30"
+        className="group relative border-t border-border/50 py-8 transition-all duration-700"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <div className="grid grid-cols-[1fr_2fr_1fr] gap-8 items-center relative">
           {/* Industry Column */}
-          <div className="text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-100 transition-opacity duration-500 relative z-20">
             {industry}
           </div>
 
@@ -30,37 +30,35 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
           <div className="relative overflow-visible">
             <div className="relative">
               {/* Title - Always Visible */}
-              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground transition-all duration-700 group-hover:text-primary">
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground transition-all duration-700 group-hover:text-primary relative z-20">
                 {title}
               </h3>
 
-              {/* Eyelid Opening Effect Container */}
-              <div className="relative mt-6 h-40 overflow-hidden">
+              {/* Rectangle that appears with Eyelid Opening Effect */}
+              <div className="absolute inset-0 -left-8 -right-8 -top-4 -bottom-4 overflow-hidden pointer-events-none">
                 {/* Content that gets revealed */}
                 <div
                   className={`absolute inset-0 transition-opacity duration-700 ${
                     isHovered ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card/50 border border-border/30 p-6 h-full">
+                  <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card/50 border border-border/30 p-6 h-full flex items-center gap-6">
                     {/* Glass Effect Background */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
                     
-                    <div className="relative z-10 flex gap-6 h-full">
-                      {/* Image */}
-                      <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">
-                        <img
-                          src={imageUrl}
-                          alt={title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-
-                      {/* Description */}
-                      <p className="text-muted-foreground leading-relaxed flex-1">
-                        {description}
-                      </p>
+                    {/* Image */}
+                    <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0 relative z-10">
+                      <img
+                        src={imageUrl}
+                        alt={title}
+                        className="w-full h-full object-cover"
+                      />
                     </div>
+
+                    {/* Description */}
+                    <p className="text-muted-foreground leading-relaxed flex-1 relative z-10">
+                      {description}
+                    </p>
                   </div>
                 </div>
 
@@ -86,7 +84,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
           </div>
 
           {/* Timeline Column */}
-          <div className="text-right text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="text-right text-muted-foreground text-sm md:text-base font-medium opacity-70 group-hover:opacity-100 transition-opacity duration-500 relative z-20">
             {timeline}
           </div>
         </div>
