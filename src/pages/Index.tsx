@@ -21,18 +21,9 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (scrollLocked) {
-        window.scrollTo(0, 0);
-        return;
-      }
       setScrollY(window.scrollY);
       if (window.scrollY > 50 && !tagsVisible) {
         setTagsVisible(true);
-        setScrollLocked(true);
-        setTimeout(() => {
-          setAllTagsAppeared(true);
-          setScrollLocked(false);
-        }, 1200); // Wait for all 3 tags to appear (0.2s + 0.5s + 0.8s delays)
       }
     };
     const handleMouseMove = (e: MouseEvent) => {
@@ -46,7 +37,7 @@ const Index = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [tagsVisible, scrollLocked]);
+  }, [tagsVisible]);
 
   const works = [
     {
@@ -112,7 +103,7 @@ const Index = () => {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderRadius = '45% 55% 60% 40% / 55% 45% 55% 45%';
-              e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.3)';
+              e.currentTarget.style.backgroundColor = 'hsl(280 65% 60% / 0.3)';
               setTimeout(() => {
                 e.currentTarget.style.opacity = '0';
                 e.currentTarget.style.transform = 'scale(1.8) rotate(45deg)';
@@ -128,16 +119,16 @@ const Index = () => {
             }}
           />
           
-          {/* Shape 2 - Bottom Right Circle */}
+          {/* Shape 2 - Center Circle */}
           <div 
-            className="absolute bottom-40 right-20 w-80 h-80 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 transition-all duration-700 cursor-pointer hover:bg-secondary/20" 
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 w-56 h-56 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 transition-all duration-700 cursor-pointer hover:bg-secondary/20" 
             style={{ 
-              transform: `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03 + scrollY * 0.6}px)`,
+              transform: `translate(calc(-50% + ${mousePosition.x * 0.02}px), ${mousePosition.y * 0.02 + scrollY * 0.45}px)`,
               opacity: Math.max(0, 1 - scrollY * 0.003)
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderRadius = '55% 45% 40% 60% / 45% 55% 45% 55%';
-              e.currentTarget.style.backgroundColor = 'hsl(var(--secondary) / 0.3)';
+              e.currentTarget.style.backgroundColor = 'hsl(160 55% 50% / 0.3)';
               setTimeout(() => {
                 e.currentTarget.style.opacity = '0';
                 e.currentTarget.style.transform = 'scale(1.8) rotate(-30deg)';
@@ -146,64 +137,41 @@ const Index = () => {
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderRadius = '9999px';
-              e.currentTarget.style.transform = `translate(${-mousePosition.x * 0.03}px, ${-mousePosition.y * 0.03 + scrollY * 0.6}px)`;
+              e.currentTarget.style.transform = `translate(calc(-50% + ${mousePosition.x * 0.02}px), ${mousePosition.y * 0.02 + scrollY * 0.45}px)`;
               e.currentTarget.style.opacity = String(Math.max(0, 1 - scrollY * 0.003));
               e.currentTarget.style.backgroundColor = 'hsl(var(--secondary) / 0.1)';
               e.currentTarget.style.filter = 'none';
             }}
           />
           
-          {/* Shape 3 - Right Triangle-ish */}
+          {/* Shape 3 - Right Star */}
           <div 
-            className="absolute top-1/3 right-32 w-56 h-56 bg-accent/10 backdrop-blur-3xl rounded-[2rem] opacity-100 transition-all duration-700 cursor-pointer hover:bg-accent/20"
+            className="absolute top-40 right-20 w-64 h-64 bg-accent/10 backdrop-blur-3xl opacity-100 transition-all duration-700 cursor-pointer hover:bg-accent/20"
             style={{ 
-              transform: `translate(${mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.45}px) rotate(-20deg)`,
+              transform: `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
-              clipPath: 'polygon(50% 0%, 100% 100%, 0% 100%)'
+              clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderRadius = '50% 40% 60% 50% / 40% 60% 40% 60%';
-              e.currentTarget.style.clipPath = 'polygon(50% 10%, 90% 90%, 10% 90%)';
-              e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.3)';
+              e.currentTarget.style.clipPath = 'polygon(50% 5%, 60% 38%, 95% 38%, 66% 58%, 76% 88%, 50% 68%, 24% 88%, 34% 58%, 5% 38%, 40% 38%)';
+              e.currentTarget.style.backgroundColor = 'hsl(45 85% 55% / 0.3)';
               setTimeout(() => {
                 e.currentTarget.style.opacity = '0';
-                e.currentTarget.style.transform = 'scale(1.8) rotate(20deg)';
+                e.currentTarget.style.transform = 'scale(1.8) rotate(72deg)';
                 e.currentTarget.style.filter = 'blur(20px)';
               }, 400);
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.borderRadius = '2rem';
-              e.currentTarget.style.clipPath = 'polygon(50% 0%, 100% 100%, 0% 100%)';
-              e.currentTarget.style.transform = `translate(${mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.45}px) rotate(-20deg)`;
+              e.currentTarget.style.borderRadius = '0';
+              e.currentTarget.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+              e.currentTarget.style.transform = `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`;
               e.currentTarget.style.opacity = String(Math.max(0, 1 - scrollY * 0.003));
               e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.1)';
               e.currentTarget.style.filter = 'none';
             }}
           />
         </div>
-        
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <div className="animate-scale-in">
-            {/* Portrait Image with Glass Effect */}
-            <div 
-              className="mb-8 flex justify-center animate-fade-in"
-              style={{
-                transform: `translateY(${scrollY * 0.2}px)`,
-                animationDelay: "0.1s"
-              }}
-            >
-              <div 
-                className="relative w-48 h-48 rounded-full overflow-hidden backdrop-blur-sm bg-card/30 border border-border/50 shadow-[var(--shadow-soft)] hover:shadow-[var(--shadow-hover)] transition-all duration-500 hover:scale-105 hover:rotate-3"
-                style={{
-                  transform: `perspective(1000px) rotateY(${(mousePosition.x - window.innerWidth / 2) * 0.01}deg) rotateX(${-(mousePosition.y - window.innerHeight / 2) * 0.01}deg)`
-                }}
-              >
-                <img 
-                  src={portraitImage} 
-                  alt="Thian Uk - UX Designer" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
             </div>
             
             <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm animate-fade-in" style={{ animationDelay: "0.2s" }}>
