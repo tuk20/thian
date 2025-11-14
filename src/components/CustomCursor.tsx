@@ -4,6 +4,7 @@ const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isOverText, setIsOverText] = useState(false);
 
   useEffect(() => {
     const updatePosition = (e: MouseEvent) => {
@@ -20,7 +21,20 @@ const CustomCursor = () => {
         !!target.closest("button") ||
         target.classList.contains("cursor-pointer");
       
+      const isTextElement = 
+        target.tagName === "P" ||
+        target.tagName === "SPAN" ||
+        target.tagName === "H1" ||
+        target.tagName === "H2" ||
+        target.tagName === "H3" ||
+        target.tagName === "H4" ||
+        target.tagName === "H5" ||
+        target.tagName === "H6" ||
+        !!target.closest("p") ||
+        !!target.closest("span");
+      
       setIsHovering(isInteractive);
+      setIsOverText(isTextElement);
     };
 
     const handleMouseLeave = () => setIsVisible(false);
@@ -54,16 +68,18 @@ const CustomCursor = () => {
           }`}
         />
       </div>
-      <div
-        className="fixed pointer-events-none z-[9998] border-2 border-white rounded-full mix-blend-difference transition-all duration-500"
-        style={{
-          left: `${position.x}px`,
-          top: `${position.y}px`,
-          transform: 'translate(-50%, -50%)',
-          width: isHovering ? '48px' : '32px',
-          height: isHovering ? '48px' : '32px',
-        }}
-      />
+      {!isOverText && (
+        <div
+          className="fixed pointer-events-none z-[9998] border-2 border-white rounded-full mix-blend-difference transition-all duration-500"
+          style={{
+            left: `${position.x}px`,
+            top: `${position.y}px`,
+            transform: 'translate(-50%, -50%)',
+            width: isHovering ? '48px' : '32px',
+            height: isHovering ? '48px' : '32px',
+          }}
+        />
+      )}
     </>
   );
 };
