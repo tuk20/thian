@@ -30,11 +30,15 @@ const CustomCursor = () => {
         target.tagName === "H4" ||
         target.tagName === "H5" ||
         target.tagName === "H6" ||
+        target.tagName === "DIV" ||
         !!target.closest("p") ||
-        !!target.closest("span");
+        !!target.closest("h1") ||
+        !!target.closest("h2") ||
+        !!target.closest("h3") ||
+        !!target.closest("section");
       
       setIsHovering(isInteractive);
-      setIsOverText(isTextElement);
+      setIsOverText(isTextElement && !isInteractive);
     };
 
     const handleMouseLeave = () => setIsVisible(false);
