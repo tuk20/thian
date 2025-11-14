@@ -43,12 +43,12 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
             </div>
           </div>
 
-          {/* Hover State - Card that covers entire row */}
+          {/* Hover State - Eyelid opening effect that covers entire row */}
           <div className="absolute inset-0 -left-[10vw] -right-[10vw] -top-4 -bottom-4 overflow-hidden pointer-events-none">
             {/* Content that gets revealed */}
             <div
-              className={`absolute inset-0 transition-all duration-700 ${
-                isHovered ? "opacity-100 scale-100" : "opacity-0 scale-95"
+              className={`absolute inset-0 transition-opacity duration-700 ${
+                isHovered ? "opacity-100" : "opacity-0"
               }`}
             >
               <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card/50 border border-border/30 p-8 h-full flex items-center gap-6">
@@ -70,6 +70,24 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
                 </p>
               </div>
             </div>
+
+            {/* Top Eyelid */}
+            <div
+              className="absolute top-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-top"
+              style={{
+                height: isHovered ? "0%" : "50%",
+                transform: isHovered ? "scaleY(0)" : "scaleY(1)",
+              }}
+            />
+
+            {/* Bottom Eyelid */}
+            <div
+              className="absolute bottom-0 left-0 right-0 bg-background z-10 transition-all duration-700 ease-in-out origin-bottom"
+              style={{
+                height: isHovered ? "0%" : "50%",
+                transform: isHovered ? "scaleY(0)" : "scaleY(1)",
+              }}
+            />
           </div>
         </div>
 
