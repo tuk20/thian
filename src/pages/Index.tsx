@@ -222,7 +222,7 @@ const Index = () => {
           className={`container mx-auto max-w-4xl transition-all duration-1000 ${
             aboutSection.isVisible 
               ? "opacity-100 translate-y-0" 
-              : "opacity-0 translate-y-20"
+              : "opacity-0 translate-y-32"
           }`}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground opacity-70 text-center">
