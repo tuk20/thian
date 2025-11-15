@@ -46,7 +46,7 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
+                  className="relative text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:[transform:perspective(500px)_rotateX(15deg)] after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
                 >
                   {item.label}
                 </button>
@@ -56,7 +56,7 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
+                  className="relative text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:[transform:perspective(500px)_rotateX(15deg)] after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
                 >
                   {item.label}
                 </button>
@@ -78,7 +78,7 @@ const Navigation = () => {
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className="text-left text-lg font-medium text-muted-foreground hover:text-primary transition-colors py-2"
+                      className="relative text-left text-lg font-medium text-muted-foreground hover:text-primary transition-all duration-300 py-2 hover:[transform:perspective(500px)_rotateX(15deg)] after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
                     >
                       {item.label}
                     </button>
