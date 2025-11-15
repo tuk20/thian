@@ -17,8 +17,23 @@ const Index = () => {
   const [allTagsAppeared, setAllTagsAppeared] = useState(false);
   const [scrollLocked, setScrollLocked] = useState(false);
   const [philosophyVisible, setPhilosophyVisible] = useState(false);
+  const [shapePositions, setShapePositions] = useState({
+    shape1: { x: 0, y: 0 },
+    shape2: { x: 0, y: 0 },
+    shape3: { x: 0, y: 0 },
+    shape4: { x: 0, y: 0 },
+  });
   const projectsSection = useScrollAnimation(0.3);
   const aboutSection = useScrollAnimation(0.2);
+
+  const dodgeShape = (shapeName: keyof typeof shapePositions) => {
+    const newX = Math.random() * 400 - 200;
+    const newY = Math.random() * 400 - 200;
+    setShapePositions(prev => ({
+      ...prev,
+      [shapeName]: { x: newX, y: newY }
+    }));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,10 +114,11 @@ const Index = () => {
           <div 
             className="absolute top-20 left-10 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 cursor-pointer hover:bg-primary/20"
             style={{ 
-              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`,
+              transform: `translate(calc(${mousePosition.x * 0.02}px + ${shapePositions.shape1.x}px), calc(${mousePosition.y * 0.02 + scrollY * 0.5}px + ${shapePositions.shape1.y}px)) rotate(12deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
               transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
+            onClick={() => dodgeShape('shape1')}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderRadius = '48% 52% 58% 42% / 53% 47% 53% 47%';
               e.currentTarget.style.backgroundColor = 'hsl(280 65% 60% / 0.35)';
@@ -110,7 +126,7 @@ const Index = () => {
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderRadius = '1.5rem';
-              e.currentTarget.style.transform = `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`;
+              e.currentTarget.style.transform = `translate(calc(${mousePosition.x * 0.02}px + ${shapePositions.shape1.x}px), calc(${mousePosition.y * 0.02 + scrollY * 0.5}px + ${shapePositions.shape1.y}px)) rotate(12deg)`;
               e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.1)';
             }}
           />
@@ -119,10 +135,11 @@ const Index = () => {
           <div 
             className="absolute top-1/3 left-1/2 -translate-x-1/2 w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-secondary/20" 
             style={{ 
-              transform: `translate(calc(-50% + ${mousePosition.x * 0.02}px), ${mousePosition.y * 0.02 + scrollY * 0.45}px)`,
+              transform: `translate(calc(-50% + ${mousePosition.x * 0.02}px + ${shapePositions.shape2.x}px), calc(${mousePosition.y * 0.02 + scrollY * 0.45}px + ${shapePositions.shape2.y}px))`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
               transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
+            onClick={() => dodgeShape('shape2')}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderRadius = '50% 50% 50% 50% / 40% 40% 60% 60%';
               e.currentTarget.style.backgroundColor = 'hsl(160 55% 50% / 0.35)';
@@ -130,7 +147,7 @@ const Index = () => {
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderRadius = '9999px';
-              e.currentTarget.style.transform = `translate(calc(-50% + ${mousePosition.x * 0.02}px), ${mousePosition.y * 0.02 + scrollY * 0.45}px)`;
+              e.currentTarget.style.transform = `translate(calc(-50% + ${mousePosition.x * 0.02}px + ${shapePositions.shape2.x}px), calc(${mousePosition.y * 0.02 + scrollY * 0.45}px + ${shapePositions.shape2.y}px))`;
               e.currentTarget.style.backgroundColor = 'hsl(var(--secondary) / 0.1)';
             }}
           />
@@ -139,11 +156,12 @@ const Index = () => {
           <div 
             className="absolute top-40 right-20 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-accent/10 backdrop-blur-3xl opacity-100 cursor-pointer hover:bg-accent/20"
             style={{ 
-              transform: `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`,
+              transform: `translate(calc(${-mousePosition.x * 0.025}px + ${shapePositions.shape3.x}px), calc(${mousePosition.y * 0.025 + scrollY * 0.55}px + ${shapePositions.shape3.y}px)) rotate(0deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
               clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
               transition: 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
             }}
+            onClick={() => dodgeShape('shape3')}
             onMouseEnter={(e) => {
               e.currentTarget.style.clipPath = 'polygon(50% 0%, 100% 100%, 0% 100%)';
               e.currentTarget.style.backgroundColor = 'hsl(45 85% 55% / 0.35)';
@@ -151,7 +169,7 @@ const Index = () => {
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-              e.currentTarget.style.transform = `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`;
+              e.currentTarget.style.transform = `translate(calc(${-mousePosition.x * 0.025}px + ${shapePositions.shape3.x}px), calc(${mousePosition.y * 0.025 + scrollY * 0.55}px + ${shapePositions.shape3.y}px)) rotate(0deg)`;
               e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.1)';
             }}
           />
@@ -160,10 +178,11 @@ const Index = () => {
           <div 
             className="absolute bottom-32 left-1/4 w-36 h-36 md:w-52 md:h-52 lg:w-72 lg:h-72 bg-primary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-primary/20"
             style={{ 
-              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`,
+              transform: `translate(calc(${mousePosition.x * 0.015}px + ${shapePositions.shape4.x}px), calc(${mousePosition.y * 0.015 + scrollY * 0.4}px + ${shapePositions.shape4.y}px))`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
               transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
+            onClick={() => dodgeShape('shape4')}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderRadius = '65% 35% 58% 42% / 53% 50% 50% 47%';
               e.currentTarget.style.backgroundColor = 'hsl(200 70% 50% / 0.35)';
@@ -171,7 +190,7 @@ const Index = () => {
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.borderRadius = '9999px';
-              e.currentTarget.style.transform = `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`;
+              e.currentTarget.style.transform = `translate(calc(${mousePosition.x * 0.015}px + ${shapePositions.shape4.x}px), calc(${mousePosition.y * 0.015 + scrollY * 0.4}px + ${shapePositions.shape4.y}px))`;
               e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.1)';
             }}
           />
