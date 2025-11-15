@@ -19,6 +19,16 @@ const Index = () => {
   const [philosophyVisible, setPhilosophyVisible] = useState(false);
   const projectsSection = useScrollAnimation(0.3);
   const aboutSection = useScrollAnimation(0.2);
+  
+  // Drag state for shapes
+  const [draggedShape, setDraggedShape] = useState<number | null>(null);
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [shapePositions, setShapePositions] = useState({
+    shape1: { x: 0, y: 0 },
+    shape2: { x: 0, y: 0 },
+    shape3: { x: 0, y: 0 },
+    shape4: { x: 0, y: 0 },
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,16 +39,42 @@ const Index = () => {
     };
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
+      
+      // Update position while dragging
+      if (draggedShape !== null) {
+        const shapeKey = `shape${draggedShape}` as keyof typeof shapePositions;
+        setShapePositions(prev => ({
+          ...prev,
+          [shapeKey]: {
+            x: e.clientX - dragOffset.x,
+            y: e.clientY - dragOffset.y,
+          },
+        }));
+      }
+    };
+    
+    const handleMouseUp = () => {
+      if (draggedShape !== null) {
+        // Animate back to original position
+        const shapeKey = `shape${draggedShape}` as keyof typeof shapePositions;
+        setShapePositions(prev => ({
+          ...prev,
+          [shapeKey]: { x: 0, y: 0 },
+        }));
+        setDraggedShape(null);
+      }
     };
     
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseup", handleMouseUp);
     
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [tagsVisible]);
+  }, [tagsVisible, draggedShape, dragOffset]);
 
   const works = [
     {
@@ -97,82 +133,82 @@ const Index = () => {
         <div className="absolute inset-0 overflow-hidden pointer-events-auto">
           {/* Shape 1 - Left Square */}
           <div 
-            className="absolute top-20 left-10 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 cursor-pointer hover:bg-primary/20"
+            className="absolute top-20 left-10 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 cursor-grab active:cursor-grabbing hover:bg-primary/20"
             style={{ 
-              transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`,
+              transform: draggedShape === 1 
+                ? `translate(${shapePositions.shape1.x}px, ${shapePositions.shape1.y}px) rotate(12deg)`
+                : `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
-              transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
+              transition: draggedShape === 1 ? 'none' : 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '48% 52% 58% 42% / 53% 47% 53% 47%';
-              e.currentTarget.style.backgroundColor = 'hsl(280 65% 60% / 0.35)';
-              e.currentTarget.style.transform = 'scale(1.2) rotate(25deg)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderRadius = '1.5rem';
-              e.currentTarget.style.transform = `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02 + scrollY * 0.5}px) rotate(12deg)`;
-              e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.1)';
+            onMouseDown={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              setDragOffset({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+              });
+              setDraggedShape(1);
             }}
           />
           
           {/* Shape 2 - Center Circle */}
           <div 
-            className="absolute top-1/3 left-1/2 -translate-x-1/2 w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-secondary/20" 
+            className="absolute top-1/3 left-1/2 -translate-x-1/2 w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-grab active:cursor-grabbing hover:bg-secondary/20" 
             style={{ 
-              transform: `translate(calc(-50% + ${mousePosition.x * 0.02}px), ${mousePosition.y * 0.02 + scrollY * 0.45}px)`,
+              transform: draggedShape === 2
+                ? `translate(${shapePositions.shape2.x}px, ${shapePositions.shape2.y}px)`
+                : `translate(calc(-50% + ${mousePosition.x * 0.02}px), ${mousePosition.y * 0.02 + scrollY * 0.45}px)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
-              transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
+              transition: draggedShape === 2 ? 'none' : 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '50% 50% 50% 50% / 40% 40% 60% 60%';
-              e.currentTarget.style.backgroundColor = 'hsl(160 55% 50% / 0.35)';
-              e.currentTarget.style.transform = 'translate(-50%, 0) scale(1.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderRadius = '9999px';
-              e.currentTarget.style.transform = `translate(calc(-50% + ${mousePosition.x * 0.02}px), ${mousePosition.y * 0.02 + scrollY * 0.45}px)`;
-              e.currentTarget.style.backgroundColor = 'hsl(var(--secondary) / 0.1)';
+            onMouseDown={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              setDragOffset({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+              });
+              setDraggedShape(2);
             }}
           />
           
           {/* Shape 3 - Right Star */}
           <div 
-            className="absolute top-40 right-20 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-accent/10 backdrop-blur-3xl opacity-100 cursor-pointer hover:bg-accent/20"
+            className="absolute top-40 right-20 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-accent/10 backdrop-blur-3xl opacity-100 cursor-grab active:cursor-grabbing hover:bg-accent/20"
             style={{ 
-              transform: `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`,
+              transform: draggedShape === 3
+                ? `translate(${shapePositions.shape3.x}px, ${shapePositions.shape3.y}px) rotate(0deg)`
+                : `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
               clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-              transition: 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
+              transition: draggedShape === 3 ? 'none' : 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.clipPath = 'polygon(50% 0%, 100% 100%, 0% 100%)';
-              e.currentTarget.style.backgroundColor = 'hsl(45 85% 55% / 0.35)';
-              e.currentTarget.style.transform = 'scale(1.15) rotate(0deg)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-              e.currentTarget.style.transform = `translate(${-mousePosition.x * 0.025}px, ${mousePosition.y * 0.025 + scrollY * 0.55}px) rotate(0deg)`;
-              e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.1)';
+            onMouseDown={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              setDragOffset({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+              });
+              setDraggedShape(3);
             }}
           />
           
           {/* Shape 4 - Bottom Left Liquid Circle */}
           <div 
-            className="absolute bottom-32 left-1/4 w-36 h-36 md:w-52 md:h-52 lg:w-72 lg:h-72 bg-primary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-primary/20"
+            className="absolute bottom-32 left-1/4 w-36 h-36 md:w-52 md:h-52 lg:w-72 lg:h-72 bg-primary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-grab active:cursor-grabbing hover:bg-primary/20"
             style={{ 
-              transform: `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`,
+              transform: draggedShape === 4
+                ? `translate(${shapePositions.shape4.x}px, ${shapePositions.shape4.y}px)`
+                : `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`,
               opacity: Math.max(0, 1 - scrollY * 0.003),
-              transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
+              transition: draggedShape === 4 ? 'none' : 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '65% 35% 58% 42% / 53% 50% 50% 47%';
-              e.currentTarget.style.backgroundColor = 'hsl(200 70% 50% / 0.35)';
-              e.currentTarget.style.transform = 'scale(1.25) rotate(-20deg)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderRadius = '9999px';
-              e.currentTarget.style.transform = `translate(${mousePosition.x * 0.015}px, ${mousePosition.y * 0.015 + scrollY * 0.4}px)`;
-              e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.1)';
+            onMouseDown={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              setDragOffset({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+              });
+              setDraggedShape(4);
             }}
           />
         </div>
