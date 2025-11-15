@@ -46,7 +46,7 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:[transform:perspective(500px)_rotateX(15deg)]"
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
                 >
                   {item.label}
                 </button>
@@ -56,7 +56,7 @@ const Navigation = () => {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:[transform:perspective(500px)_rotateX(15deg)]"
+                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
                 >
                   {item.label}
                 </button>
@@ -78,7 +78,7 @@ const Navigation = () => {
                     <button
                       key={item.id}
                       onClick={() => scrollToSection(item.id)}
-                      className="text-left text-lg font-medium text-muted-foreground hover:text-primary transition-all duration-300 py-2 hover:[transform:perspective(500px)_rotateX(15deg)]"
+                      className="text-left text-lg font-medium text-muted-foreground hover:text-primary transition-colors py-2"
                     >
                       {item.label}
                     </button>
