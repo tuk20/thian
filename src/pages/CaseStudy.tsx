@@ -11,24 +11,24 @@ const CaseStudy = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="container mx-auto px-6 pt-32 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-12">
+      <div className="container mx-auto px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-12">
           {/* Vertical Navigation */}
           <aside className="hidden lg:block">
             <CaseStudyNav />
           </aside>
 
           {/* Main Content */}
-          <main className="max-w-4xl">
+          <main className="max-w-4xl w-full">
             {/* Hero Section */}
-            <div className="mb-16 animate-fade-in">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
+            <div className="mb-12 md:mb-16 animate-fade-in">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-foreground">
                 E-Commerce Redesign
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+              <p className="text-base md:text-xl text-muted-foreground leading-relaxed mb-6 md:mb-8">
                 Transforming the shopping experience for a sustainable fashion brand with a focus on accessibility and user engagement.
               </p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 md:gap-3">
                 {["UX Research", "UI Design", "Prototyping", "User Testing"].map((tag) => (
                   <span
                     key={tag}
