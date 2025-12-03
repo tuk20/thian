@@ -28,19 +28,19 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
             isHovered ? "opacity-0" : "opacity-100"
           }`}>
             {/* Industry Column */}
-            <div className="text-muted-foreground text-sm md:text-base font-medium">
+            <div className="text-muted-foreground text-base md:text-lg lg:text-xl font-medium">
               {industry}
             </div>
 
             {/* Work Column */}
             <div className="text-center md:text-left">
-              <h3 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground">
+              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 {title}
               </h3>
             </div>
 
             {/* Timeline Column */}
-            <div className="text-left md:text-right text-muted-foreground text-sm md:text-base font-medium">
+            <div className="text-left md:text-right text-muted-foreground text-base md:text-lg lg:text-xl font-medium">
               {timeline}
             </div>
           </div>
