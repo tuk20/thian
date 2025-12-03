@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 
 const sections = [
-  { id: "overview", label: "Project Overview" },
+  { id: "overview", label: "Executive Summary" },
   { id: "research", label: "Research & Discovery" },
-  { id: "design-process", label: "Design Process" },
-  { id: "solution", label: "Solution" },
-  { id: "reflection", label: "Reflection & Next Steps" },
+  { id: "findings", label: "Key Findings" },
+  { id: "personas", label: "Personas" },
+  { id: "design", label: "Design Implications" },
+  { id: "reflection", label: "Reflection & Future Work" },
 ];
 
 const CaseStudyNav = () => {
