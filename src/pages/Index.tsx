@@ -57,10 +57,10 @@ const Index = () => {
 
   const works = [
     {
-      industry: "Fitness Coaching",
-      title: "Everfit",
-      timeline: "(22)-(Present)",
-      description: "Redesigned the fitness coaching platform to improve trainer-client interactions and streamline workout planning.",
+      industry: "UX Research",
+      title: "Mind Over Matter",
+      timeline: "(25)",
+      description: "Investigated how users evaluate and trust digital mental health resources through observation studies and interviews.",
       imageUrl: fintechImage,
     },
     {
