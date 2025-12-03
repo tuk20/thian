@@ -5,7 +5,7 @@ import AnimatedName from "@/components/AnimatedName";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowDown } from "lucide-react";
 import portraitImage from "@/assets/portrait.jpg";
-import fintechImage from "@/assets/fintech-project.jpg";
+import mentalHealthImage from "@/assets/mental-health-project.jpg";
 import edtechImage from "@/assets/edtech-project.jpg";
 import travelImage from "@/assets/travel-project.jpg";
 import designSystemImage from "@/assets/design-system-project.jpg";
@@ -61,7 +61,7 @@ const Index = () => {
       title: "Mind Over Matter",
       timeline: "(25)",
       description: "Investigated how users evaluate and trust digital mental health resources through observation studies and interviews.",
-      imageUrl: fintechImage,
+      imageUrl: mentalHealthImage,
     },
     {
       industry: "EdTech",
