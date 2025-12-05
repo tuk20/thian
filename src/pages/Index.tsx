@@ -355,7 +355,7 @@ const Index = () => {
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
           <a 
-            href="mailto:hello@thianuk.com" 
+            href="mailto:t.lianuk7@gmail.com" 
             className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
           >
             Get In Touch
