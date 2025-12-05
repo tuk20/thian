@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const sections = [
+const defaultSections = [
   { id: "overview", label: "Executive Summary" },
   { id: "research", label: "Research & Discovery" },
   { id: "findings", label: "Key Findings" },
@@ -9,7 +9,11 @@ const sections = [
   { id: "reflection", label: "Reflection & Future Work" },
 ];
 
-const CaseStudyNav = () => {
+interface CaseStudyNavProps {
+  sections?: { id: string; label: string }[];
+}
+
+const CaseStudyNav = ({ sections = defaultSections }: CaseStudyNavProps) => {
   const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {

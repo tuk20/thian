@@ -62,6 +62,7 @@ const Index = () => {
       timeline: "(Sept - Oct 2025)",
       description: "Investigated how users evaluate and trust digital mental health resources through observation studies and interviews.",
       imageUrl: mentalHealthImage,
+      to: "/case-study/mind-over-matter",
     },
     {
       industry: "Academic / Non-profit",
@@ -69,6 +70,7 @@ const Index = () => {
       timeline: "(Mar - Jun 2025)",
       description: "Mobile-first information architecture and donation flow redesign to improve findability and conversions for a local nonprofit.",
       imageUrl: edtechImage,
+      to: "/case-study/community-house-winnetka",
     },
     {
       industry: "Fintech",
@@ -76,6 +78,7 @@ const Index = () => {
       timeline: "(Nov 2024)",
       description: "Transitioning from Web Development to UX Design to Improve Accessibility, Consistency, and User Engagement.",
       imageUrl: designSystemImage,
+      to: "/case-study/naic-help-page",
     },
     {
       industry: "Food",
@@ -83,6 +86,7 @@ const Index = () => {
       timeline: "Feb 2024",
       description: "Built a catering app that helps local users discover and connect with local caterers.",
       imageUrl: travelImage,
+      to: "/case-study/kater-it",
     },
   ];
 
