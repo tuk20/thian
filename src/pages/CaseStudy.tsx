@@ -1,9 +1,14 @@
+import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
 
 const CaseStudy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
