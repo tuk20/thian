@@ -3,6 +3,17 @@ import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const sections = [
+  { id: "overview", label: "Project Overview" },
+  { id: "research", label: "Research & Discovery" },
+  { id: "findings", label: "Key Findings" },
+  { id: "personas", label: "Personas" },
+  { id: "design", label: "Design Implications" },
+  { id: "reflection", label: "Reflection" },
+];
 
 const CaseStudy = () => {
   useEffect(() => {
@@ -10,20 +21,26 @@ const CaseStudy = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background">
       <Navigation />
       
-      <div className="container mx-auto px-4 sm:px-6 pt-24 md:pt-32 pb-12 md:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-8 lg:gap-12">
-          {/* Vertical Navigation */}
+      <div className="container mx-auto px-4 md:px-8 pt-32 pb-16">
+        <Link 
+          to="/" 
+          className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-8"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Home
+        </Link>
+
+        <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-8 lg:gap-16">
           <aside className="hidden lg:block">
-            <CaseStudyNav />
+            <CaseStudyNav sections={sections} />
           </aside>
 
-          {/* Main Content */}
-          <main className="max-w-4xl w-full">
+          <article className="max-w-4xl">
             {/* Hero Section */}
-            <div className="mb-12 md:mb-16 animate-fade-in">
+            <header className="mb-16 animate-fade-in">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 text-foreground">
                 Mind Over Matter
               </h1>
@@ -40,10 +57,10 @@ const CaseStudy = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </header>
 
             {/* Executive Summary */}
-            <CaseStudySection id="overview" title="Executive Summary">
+            <CaseStudySection id="overview" title="Project Overview">
               <div className="space-y-6">
                 <p>
                   With a rise in AI chatbots converging with a global mental health crisis, the digital space is experiencing a surge in mental health care tools. This study observed and interviewed 16 participants to understand how they build mental health care strategies and what influences their tool choices.
@@ -385,10 +402,26 @@ const CaseStudy = () => {
                 </div>
               </div>
             </CaseStudySection>
-          </main>
+
+            {/* Next Case Study */}
+            <div className="mt-16 pt-8 border-t border-border">
+              <Link 
+                to="/case-study/community-house-winnetka"
+                className="group flex items-center justify-between p-6 bg-secondary rounded-xl hover:bg-secondary/80 transition-colors"
+              >
+                <div>
+                  <p className="text-sm text-muted-foreground mb-1">Next Case Study</p>
+                  <p className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                    Community House Winnetka
+                  </p>
+                </div>
+                <ArrowRight className="w-6 h-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+              </Link>
+            </div>
+          </article>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

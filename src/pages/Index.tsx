@@ -46,6 +46,17 @@ const Index = () => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     
+    // Handle hash scroll on page load
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+    }
+    
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("mousemove", handleMouseMove);
     
