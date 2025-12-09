@@ -64,7 +64,7 @@ const CaseStudyNAIC = () => {
               <div className="space-y-6">
                 <p>
                   As a Web Developer Intern at the National Association of Insurance Commissioners (NAIC), I expressed my interest in UX design to my manager and was given the opportunity to lead the redesign of the NAIC Help Page. This project allowed me to combine my technical skills as a developer with my growing passion for UX design. The goal was to improve usability, accessibility, and user engagement while aligning the page with the organization's broader design system—all within a tight 1-2 week deadline.
-                  The NAIC is the U.S. standard-setting body for insurance regulation. Their Help page serves millions of consumers seeking guidance on insurance-related questions, but the existing design created barriers to finding critical information.
+                  <br>The NAIC is the U.S. standard-setting body for insurance regulation. Their Help page serves millions of consumers seeking guidance on insurance-related questions, but the existing design created barriers to finding critical information.
                 </p>
                 
                 <div className="bg-secondary rounded-xl p-6 my-8">
