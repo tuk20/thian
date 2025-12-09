@@ -3,8 +3,11 @@ import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import affinityDiagram from "@/assets/affinity-diagram.png";
+import alexisPersona from "@/assets/alexis-persona.png";
+import ethanPersona from "@/assets/ethan-persona.png";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -87,7 +90,7 @@ const CaseStudy = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-3 text-foreground">Team & Timeline</h3>
                   <p>
-                    Conducted at DePaul University's College of Computing and Digital Media. Team: Natalie Aguilar, Divya Pariti, Thian Uk, and Alia Saadi. Project completed October 2025.
+                    Conducted at DePaul University's College of Computing and Digital Media for User Interview Methods. Team: Natalie, Divya, Thian, and Alia. Project completed November 2025.
                   </p>
                 </div>
               </div>
@@ -128,6 +131,30 @@ const CaseStudy = () => {
                       <p className="text-sm text-muted-foreground">Two rounds of inductive coding using Atlas.ti and FigJam</p>
                     </Card>
                   </div>
+                </div>
+
+                {/* Affinity Diagram */}
+                <div>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Interview Affinity Diagram</h3>
+                  <p className="mb-4 text-muted-foreground">
+                    We synthesized interview insights using affinity mapping to identify key themes around mental health strategies, AI trust, and community support.
+                  </p>
+                  <div className="rounded-xl overflow-hidden border border-border mb-4">
+                    <img 
+                      src={affinityDiagram} 
+                      alt="Interview Affinity Diagram showing categorized themes from user research"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                  <a 
+                    href="https://www.figma.com/board/O4i0FfC9lUB2agqHnCxGCu/MIND-OVER-MATTER%3A-Self-Managed-Mental-Health-Care?node-id=20-1073&t=UR2JMkujPzGlsJlW-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View full affinity diagram in FigJam
+                  </a>
                 </div>
 
                 <div>
@@ -198,48 +225,25 @@ const CaseStudy = () => {
             {/* Personas */}
             <CaseStudySection id="personas" title="Personas">
               <div className="space-y-8">
+                <p className="text-muted-foreground">
+                  Based on our research findings, we developed two personas representing distinct user archetypes with different relationships to technology and mental health support.
+                </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="p-6">
-                    <div className="mb-4">
-                      <h3 className="text-xl font-bold text-foreground">Alexis</h3>
-                      <p className="text-sm text-primary">The Open-Minded Digital Professional</p>
-                    </div>
-                    <div className="space-y-3 text-sm">
-                      <p><strong>Age:</strong> 28 | Corporate Office Worker</p>
-                      <p><strong>Screen Time:</strong> 10+ hours/day (High Digital Fatigue)</p>
-                      <p><strong>AI Usage:</strong> Daily for efficiency, creation, brainstorming</p>
-                      <p><strong>Trust Level:</strong> Situational—high for low-risk tasks, low for personal data</p>
-                      <div className="pt-3 border-t border-border">
-                        <p className="font-semibold text-foreground mb-2">Pain Points:</p>
-                        <ul className="space-y-1 text-muted-foreground">
-                          <li>• Digital fatigue from high screen time</li>
-                          <li>• Doubts AI's context-aware accuracy</li>
-                          <li>• Cognitive overload balancing advice sources</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </Card>
+                  <div className="rounded-xl overflow-hidden border border-border bg-card">
+                    <img 
+                      src={alexisPersona} 
+                      alt="Alexis - The Open-Minded Digital Professional persona"
+                      className="w-full h-auto"
+                    />
+                  </div>
 
-                  <Card className="p-6">
-                    <div className="mb-4">
-                      <h3 className="text-xl font-bold text-foreground">Ethan</h3>
-                      <p className="text-sm text-primary">The Skeptical Young Adult</p>
-                    </div>
-                    <div className="space-y-3 text-sm">
-                      <p><strong>Age:</strong> 23 | Student / Early-Career Worker</p>
-                      <p><strong>Support Style:</strong> Primarily community (budget constraints)</p>
-                      <p><strong>AI Usage:</strong> Rarely—does not actively seek new tools</p>
-                      <p><strong>Trust Level:</strong> Highly skeptical—only adopts peer-recommended tech</p>
-                      <div className="pt-3 border-t border-border">
-                        <p className="font-semibold text-foreground mb-2">Pain Points:</p>
-                        <ul className="space-y-1 text-muted-foreground">
-                          <li>• Overwhelmed by courseload and responsibilities</li>
-                          <li>• Can't afford professional therapy</li>
-                          <li>• Reluctant to adopt unvalidated technology</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </Card>
+                  <div className="rounded-xl overflow-hidden border border-border bg-card">
+                    <img 
+                      src={ethanPersona} 
+                      alt="Ethan - The Skeptical Young Adult persona"
+                      className="w-full h-auto"
+                    />
+                  </div>
                 </div>
 
                 <div className="bg-secondary rounded-xl p-6">
