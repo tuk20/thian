@@ -60,9 +60,6 @@ const CaseStudyCommunityHouse = () => {
               <p className="text-xl text-muted-foreground mb-6">
                 Mobile-first information architecture and donation flow redesign to improve findability and conversions
               </p>
-              <p className="text-muted-foreground">
-                Timeline: Apr - Jun 2025
-              </p>
             </header>
 
             {/* Project Overview */}
