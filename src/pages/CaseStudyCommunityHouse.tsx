@@ -3,8 +3,11 @@ import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import preiaPostiaImage from "@/assets/winnetka-preia-postia.png";
+import donationFormImage from "@/assets/winnetka-donation-form.png";
+import homepageRedesignedImage from "@/assets/winnetka-homepage-redesigned.png";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -58,7 +61,7 @@ const CaseStudyCommunityHouse = () => {
                 Mobile-first information architecture and donation flow redesign to improve findability and conversions
               </p>
               <p className="text-muted-foreground">
-                Timeline: Mar - Jun 2025
+                Timeline: Apr - Jun 2025
               </p>
             </header>
 
@@ -71,15 +74,27 @@ const CaseStudyCommunityHouse = () => {
                 
                 <div className="bg-secondary rounded-xl p-6 my-8">
                   <h3 className="text-xl font-semibold mb-4 text-foreground">The Challenge</h3>
-                  <p className="text-muted-foreground">
-                    The existing website struggled with poor information architecture, leading to high bounce rates on mobile devices and low donation conversions. Users couldn't easily find programs, events, or ways to give back.
-                    <ul>
-                    <li>Cluttered navigation: overlapping categories and ambiguous labels (e.g., “Program Info” vs “Performing Arts”).</li>
-                    <li>Hidden donate action: “Support Us” wording and deep links made donations hard to find.</li>
-                    <li>Lengthy donation flow: four steps and unclear microcopy increased abandonment.</li>
-                    <li>Accessibility gaps: small tap targets, contrast issues, and unlabeled inputs reduced confidence for some users.</li> 
-                    </ul>
+                  <p className="text-muted-foreground mb-4">
+                    Through Tree Testing we found the following concerns:
                   </p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>Cluttered navigation:</strong> overlapping categories and ambiguous labels (e.g., "Program Info" vs "Performing Arts").</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>Hidden donate action:</strong> "Support Us" wording and deep links made donations hard to find.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>Lengthy donation flow:</strong> four steps and unclear microcopy increased abandonment.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>Accessibility gaps:</strong> small tap targets, contrast issues, and unlabeled inputs reduced confidence for some users.</span>
+                    </li>
+                  </ul>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -96,40 +111,48 @@ const CaseStudyCommunityHouse = () => {
                     <p className="text-sm text-muted-foreground">Figma, UserTesting.com, Zoom, Google Suite, FigJam</p>
                   </Card>
                 </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Team & Timeline</h3>
+                  <p>
+                    Conducted at DePaul University's College of Computing and Digital Media for Information Architecture & Content Strategy course. Team: Celeste, Desi, and Thian. Project completed June 2025.
+                  </p>
+                </div>
               </div>
             </CaseStudySection>
 
             {/* Research & Discovery */}
             <CaseStudySection id="research" title="Research & Discovery">
               <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Stakeholder Interviews</h3>
-                  <p className="mb-4">
-                    I conducted interviews with staff members to understand organizational goals, pain points, and what success looked like for them. Key insights emerged around the disconnect between their rich programming and how it was presented online.
-                  </p>
-                </div>
+                <p>
+                  We took a mixed-methods approach focused on the two primary tasks (find programs and donate):
+                </p>
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">User Research</h3>
-                  <p className="mb-4">
-                    Through surveys and contextual inquiry with 12 community members, I mapped user journeys and identified friction points. Parents searching for youth programs and donors looking to contribute faced the most significant challenges.
-                  </p>
+                <div className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Card className="p-4 bg-secondary/50">
-                      <h4 className="font-semibold text-foreground mb-2">Key Finding #1</h4>
-                      <p className="text-sm text-muted-foreground">68% of users accessed the site on mobile, but the navigation collapsed into an unusable state</p>
+                      <h4 className="font-semibold text-foreground mb-2">User Interviews (n=8)</h4>
+                      <p className="text-sm text-muted-foreground">Community members reported difficulty finding programs and donation links.</p>
                     </Card>
                     <Card className="p-4 bg-secondary/50">
-                      <h4 className="font-semibold text-foreground mb-2">Key Finding #2</h4>
-                      <p className="text-sm text-muted-foreground">Donation page had a 72% abandonment rate due to confusing form structure</p>
+                      <h4 className="font-semibold text-foreground mb-2">Heuristic Evaluation</h4>
+                      <p className="text-sm text-muted-foreground">Catalogued major usability and accessibility issues such as unclear labels and weak CTAs.</p>
+                    </Card>
+                    <Card className="p-4 bg-secondary/50">
+                      <h4 className="font-semibold text-foreground mb-2">Card Sorting (n=10)</h4>
+                      <p className="text-sm text-muted-foreground">Produced a clearer four-category IA (Programs, Events, About Us, Contact Us).</p>
+                    </Card>
+                    <Card className="p-4 bg-secondary/50">
+                      <h4 className="font-semibold text-foreground mb-2">Tree Testing (n=10)</h4>
+                      <p className="text-sm text-muted-foreground">Validated new IA; donation page findability improved from ~40% to 100%.</p>
                     </Card>
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Competitive Analysis</h3>
-                  <p>
-                    I analyzed 5 similar nonprofit organizations to benchmark best practices in information architecture, donation flows, and mobile experience. This helped establish design patterns that users already expected.
+                <div className="bg-secondary rounded-xl p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Key Insight</h3>
+                  <p className="text-muted-foreground">
+                    Users expected "Donate" to be visible in the header and wanted fewer steps to complete their gift.
                   </p>
                 </div>
               </div>
@@ -138,42 +161,75 @@ const CaseStudyCommunityHouse = () => {
             {/* Design Process */}
             <CaseStudySection id="design" title="Design Process">
               <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Card Sorting & Tree Testing</h3>
-                  <p className="mb-4">
-                    I ran open card sorting sessions with 15 participants to understand their mental models for categorizing programs. The results informed a completely restructured navigation that grouped content by audience (families, adults, seniors) rather than program type.
-                  </p>
-                </div>
+                <p>
+                  We conducted a full IA analysis, generated options through card sorting, and validated them with tree testing. After introducing the new IA, we repeated tree testing and heuristic task analysis to confirm improvements.
+                </p>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Wireframing</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Heuristic Task Analysis (Post-IA)</h3>
                   <p className="mb-4">
-                    Starting mobile-first, I created low-fidelity wireframes focusing on thumb-friendly navigation and progressive disclosure. The donation flow was redesigned as a 3-step wizard to reduce cognitive load.
+                    We tested two critical user tasks under the new IA:
                   </p>
-                  <div className="bg-secondary rounded-xl p-6">
-                    <h4 className="font-semibold text-foreground mb-3">Design Decisions</h4>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li className="flex items-start">
-                        <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span>Sticky bottom navigation for key actions (Donate, Register, Contact)</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span>Collapsible program cards to reduce scroll fatigue</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span>Prominent search with smart suggestions</span>
-                      </li>
-                    </ul>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <Card className="p-4 bg-secondary/50">
+                      <h4 className="font-semibold text-foreground mb-2">Task 1 — Sign up a child for a theater class</h4>
+                      <p className="text-sm text-muted-foreground">Success path: Programs → Kids & Teens → Theater Classes — simplified to two taps with clearer labels.</p>
+                    </Card>
+                    <Card className="p-4 bg-secondary/50">
+                      <h4 className="font-semibold text-foreground mb-2">Task 2 — Make a donation</h4>
+                      <p className="text-sm text-muted-foreground">Success path: Utility menu → Donate — direct access with no detours or guesswork.</p>
+                    </Card>
+                  </div>
+                  <p className="text-muted-foreground mb-6">
+                    <strong>Result:</strong> Both tasks were completed successfully with fewer steps and less confusion, confirming the new IA improved usability.
+                  </p>
+                  
+                  {/* Pre-IA vs Post-IA Comparison */}
+                  <div className="rounded-xl overflow-hidden border border-border mb-8">
+                    <img 
+                      src={preiaPostiaImage} 
+                      alt="Pre-IA and Post-IA comparison showing improved task success rates"
+                      className="w-full h-auto"
+                    />
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Usability Testing</h3>
-                  <p>
-                    I conducted 8 moderated usability tests on the high-fidelity prototypes. Task success rate for finding programs improved from 45% to 89%, and the donation flow completion rate increased significantly.
-                  </p>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Wireframes & Mobile-First Prototyping</h3>
+                  <ul className="space-y-2 text-muted-foreground mb-6">
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>Wireframing:</strong> Sketched layouts and tested variations for homepage and donation flow.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>High-fidelity prototyping:</strong> Designed polished mobile screens in Figma, aligning with CHW's brand.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>Microcopy:</strong> Added supportive text such as "Your gift is tax-deductible" and a clear "Complete Donation" button.</span>
+                    </li>
+                  </ul>
+
+                  {/* Hi-Fi Homepage Wireframe */}
+                  <h4 className="font-semibold text-foreground mb-3">Redesigned Homepage/Landing</h4>
+                  <div className="rounded-xl overflow-hidden border border-border mb-8">
+                    <img 
+                      src={homepageRedesignedImage} 
+                      alt="Redesigned mobile homepage with clear navigation and prominent Donate button"
+                      className="w-full h-auto"
+                    />
+                  </div>
+
+                  {/* Hi-Fi Donation Wireframe */}
+                  <h4 className="font-semibold text-foreground mb-3">Donation Form Before & After</h4>
+                  <div className="rounded-xl overflow-hidden border border-border">
+                    <img 
+                      src={donationFormImage} 
+                      alt="Donation form comparison showing simplified flow with preset amounts and clearer design"
+                      className="w-full h-auto"
+                    />
+                  </div>
                 </div>
               </div>
             </CaseStudySection>
@@ -181,52 +237,75 @@ const CaseStudyCommunityHouse = () => {
             {/* Solution */}
             <CaseStudySection id="solution" title="Solution">
               <div className="space-y-8">
+                <p>
+                  The final design included:
+                </p>
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card className="p-6 border-l-4 border-primary">
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Restructured Navigation</h3>
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Clear Navigation</h3>
                     <p className="text-sm text-muted-foreground">
-                      Audience-based IA with clear pathways for families, adults, and seniors. Mobile navigation reduced from 12 top-level items to 5.
+                      Four main menu items and a prominent "Donate Now" button in the header.
                     </p>
                   </Card>
 
                   <Card className="p-6 border-l-4 border-primary">
                     <h3 className="text-lg font-semibold mb-2 text-foreground">Streamlined Donation Flow</h3>
                     <p className="text-sm text-muted-foreground">
-                      3-step donation wizard with preset amounts, impact messaging, and guest checkout option. Reduced form fields by 40%.
+                      Reduced from four steps to two, with preset amounts, recurring option, and inline validation.
                     </p>
                   </Card>
 
                   <Card className="p-6 border-l-4 border-primary">
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Program Discovery</h3>
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Accessibility Improvements</h3>
                     <p className="text-sm text-muted-foreground">
-                      Filterable program grid with age-based filtering, schedule views, and one-tap registration.
+                      High-contrast buttons, descriptive alt text, and labeled form fields.
                     </p>
                   </Card>
 
                   <Card className="p-6 border-l-4 border-primary">
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Mobile-First Design</h3>
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Responsive Layout</h3>
                     <p className="text-sm text-muted-foreground">
-                      Touch-optimized interfaces with 44px minimum tap targets and bottom-sheet modals for forms.
+                      Optimized for desktop and mobile, with a mobile-first approach.
                     </p>
                   </Card>
                 </div>
 
                 <div className="bg-secondary rounded-xl p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-foreground">Projected Impact</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">89%</p>
-                      <p className="text-sm text-muted-foreground">Task success rate (up from 45%)</p>
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">Results</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <p className="text-3xl font-bold text-primary">100%</p>
+                      <p className="text-sm text-muted-foreground">of users completed the donation task</p>
                     </div>
-                    <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">2.5x</p>
-                      <p className="text-sm text-muted-foreground">Projected donation conversion increase</p>
+                    <div>
+                      <p className="text-3xl font-bold text-primary">90%</p>
+                      <p className="text-sm text-muted-foreground">successfully located a program</p>
                     </div>
-                    <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">-60%</p>
-                      <p className="text-sm text-muted-foreground">Reduction in support inquiries</p>
+                    <div>
+                      <p className="text-3xl font-bold text-primary">2 taps</p>
+                      <p className="text-sm text-muted-foreground">to reach programs (from many more)</p>
+                    </div>
+                    <div>
+                      <p className="text-3xl font-bold text-primary">~40% → 100%</p>
+                      <p className="text-sm text-muted-foreground">donation findability improvement in tree testing</p>
                     </div>
                   </div>
+                  <p className="mt-4 text-muted-foreground">
+                    <strong>User feedback:</strong> Participants described the new site as "clearer" and "much easier to navigate."
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <a 
+                    href="https://www.figma.com/proto/bJSOMbtIn1mGYkfdchWZ2e/MyCommunityHouse?node-id=327-232&t=xQSi42CEXAnzVKmd-1&scaling=min-zoom&content-scaling=fixed&page-id=1%3A3"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    View Hi-Fi Prototype in Figma
+                  </a>
                 </div>
               </div>
             </CaseStudySection>
@@ -234,24 +313,20 @@ const CaseStudyCommunityHouse = () => {
             {/* Reflection */}
             <CaseStudySection id="reflection" title="Reflection">
               <div className="space-y-6">
-                <p>
-                  This project reinforced the power of user-centered design in the nonprofit space. By deeply understanding both stakeholder goals and user needs, we created a solution that serves the community better while supporting the organization's mission.
-                </p>
-
                 <div className="bg-secondary rounded-xl p-6">
                   <h3 className="text-xl font-semibold mb-4 text-foreground">Key Learnings</h3>
                   <ul className="space-y-3">
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span>Card sorting with real users is invaluable for restructuring complex information architectures</span>
+                      <span>Mobile-first design forced clarity in IA and simplified key flows.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span>Mobile-first isn't just about responsive design—it's about rethinking the entire experience</span>
+                      <span>Small wording and placement changes (CTA copy, sticky menu) drove measurable improvements in confidence and findability.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span>Nonprofit organizations often have more constraints than traditional clients, requiring creative solutions</span>
+                      <span>Accessibility and inclusivity must remain a baseline, not an afterthought.</span>
                     </li>
                   </ul>
                 </div>
@@ -259,7 +334,7 @@ const CaseStudyCommunityHouse = () => {
                 <div>
                   <h3 className="text-xl font-semibold mb-3 text-foreground">Next Steps</h3>
                   <p className="text-muted-foreground">
-                    The redesigned website is scheduled for launch in late 2025. Post-launch, I'll be monitoring analytics to validate our design decisions and iterating based on real user behavior data.
+                    A/B test the donate button copy, collect analytics to validate conversion impact, and expand usability testing to include users with accessibility needs.
                   </p>
                 </div>
               </div>
