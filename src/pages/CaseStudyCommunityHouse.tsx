@@ -85,15 +85,15 @@ const CaseStudyCommunityHouse = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Role</h4>
-                    <p className="text-sm text-muted-foreground">UX Designer & Researcher</p>
+                    <p className="text-sm text-muted-foreground">Lead UX Designer & Researcher</p>
                   </Card>
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Duration</h4>
-                    <p className="text-sm text-muted-foreground">4 months (Mar - Jun 2025)</p>
+                    <p className="text-sm text-muted-foreground">10 Weeks (Academic Project)</p>
                   </Card>
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Tools</h4>
-                    <p className="text-sm text-muted-foreground">Figma, Optimal Workshop, Hotjar</p>
+                    <p className="text-sm text-muted-foreground">Figma, UserTesting.com, Zoom, Google Suite, FigJam</p>
                   </Card>
                 </div>
               </div>
