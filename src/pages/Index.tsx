@@ -6,7 +6,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowDown } from "lucide-react";
 import portraitImage from "@/assets/portrait.jpg";
 import mentalHealthImage from "@/assets/mental-health-project.jpg";
-import edtechImage from "@/assets/edtech-project.jpg";
+import winnetkaCoverImage from "@/assets/winnetka-cover.jpg";
 import travelImage from "@/assets/travel-project.jpg";
 import designSystemImage from "@/assets/design-system-project.jpg";
 
@@ -78,9 +78,9 @@ const Index = () => {
     {
       industry: "Academic / Non-profit",
       title: "Community House Winnetka",
-      timeline: "(Mar - Jun 2025)",
+      timeline: "(Apr - Jun 2025)",
       description: "Mobile-first information architecture and donation flow redesign to improve findability and conversions for a local nonprofit.",
-      imageUrl: edtechImage,
+      imageUrl: winnetkaCoverImage,
       to: "/case-study/community-house-winnetka",
     },
     {
