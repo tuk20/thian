@@ -77,15 +77,15 @@ const CaseStudyNAIC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Role</h4>
-                    <p className="text-sm text-muted-foreground">UX Designer</p>
+                    <p className="text-sm text-muted-foreground">Lead UX Designer</p>
                   </Card>
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Duration</h4>
-                    <p className="text-sm text-muted-foreground">1 month (Nov 2024)</p>
+                    <p className="text-sm text-muted-foreground">1-2 Week (Nov 2024)</p>
                   </Card>
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Tools</h4>
-                    <p className="text-sm text-muted-foreground">Figma, axe DevTools, WAVE</p>
+                    <p className="text-sm text-muted-foreground">Figma, Drupal CMS, & Teams</p>
                   </Card>
                 </div>
               </div>
