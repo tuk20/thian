@@ -66,13 +66,19 @@ const CaseStudyCommunityHouse = () => {
             <CaseStudySection id="overview" title="Project Overview">
               <div className="space-y-6">
                 <p>
-                  Community House Winnetka is a historic nonprofit organization serving the North Shore community since 1911. They offer programs for all ages—from youth enrichment to senior activities—but their digital presence wasn't keeping pace with their mission.
+                  Community House Winnetka is a historic nonprofit organization serving the Winnetka community since 1911. They offer programs for all ages—from youth enrichment to senior activities—but their digital presence wasn't keeping pace with their mission.
                 </p>
                 
                 <div className="bg-secondary rounded-xl p-6 my-8">
                   <h3 className="text-xl font-semibold mb-4 text-foreground">The Challenge</h3>
                   <p className="text-muted-foreground">
                     The existing website struggled with poor information architecture, leading to high bounce rates on mobile devices and low donation conversions. Users couldn't easily find programs, events, or ways to give back.
+                    <ul>
+                    <li>Cluttered navigation: overlapping categories and ambiguous labels (e.g., “Program Info” vs “Performing Arts”).</li>
+                    <li>Hidden donate action: “Support Us” wording and deep links made donations hard to find.</li>
+                    <li>Lengthy donation flow: four steps and unclear microcopy increased abandonment.</li>
+                    <li>Accessibility gaps: small tap targets, contrast issues, and unlabeled inputs reduced confidence for some users.</li> 
+                    </ul>
                   </p>
                 </div>
 
