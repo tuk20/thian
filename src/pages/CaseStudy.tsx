@@ -147,7 +147,7 @@ const CaseStudy = () => {
                     />
                   </div>
                   <a 
-                    href="https://www.figma.com/board/O4i0FfC9lUB2agqHnCxGCu/MIND-OVER-MATTER%3A-Self-Managed-Mental-Health-Care?node-id=20-1073&t=UR2JMkujPzGlsJlW-1"
+                    href="https://www.figma.com/board/wuAnFDeGt01WFCvdKFyytc/HCI445---Mental-health----Affinity-Diagram?node-id=5-1235&t=SAOqS3PN6gsg09Sn-1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm font-medium"
