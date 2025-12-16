@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 // Import images
 import researchInterviewImage from "@/assets/katerit-research-interview.png";
+import personaImage from "@/assets/katerit-persona.png";
 import finalDesignImage from "@/assets/katerit-final-design.png";
 import hifiPrototypeImage from "@/assets/katerit-hifi-prototype.png";
 import lowfiPrototypeImage from "@/assets/katerit-lowfi-prototype.png";
@@ -16,6 +17,7 @@ import userFlowImage from "@/assets/katerit-user-flow.png";
 import digitalWireframesImage from "@/assets/katerit-digital-wireframes.png";
 import paperWireframe1Image from "@/assets/katerit-paper-wireframe1.png";
 import paperWireframe2Image from "@/assets/katerit-paper-wireframe2.png";
+import allViewsImage from "@/assets/katerit-all-views.png";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -188,21 +190,13 @@ const CaseStudyKaterIt = () => {
                   <p className="text-muted-foreground mb-4">
                     Based on the research insights, I created one primary persona that addresses the pain points of both caterers and customers. This persona represents a local caterer who is looking to expand their customer base, streamline order management, and provide a seamless experience for customers seeking reliable, high-quality catering options.
                   </p>
-                  <Card className="p-6 bg-secondary/50">
-                    <div className="flex flex-col md:flex-row gap-6">
-                      <div className="flex-1">
-                        <h4 className="text-lg font-bold text-foreground mb-1">Suu Kim</h4>
-                        <p className="text-sm text-primary mb-3">Local Caterer & Business Owner</p>
-                        <p className="text-sm text-muted-foreground mb-4">
-                          A passionate home cook turned caterer who wants to grow her business beyond word-of-mouth referrals. She struggles with managing orders through multiple channels and wants a centralized platform to showcase her menu and communicate with customers efficiently.
-                        </p>
-                        <div className="space-y-2">
-                          <p className="text-sm"><span className="font-semibold text-foreground">Goals:</span> <span className="text-muted-foreground">Reach more customers, streamline operations, maintain quality</span></p>
-                          <p className="text-sm"><span className="font-semibold text-foreground">Pain Points:</span> <span className="text-muted-foreground">Fragmented communication, limited visibility, competition from chains</span></p>
-                        </div>
-                      </div>
-                    </div>
-                  </Card>
+                  <div className="rounded-xl overflow-hidden border border-border">
+                    <img 
+                      src={personaImage} 
+                      alt="Persona card for Sui, a 55-year-old self-employed local caterer from Kansas City who runs her business on Facebook and needs a dedicated platform to display her menu and manage orders"
+                      className="w-full"
+                    />
+                  </div>
                 </div>
               </div>
             </CaseStudySection>
@@ -410,6 +404,20 @@ const CaseStudyKaterIt = () => {
                     alt="Final design mockups showing four key screens: Homepage with nearby caterers, Caterer's order management dashboard, Messages interface, and User profile/settings"
                     className="w-full"
                   />
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">Responsive Design</h3>
+                  <p className="mb-4 text-muted-foreground">
+                    While the project was mobile-first, I also designed responsive layouts for tablet and desktop to ensure a consistent experience across all devices.
+                  </p>
+                  <div className="rounded-xl overflow-hidden border border-border">
+                    <img 
+                      src={allViewsImage} 
+                      alt="Responsive design showcase showing Kater.it across desktop, tablet, and mobile devices with consistent design language"
+                      className="w-full"
+                    />
+                  </div>
                 </div>
               </div>
             </CaseStudySection>
