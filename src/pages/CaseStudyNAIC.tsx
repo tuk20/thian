@@ -2,9 +2,14 @@ import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import naicBefore from "@/assets/naic-before.png";
+import naicAfter from "@/assets/naic-after.png";
+import naicWireframeA from "@/assets/naic-wireframe-a.png";
+import naicWireframeB from "@/assets/naic-wireframe-b.png";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -57,31 +62,41 @@ const CaseStudyNAIC = () => {
               <p className="text-xl text-muted-foreground mb-6">
                 Transitioning from Web Development to UX Design to improve accessibility, consistency, and user engagement
               </p>
+              <div className="bg-secondary rounded-xl p-4 my-6">
+                <p className="text-sm text-muted-foreground italic">
+                  Internship project at the National Association of Insurance Commissioners. Role: Lead UX Designer. Project completed November 2024.
+                </p>
+              </div>
             </header>
 
             {/* Project Overview */}
             <CaseStudySection id="overview" title="Project Overview">
               <div className="space-y-6">
                 <p>
-                  As a Web Developer Intern at the National Association of Insurance Commissioners (NAIC), I expressed my interest in UX design to my manager and was given the opportunity to lead the redesign of the NAIC Help Page. This project allowed me to combine my technical skills as a developer with my growing passion for UX design. The goal was to improve usability, accessibility, and user engagement while aligning the page with the organization's broader design system—all within a tight 1-2 week deadline.
-                  <br>The NAIC is the U.S. standard-setting body for insurance regulation. Their Help page serves millions of consumers seeking guidance on insurance-related questions, but the existing design created barriers to finding critical information.
+                  As a Web Developer Intern at the National Association of Insurance Commissioners (NAIC), I expressed my interest in UX design to my manager and was given the opportunity to lead the redesign of the NAIC Help Page.
                 </p>
-                
-                <div className="bg-secondary rounded-xl p-6 my-8">
-                  <h3 className="text-xl font-semibold mb-4 text-foreground">The Challenge</h3>
-                  <p className="text-muted-foreground">
-                    The Help page suffered from inconsistent visual hierarchy, poor accessibility compliance, and an overwhelming information architecture. Users struggled to locate answers, leading to increased support calls and frustrated consumers.
-                  </p>
-                </div>
+                <p>
+                  This project allowed me to combine my technical skills as a developer with my growing passion for UX design. The goal was to improve usability, accessibility, and user engagement while aligning the page with the organization's broader design system—all within a tight 1-2 week deadline.
+                </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a 
+                  href="https://content.naic.org/help" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+                >
+                  View Live Implementation
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Role</h4>
                     <p className="text-sm text-muted-foreground">Lead UX Designer</p>
                   </Card>
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Duration</h4>
-                    <p className="text-sm text-muted-foreground">1-2 Week (Nov 2024)</p>
+                    <p className="text-sm text-muted-foreground">1-2 Weeks (Nov 2024)</p>
                   </Card>
                   <Card className="p-4 bg-secondary/50">
                     <h4 className="font-semibold text-foreground mb-2">Tools</h4>
@@ -94,52 +109,56 @@ const CaseStudyNAIC = () => {
             {/* Research & Discovery */}
             <CaseStudySection id="research" title="Research & Discovery">
               <div className="space-y-8">
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Heuristic Evaluation</h3>
-                  <p className="mb-4">
-                    I conducted a comprehensive heuristic evaluation of the existing Help page, identifying 23 usability issues across Nielsen's 10 heuristics. The most critical issues involved visibility of system status, consistency, and error prevention.
-                  </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="p-4 bg-secondary/50">
-                      <h4 className="font-semibold text-foreground mb-2">Critical Issue #1</h4>
-                      <p className="text-sm text-muted-foreground">Low color contrast ratios failing WCAG 2.1 AA standards</p>
-                    </Card>
-                    <Card className="p-4 bg-secondary/50">
-                      <h4 className="font-semibold text-foreground mb-2">Critical Issue #2</h4>
-                      <p className="text-sm text-muted-foreground">Inconsistent heading hierarchy confusing screen readers</p>
-                    </Card>
+                <p>
+                  To understand the problem deeply, I conducted the following activities:
+                </p>
+
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3 text-foreground">Stakeholder Interviews</h3>
+                    <p className="text-muted-foreground">
+                      Collaborated with the head of the web team and senior web developer to align on organizational goals and constraints.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3 text-foreground">Competitive Analysis</h3>
+                    <p className="text-muted-foreground">
+                      Analyzed design patterns across other pages on the NAIC website to ensure consistency.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3 text-foreground">Deep Analysis of the NAIC Website</h3>
+                    <p className="text-muted-foreground">
+                      Conducted a thorough review of the entire NAIC website to understand its design system, components, and patterns. This included studying typography, color schemes, button styles, navigation structures, and other UI elements to ensure the new Help Page design would seamlessly integrate with the rest of the site.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3 text-foreground">User Testing</h3>
+                    <p className="text-muted-foreground">
+                      Conducted usability testing sessions with real users to identify pain points and gather feedback on the existing design.
+                    </p>
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Accessibility Audit</h3>
-                  <p className="mb-4">
-                    Using axe DevTools and WAVE, I identified 47 accessibility violations. Government websites must meet WCAG 2.1 AA compliance, making this audit essential for the redesign strategy.
-                  </p>
-                  <div className="bg-secondary rounded-xl p-6">
-                    <h4 className="font-semibold text-foreground mb-3">Key Violations</h4>
-                    <ul className="space-y-2 text-muted-foreground">
-                      <li className="flex items-start">
-                        <span className="w-2 h-2 bg-destructive rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span>Missing alt text on 12 informational images</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="w-2 h-2 bg-destructive rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span>Form inputs without associated labels</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="w-2 h-2 bg-destructive rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                        <span>Focus indicators removed or invisible</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Content Analysis</h3>
-                  <p>
-                    I mapped the existing content structure and identified opportunities to consolidate redundant information. The Help page contained 156 FAQs spread across 8 categories with significant overlap and outdated content.
-                  </p>
+                <div className="bg-secondary rounded-xl p-6">
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">Key Insights</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>Users struggled with the cluttered layout and lack of clear navigation.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>Mobile users found the page difficult to use due to poor responsiveness.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>Accessibility issues, such as low contrast and lack of keyboard navigation, hindered usability for users with disabilities.</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </CaseStudySection>
@@ -147,45 +166,90 @@ const CaseStudyNAIC = () => {
             {/* Design Process */}
             <CaseStudySection id="design" title="Design Process">
               <div className="space-y-8">
+                <p>
+                  The redesign process followed a user-centered design approach, focusing on iterative improvements and collaboration with cross-functional teams. To ensure the final design met user needs and business goals, I incorporated A/B testing during the wireframing phase.
+                </p>
+
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Design System Alignment</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Wireframing</h3>
                   <p className="mb-4">
-                    I worked within NAIC's existing design system while proposing accessibility-compliant modifications. This included updated color tokens meeting 4.5:1 contrast ratios and consistent typography scales.
+                    Created two distinct low-fidelity wireframes to explore different layouts, navigation structures, and content hierarchies.
+                  </p>
+                  <ul className="space-y-2 text-muted-foreground mb-6">
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>Wireframe Option A</strong> focused on a card-based layout with clear visual separation between sections.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span><strong>Wireframe Option B</strong> emphasized a list-based layout with compact information density for faster scanning.</span>
+                    </li>
+                  </ul>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <p className="text-sm font-semibold text-foreground mb-2">Option A (Card-Based Layout)</p>
+                      <img 
+                        src={naicWireframeA} 
+                        alt="NAIC Help Page Wireframe Option A - Card-based layout" 
+                        className="rounded-lg border border-border w-full"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-foreground mb-2">Option B (List-Based Layout)</p>
+                      <img 
+                        src={naicWireframeB} 
+                        alt="NAIC Help Page Wireframe Option B - List-based layout" 
+                        className="rounded-lg border border-border w-full"
+                      />
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-4 italic">
+                    Note: While the Figma prototype is no longer accessible, these wireframes illustrate the layout and structure of the redesigned Help Page.
                   </p>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Information Architecture Redesign</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">A/B Testing with Wireframes</h3>
                   <p className="mb-4">
-                    I restructured the FAQ content from 8 overlapping categories to 5 distinct, user-task-oriented sections. Each section now follows a consistent pattern with scannable headings and progressive disclosure.
+                    Conducted A/B testing with a group of 7 stakeholders to compare the effectiveness of the two wireframes. Users were given specific tasks (e.g., finding a specific help topic, navigating to a resource) to complete on both wireframes.
                   </p>
-                  <div className="border-l-4 border-primary pl-4 my-6">
-                    <h4 className="font-semibold text-foreground">New IA Structure</h4>
-                    <ul className="text-sm text-muted-foreground mt-2 space-y-1">
-                      <li>1. Finding Insurance Coverage</li>
-                      <li>2. Filing Claims & Complaints</li>
-                      <li>3. Understanding Your Policy</li>
-                      <li>4. State-Specific Resources</li>
-                      <li>5. Contact & Support</li>
-                    </ul>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <Card className="p-4 bg-secondary/50">
+                      <h4 className="font-semibold text-foreground mb-2">Option A Feedback</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Users found the card-based layout visually appealing and easier to navigate, especially on mobile devices. However, some users felt it required more scrolling.
+                      </p>
+                    </Card>
+                    <Card className="p-4 bg-secondary/50">
+                      <h4 className="font-semibold text-foreground mb-2">Option B Feedback</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Users appreciated the compact design for quick scanning but found it less engaging and slightly overwhelming due to the lack of visual hierarchy.
+                      </p>
+                    </Card>
+                  </div>
+
+                  <div className="border-l-4 border-primary pl-4">
+                    <p className="font-semibold text-foreground">Conclusion</p>
+                    <p className="text-muted-foreground">
+                      Based on the feedback, I combined the strengths of both wireframes—using a hybrid approach that incorporated the visual appeal of the card-based layout with the efficiency of the list-based structure.
+                    </p>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold mb-3 text-foreground">Component Design</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">High-Fidelity Prototyping</h3>
                   <p className="mb-4">
-                    I designed accessible FAQ accordions with proper ARIA attributes, keyboard navigation, and clear visual states. Search functionality was enhanced with auto-suggest and filtered results.
+                    Developed a high-fidelity prototype based on the insights from the A/B testing, ensuring the design was both visually engaging and functionally efficient. Conducted additional usability testing sessions with the prototype to gather feedback and iterated on the design.
                   </p>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <Card className="p-4 bg-secondary/50">
-                      <h4 className="font-semibold text-foreground mb-2">Accordion Pattern</h4>
-                      <p className="text-sm text-muted-foreground">Expandable sections with ARIA-expanded, focus management, and animated transitions</p>
-                    </Card>
-                    <Card className="p-4 bg-secondary/50">
-                      <h4 className="font-semibold text-foreground mb-2">Search Enhancement</h4>
-                      <p className="text-sm text-muted-foreground">Live search with keyboard navigation and screen reader announcements</p>
-                    </Card>
-                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-3 text-foreground">Collaboration</h3>
+                  <p className="text-muted-foreground">
+                    Worked closely with the senior developer to ensure feasibility and alignment with technical constraints.
+                  </p>
                 </div>
               </div>
             </CaseStudySection>
@@ -193,52 +257,87 @@ const CaseStudyNAIC = () => {
             {/* Solution */}
             <CaseStudySection id="solution" title="Solution">
               <div className="space-y-8">
+                <p>
+                  The final redesign introduced the following improvements, informed by the A/B testing results:
+                </p>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card className="p-6 border-l-4 border-primary">
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">WCAG 2.1 AA Compliance</h3>
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Hybrid Layout</h3>
                     <p className="text-sm text-muted-foreground">
-                      All 47 accessibility violations resolved with proper color contrast, semantic HTML, and ARIA implementation.
+                      Combined the card-based layout for visual appeal and the list-based structure for efficiency, creating a balanced design.
                     </p>
                   </Card>
 
                   <Card className="p-6 border-l-4 border-primary">
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Simplified Navigation</h3>
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Consistent Design System</h3>
                     <p className="text-sm text-muted-foreground">
-                      Reduced cognitive load with clear visual hierarchy and task-based content organization.
+                      Aligned the Help Page with the NAIC website's visual identity.
                     </p>
                   </Card>
 
                   <Card className="p-6 border-l-4 border-primary">
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Enhanced Search</h3>
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Streamlined Navigation</h3>
                     <p className="text-sm text-muted-foreground">
-                      Predictive search with categorized results helps users find answers in fewer clicks.
+                      Reorganized content into clear categories and subcategories.
                     </p>
                   </Card>
 
                   <Card className="p-6 border-l-4 border-primary">
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Consistent Design Language</h3>
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Mobile Optimization</h3>
                     <p className="text-sm text-muted-foreground">
-                      Unified visual system with accessible color palette and typography hierarchy.
+                      Redesigned the page to be fully responsive.
+                    </p>
+                  </Card>
+
+                  <Card className="p-6 border-l-4 border-primary">
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Accessibility Enhancements</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Improved color contrast and added keyboard navigation support.
+                    </p>
+                  </Card>
+
+                  <Card className="p-6 border-l-4 border-primary">
+                    <h3 className="text-lg font-semibold mb-2 text-foreground">Engagement Features</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Introduced clear calls-to-action (CTAs) to guide users to relevant resources.
                     </p>
                   </Card>
                 </div>
 
+                <div>
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">Before & After Comparison</h3>
+                  <BeforeAfterSlider
+                    beforeImage={naicBefore}
+                    afterImage={naicAfter}
+                    beforeLabel="Before"
+                    afterLabel="After"
+                  />
+                </div>
+
                 <div className="bg-secondary rounded-xl p-6">
-                  <h3 className="text-xl font-semibold mb-4 text-foreground">Impact Metrics</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <h3 className="text-xl font-semibold mb-4 text-foreground">Results & Feedback</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
                     <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">100%</p>
-                      <p className="text-sm text-muted-foreground">WCAG 2.1 AA Compliance</p>
+                      <p className="text-3xl font-bold text-primary">15%</p>
+                      <p className="text-sm text-muted-foreground">Increase in Engagement</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">-38%</p>
-                      <p className="text-sm text-muted-foreground">Content consolidation</p>
+                      <p className="text-3xl font-bold text-primary">5%</p>
+                      <p className="text-sm text-muted-foreground">Decrease in Bounce Rates</p>
                     </div>
                     <div className="text-center">
-                      <p className="text-3xl font-bold text-primary">5</p>
-                      <p className="text-sm text-muted-foreground">Clear content categories (down from 8)</p>
+                      <p className="text-3xl font-bold text-primary">20%</p>
+                      <p className="text-sm text-muted-foreground">Faster Task Completion</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-primary">✓</p>
+                      <p className="text-sm text-muted-foreground">Positive Stakeholder Feedback</p>
                     </div>
                   </div>
+                  <p className="text-muted-foreground text-sm">
+                    Stakeholders and users praised the redesign for its clarity, consistency, and accessibility. The hybrid layout, informed by A/B testing, was particularly well-received.
+                  </p>
                 </div>
               </div>
             </CaseStudySection>
@@ -247,8 +346,29 @@ const CaseStudyNAIC = () => {
             <CaseStudySection id="reflection" title="Reflection">
               <div className="space-y-6">
                 <p>
-                  This project marked my transition from web development to UX design. Having built websites for years, I understood the technical constraints—but this project taught me to advocate for users within those constraints.
+                  This project was a pivotal moment in my career, as it allowed me to transition from web development to UX design. Key takeaways include:
                 </p>
+
+                <div className="space-y-4">
+                  <div className="border-l-4 border-primary pl-4">
+                    <h4 className="font-semibold text-foreground">Initiative Pays Off</h4>
+                    <p className="text-muted-foreground">
+                      By expressing my interest in UX design, I was able to take on a new challenge and expand my skill set.
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-primary pl-4">
+                    <h4 className="font-semibold text-foreground">User-Centered Design</h4>
+                    <p className="text-muted-foreground">
+                      Incorporating user feedback at every stage, including A/B testing, led to a more effective solution.
+                    </p>
+                  </div>
+                  <div className="border-l-4 border-primary pl-4">
+                    <h4 className="font-semibold text-foreground">Accessibility as a Priority</h4>
+                    <p className="text-muted-foreground">
+                      Addressing accessibility issues improved usability for all users and aligned with ethical design practices.
+                    </p>
+                  </div>
+                </div>
 
                 <div className="bg-secondary rounded-xl p-6">
                   <h3 className="text-xl font-semibold mb-4 text-foreground">Key Learnings</h3>
@@ -272,6 +392,13 @@ const CaseStudyNAIC = () => {
                   <h3 className="text-xl font-semibold mb-3 text-foreground">Personal Growth</h3>
                   <p className="text-muted-foreground">
                     This project solidified my decision to pursue UX design full-time. The satisfaction of making government resources more accessible to all citizens—including those with disabilities—showed me the real-world impact of thoughtful design.
+                  </p>
+                </div>
+
+                <div className="border-l-4 border-muted pl-4">
+                  <h4 className="font-semibold text-foreground">Next Steps</h4>
+                  <p className="text-muted-foreground">
+                    A/B test the donate button copy, collect analytics to validate conversion impact, and expand usability testing to include users with accessibility needs.
                   </p>
                 </div>
               </div>
