@@ -347,7 +347,7 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
             Selected Works
           </h2>
-          <div className="mb-4 px-6 grid grid-cols-[1fr_2fr_1fr] gap-4 text-xs uppercase tracking-wider text-muted-foreground">
+          <div className="hidden md:grid mb-4 px-6 grid-cols-[1fr_2fr_1fr] gap-4 text-xs uppercase tracking-wider text-muted-foreground">
             <div>Industry</div>
             <div>Work</div>
             <div className="text-right">Timeline</div>
