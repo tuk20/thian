@@ -68,19 +68,19 @@ const CustomCursor = () => {
       >
         <div
           className={`rounded-full bg-white transition-all duration-300 ${
-            isHovering ? "w-12 h-12" : "w-6 h-6"
+            isHovering ? "w-6 h-6" : "w-3 h-3"
           }`}
         />
       </div>
       {!isOverText && (
         <div
-          className="fixed pointer-events-none z-[9998] border-2 border-white rounded-full mix-blend-difference transition-all duration-500"
+          className="fixed pointer-events-none z-[9998] border border-white rounded-full mix-blend-difference transition-all duration-500"
           style={{
             left: `${position.x}px`,
             top: `${position.y}px`,
             transform: 'translate(-50%, -50%)',
-            width: isHovering ? '48px' : '32px',
-            height: isHovering ? '48px' : '32px',
+            width: isHovering ? '24px' : '20px',
+            height: isHovering ? '24px' : '20px',
           }}
         />
       )}
