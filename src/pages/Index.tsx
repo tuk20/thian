@@ -7,7 +7,7 @@ import { ArrowDown } from "lucide-react";
 import portraitImage from "@/assets/portrait.jpg";
 import mentalHealthImage from "@/assets/mental-health-project.jpg";
 import winnetkaCoverImage from "@/assets/winnetka-cover.jpg";
-import travelImage from "@/assets/travel-project.jpg";
+import kateritAppImage from "@/assets/katerit-app.png";
 import naicLogoImage from "@/assets/naic-logo.png";
 
 const Index = () => {
@@ -92,11 +92,11 @@ const Index = () => {
       to: "/case-study/naic-help-page",
     },
     {
-      industry: "Food",
+      industry: "Concept Project / Food",
       title: "Kater.it",
-      timeline: "Feb 2024",
-      description: "Built a catering app that helps local users discover and connect with local caterers.",
-      imageUrl: travelImage,
+      timeline: "(Feb 2024)",
+      description: "A mobile-first catering discovery platform designed to connect customers with local caterers and support small businesses.",
+      imageUrl: kateritAppImage,
       to: "/case-study/kater-it",
     },
   ];
