@@ -8,7 +8,7 @@ import portraitImage from "@/assets/portrait.jpg";
 import mentalHealthImage from "@/assets/mental-health-project.jpg";
 import winnetkaCoverImage from "@/assets/winnetka-cover.jpg";
 import travelImage from "@/assets/travel-project.jpg";
-import designSystemImage from "@/assets/design-system-project.jpg";
+import naicLogoImage from "@/assets/naic-logo.png";
 
 const Index = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -84,11 +84,11 @@ const Index = () => {
       to: "/case-study/community-house-winnetka",
     },
     {
-      industry: "Fintech",
+      industry: "Government / Internship",
       title: "Redesigning the NAIC Help Page",
       timeline: "(Nov 2024)",
       description: "Transitioning from Web Development to UX Design to Improve Accessibility, Consistency, and User Engagement.",
-      imageUrl: designSystemImage,
+      imageUrl: naicLogoImage,
       to: "/case-study/naic-help-page",
     },
     {
