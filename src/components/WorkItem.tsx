@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 interface WorkItemProps {
   industry: string;
@@ -12,16 +13,46 @@ interface WorkItemProps {
 
 const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/case-study" }: WorkItemProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isTapped, setIsTapped] = useState(false);
+
+  const handleTouchStart = () => {
+    setIsTapped(true);
+    setIsHovered(true);
+  };
+
+  const handleTouchEnd = () => {
+    // Keep open briefly for mobile users to see content
+    setTimeout(() => {
+      setIsTapped(false);
+      setIsHovered(false);
+    }, 2000);
+  };
 
   return (
     <Link to={to}>
       <div
-        className="relative group cursor-pointer"
+        className="relative group cursor-pointer focus-within:outline-none"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+        tabIndex={0}
+        onFocus={() => setIsHovered(true)}
+        onBlur={() => setIsHovered(false)}
+        role="article"
+        aria-label={`${title} - ${industry} project`}
       >
         {/* Full-width top border */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-px bg-border/50 pointer-events-none" />
+        
+        {/* Subtle hover hint indicator */}
+        <div className={`absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-muted-foreground/50 text-sm transition-opacity duration-500 z-30 ${
+          isHovered ? "opacity-0" : "opacity-100"
+        }`}>
+          <span className="hidden md:inline">Hover to preview</span>
+          <ArrowRight className="w-4 h-4 animate-pulse" />
+        </div>
+
         <div className="relative py-8 md:py-12">
           {/* Default State - Text visible on clean background */}
           <div className={`grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-4 md:gap-8 items-center relative z-20 transition-opacity duration-700 ${
@@ -72,6 +103,12 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
                   <p className="text-muted-foreground text-sm md:text-lg leading-relaxed flex-1 relative z-10 text-center md:text-left">
                     {description}
                   </p>
+
+                  {/* CTA Button */}
+                  <div className="flex items-center gap-2 text-primary font-medium relative z-10 whitespace-nowrap">
+                    <span>View project</span>
+                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  </div>
                 </div>
               </div>
             </div>
@@ -98,6 +135,9 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
 
         {/* Full width bottom border - no hover effect */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-screen h-[1px] bg-border/50 pointer-events-none" />
+        
+        {/* Focus ring for keyboard navigation */}
+        <div className="absolute inset-0 rounded-lg ring-2 ring-primary/0 focus-within:ring-primary/50 transition-all pointer-events-none" />
       </div>
     </Link>
   );
