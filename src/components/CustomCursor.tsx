@@ -5,6 +5,17 @@ const CustomCursor = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isOverText, setIsOverText] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile/touch devices
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia('(pointer: coarse)').matches || window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const updatePosition = (e: MouseEvent) => {
@@ -54,7 +65,8 @@ const CustomCursor = () => {
     };
   }, []);
 
-  if (!isVisible) return null;
+  // Don't render on mobile/touch devices
+  if (isMobile || !isVisible) return null;
 
   return (
     <>
