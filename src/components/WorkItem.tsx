@@ -45,11 +45,10 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
         {/* Full-width top border */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-px bg-border/50 pointer-events-none" />
         
-        {/* Subtle hover hint indicator */}
-        <div className={`absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-muted-foreground/50 text-sm transition-opacity duration-500 z-30 ${
+        {/* Subtle hover hint indicator - arrow only */}
+        <div className={`absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-muted-foreground/40 transition-opacity duration-500 z-30 ${
           isHovered ? "opacity-0" : "opacity-100"
         }`}>
-          <span className="hidden md:inline">Hover to preview</span>
           <ArrowRight className="w-4 h-4 animate-pulse" />
         </div>
 
@@ -65,7 +64,7 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
 
             {/* Work Column */}
             <div className="text-center md:text-left">
-              <h3 className="text-3xl md:text-5xl lg:text-6xl font-bold text-foreground">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">
                 {title}
               </h3>
             </div>
