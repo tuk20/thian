@@ -6,7 +6,6 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowDown } from "lucide-react";
 import portraitImage from "@/assets/portrait.jpg";
 import mentalHealthImage from "@/assets/mental-health-project.jpg";
-import winnetkaCoverImage from "@/assets/winnetka-cover.jpg";
 import kateritAppImage from "@/assets/katerit-app.png";
 import naicLogoImage from "@/assets/naic-logo.png";
 
@@ -68,20 +67,20 @@ const Index = () => {
 
   const works = [
     {
+      industry: "Non-profit / Conference",
+      title: "CBANA Conference App",
+      timeline: "(Mar - Jul 2026)",
+      description: "Led the visual design of CBANA's first native conference app and designed the Schedule screen, one of its core navigation experiences.",
+      imageUrl: "/placeholder.svg",
+      to: "/case-study/cbana-conference-app",
+    },
+    {
       industry: "Academic / Mental Health",
       title: "Mind Over Matter",
       timeline: "(Sept - Oct 2025)",
       description: "Investigated how users evaluate and trust digital mental health resources through observation studies and interviews.",
       imageUrl: mentalHealthImage,
       to: "/case-study/mind-over-matter",
-    },
-    {
-      industry: "Academic / Non-profit",
-      title: "Community House Winnetka",
-      timeline: "(Apr - Jun 2025)",
-      description: "Mobile-first information architecture and donation flow redesign to improve findability and conversions for a local nonprofit.",
-      imageUrl: winnetkaCoverImage,
-      to: "/case-study/community-house-winnetka",
     },
     {
       industry: "Government / Internship",
