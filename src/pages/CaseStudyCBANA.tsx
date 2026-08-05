@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, ImageIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import lofiAsset from "@/assets/cbana-schedule-lofi.png.asset.json";
+import hifiAsset from "@/assets/cbana-schedule-hifi.png.asset.json";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -228,6 +229,13 @@ const CaseStudyCBANA = () => {
                       We went through two rounds of iteration, testing each with the conference committee for feedback. Timing was tight: I joined the project in the first week of July, and the conference ran July 23–26, so on top of designing and iterating, we were racing app store approval timelines. Moving fast without cutting corners on the design was the biggest challenge of this stage.
                     </p>
                   </div>
+                  <div className="mt-6">
+                    <CaseImage
+                      src={hifiAsset.url}
+                      alt="High-fidelity design of the CBANA Schedule screen in dark mode, with a session-in-progress dashboard card at the top, a day selector, and a timeline of sessions"
+                      caption="High-fidelity Schedule screen: the in-progress dashboard sits above the day selector, so attendees see what's happening now before scanning the day."
+                    />
+                  </div>
                 </div>
 
                 <div>
@@ -285,7 +293,6 @@ const CaseStudyCBANA = () => {
                   </p>
 
                   <div className="space-y-6">
-                    <ImageSlot label="Schedule screen final UI — multiple states" />
                     <ImageSlot label="Schedule screen annotated with design rationale callouts" />
                   </div>
                 </div>
