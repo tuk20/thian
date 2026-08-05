@@ -5,6 +5,7 @@ import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, ImageIcon } from "lucide-react";
 import { Link } from "react-router-dom";
+import lofiAsset from "@/assets/cbana-schedule-lofi.png.asset.json";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -19,6 +20,13 @@ const ImageSlot = ({ label }: { label: string }) => (
     <ImageIcon className="w-6 h-6" aria-hidden="true" />
     <p className="text-sm px-6 text-center">{label}</p>
   </div>
+);
+
+const CaseImage = ({ src, alt, caption }: { src: string; alt: string; caption: string }) => (
+  <figure className="rounded-xl border border-border bg-secondary/40 p-6 flex flex-col items-center gap-4">
+    <img src={src} alt={alt} loading="lazy" className="max-h-[560px] w-auto rounded-lg" />
+    <figcaption className="text-sm text-muted-foreground text-center">{caption}</figcaption>
+  </figure>
 );
 
 const CaseStudyCBANA = () => {
@@ -203,7 +211,11 @@ const CaseStudyCBANA = () => {
                       One key addition came out of this stage: my first wireframe didn't include any sense of "what's happening right now." Based on the discussion, I added a small dashboard element to the schedule showing sessions currently in progress, so attendees could orient themselves at a glance instead of scanning the full day's list every time.
                     </p>
                   </div>
-                  <ImageSlot label="Schedule screen wireframes / sketches" />
+                  <CaseImage
+                    src={lofiAsset.url}
+                    alt="Low-fidelity wireframe of the CBANA Schedule screen showing a day selector and a timeline list of sessions with image, title, time, and location"
+                    caption="Low-fidelity wireframe of the Schedule screen: day switcher, session timeline, and bottom tab navigation."
+                  />
                 </div>
 
                 <div>
