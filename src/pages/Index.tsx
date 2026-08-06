@@ -8,6 +8,7 @@ import portraitImage from "@/assets/portrait.jpg";
 import mentalHealthImage from "@/assets/mental-health-project.jpg";
 import kateritAppImage from "@/assets/katerit-app.png";
 import naicLogoImage from "@/assets/naic-logo.png";
+import cbanaFullFlow from "@/assets/cbana-full-flow.png.asset.json";
 
 const Index = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -71,7 +72,7 @@ const Index = () => {
       title: "CBANA Conference App",
       timeline: "(Mar - Jul 2026)",
       description: "Led the visual design of CBANA's first native conference app and designed the Schedule screen, one of its core navigation experiences.",
-      imageUrl: "/placeholder.svg",
+      imageUrl: cbanaFullFlow.url,
       to: "/case-study/cbana-conference-app",
     },
     {
