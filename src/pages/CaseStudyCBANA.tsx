@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, ImageIcon } from "lucide-react";
+import { ArrowLeft, ArrowRight, ImageIcon, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import lofiAsset from "@/assets/cbana-schedule-lofi.png.asset.json";
 import hifiAsset from "@/assets/cbana-schedule-hifi.png.asset.json";
