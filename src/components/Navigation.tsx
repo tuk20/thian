@@ -44,7 +44,7 @@ const Navigation = () => {
             to="/" 
             className="text-xl font-semibold text-foreground hover:text-primary transition-all duration-300 hover:scale-110 md:absolute md:left-1/2 md:-translate-x-1/2"
           >
-            Thian
+            THIAN
           </Link>
 
           {/* Desktop Navigation */}
