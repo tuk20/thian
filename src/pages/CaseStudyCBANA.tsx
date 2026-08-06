@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, ImageIcon, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import lofiAsset from "@/assets/cbana-schedule-lofi.png.asset.json";
 import hifiAsset from "@/assets/cbana-schedule-hifi.png.asset.json";
+import scheduleScreensAsset from "@/assets/cbana-schedule-screens.png.asset.json";
 import colorsAsset from "@/assets/cbana-colors.png.asset.json";
 import typographyAsset from "@/assets/cbana-typography.png.asset.json";
 import logosAsset from "@/assets/cbana-logos.png.asset.json";
@@ -305,7 +306,11 @@ const CaseStudyCBANA = () => {
                   </p>
 
                   <div className="space-y-6">
-                    <ImageSlot label="Schedule screen annotated with design rationale callouts" />
+                    <CaseImage
+                      src={scheduleScreensAsset.url}
+                      alt="Three final CBANA Schedule screens showing day 23, 24 and 26 states, including empty and in-progress session cards"
+                      caption="Final Schedule screens across all three conference days — the status card adapts between 'No Session in Progress' and a live session, while completed items are checked off down the timeline."
+                    />
                   </div>
                 </div>
 
