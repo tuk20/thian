@@ -341,7 +341,11 @@ const CaseStudyCBANA = () => {
                       caption="Conference theme marks alongside the simplified app icon built to stay legible at small sizes."
                     />
                     <ImageSlot label="App icon + splash screen" />
-                    <ImageSlot label="Full screen flow / key screens — Home, Schedule, Speakers" />
+                    <CaseImage
+                      src={fullFlowAsset.url}
+                      alt="Full CBANA app screen flow: Games quiz, Schedule, CBANA TV, CBANA AI chatbot, Registration, and the App Store listing"
+                      caption="The full app flow — Games, Schedule, CBANA TV, the CBANA AI chatbot, and Registration — all sharing the same dark surface, accent color and card patterns, alongside the shipped App Store listing."
+                    />
                   </div>
                 </div>
 
