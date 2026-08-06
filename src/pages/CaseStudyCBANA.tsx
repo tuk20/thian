@@ -14,6 +14,7 @@ import typographyAsset from "@/assets/cbana-typography.png";
 import logosAsset from "@/assets/cbana-logos.png";
 import fullFlowAsset from "@/assets/cbana-full-flow.webp";
 import screenFlowGif from "@/assets/cbana-screen-flow.gif";
+import appIconAsset from "@/assets/cbana-app-icon.png";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -368,7 +369,11 @@ const CaseStudyCBANA = () => {
                       alt="CBANA conference theme logos and simplified app icon marks"
                       caption="Conference theme marks alongside the simplified app icon built to stay legible at small sizes."
                     />
-                    <ImageSlot label="App icon + splash screen" />
+                    <CaseImage
+                      src={appIconAsset}
+                      alt="CBANA App Store listing with the blue book app icon, next to the CBANA TV home screen in the app"
+                      caption="The app icon — a simplified open-book mark on the brand blue — shown on the App Store listing alongside the in-app CBANA TV home screen."
+                    />
                     <CaseImage
                       src={fullFlowAsset}
                       alt="Full CBANA app screen flow: Games quiz, Schedule, CBANA TV, CBANA AI chatbot, Registration, and the App Store listing"
