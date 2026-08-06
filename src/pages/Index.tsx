@@ -382,7 +382,7 @@ const Index = () => {
       <footer className="py-12 px-6 border-t border-border">
         <div className="container mx-auto max-w-7xl text-center">
           <p className="text-muted-foreground">
-            © 2025 Thian Uk. Designed with purpose.
+            © 2026 Thian Uk. Designed with purpose.
           </p>
         </div>
       </footer>
