@@ -379,11 +379,6 @@ const CaseStudyCBANA = () => {
                       alt="Full CBANA app screen flow: Games quiz, Schedule, CBANA TV, CBANA AI chatbot, Registration, and the App Store listing"
                       caption="The full app flow — Games, Schedule, CBANA TV, the CBANA AI chatbot, and Registration — all sharing the same dark surface, accent color and card patterns, alongside the shipped App Store listing."
                     />
-                    <ExpandableImage
-                      src={screenFlowGif}
-                      alt="Animated walkthrough of the CBANA app, from splash screen through the main sections"
-                      caption="Animated walkthrough — the app in motion, from splash screen through Schedule, CBANA TV, the AI chatbot and Registration."
-                    />
                   </div>
                 </div>
 
