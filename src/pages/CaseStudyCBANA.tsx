@@ -414,7 +414,7 @@ const CaseStudyCBANA = () => {
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                      <span>Nearly 900 of the 1,200 conference attendees (75%) registered and used the app — a strong adoption rate for a first-time native app built by a two-person team.</span>
+                      <span>Nearly 900 of the 1,200s conference attendees (75%) registered and used the app — a strong adoption rate for a first-time native app built by a two-person team.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
