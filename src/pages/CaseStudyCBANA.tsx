@@ -5,13 +5,13 @@ import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight, ImageIcon, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
-import lofiAsset from "@/assets/cbana-schedule-lofi.png.asset.json";
-import hifiAsset from "@/assets/cbana-schedule-hifi.png.asset.json";
-import scheduleScreensAsset from "@/assets/cbana-schedule-screens.png.asset.json";
-import colorsAsset from "@/assets/cbana-colors.png.asset.json";
-import typographyAsset from "@/assets/cbana-typography.png.asset.json";
-import logosAsset from "@/assets/cbana-logos.png.asset.json";
-import fullFlowAsset from "@/assets/cbana-full-flow.png.asset.json";
+import lofiAsset from "@/assets/cbana-schedule-lofi.png";
+import hifiAsset from "@/assets/cbana-schedule-hifi.png";
+import scheduleScreensAsset from "@/assets/cbana-schedule-screens.png";
+import colorsAsset from "@/assets/cbana-colors.png";
+import typographyAsset from "@/assets/cbana-typography.png";
+import logosAsset from "@/assets/cbana-logos.png";
+import fullFlowAsset from "@/assets/cbana-full-flow.webp";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
