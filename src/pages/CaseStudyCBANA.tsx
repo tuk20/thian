@@ -7,6 +7,9 @@ import { ArrowLeft, ArrowRight, ImageIcon } from "lucide-react";
 import { Link } from "react-router-dom";
 import lofiAsset from "@/assets/cbana-schedule-lofi.png.asset.json";
 import hifiAsset from "@/assets/cbana-schedule-hifi.png.asset.json";
+import colorsAsset from "@/assets/cbana-colors.png.asset.json";
+import typographyAsset from "@/assets/cbana-typography.png.asset.json";
+import logosAsset from "@/assets/cbana-logos.png.asset.json";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -308,7 +311,21 @@ const CaseStudyCBANA = () => {
                     </p>
                   </div>
                   <div className="space-y-6">
-                    <ImageSlot label="Style guide / design system sheet" />
+                    <CaseImage
+                      src={colorsAsset.url}
+                      alt="CBANA app color palette: background layers, text colors, and two brand accent ramps"
+                      caption="Color system — layered dark backgrounds with a blue primary accent and a green status accent, carried over from the conference materials."
+                    />
+                    <CaseImage
+                      src={typographyAsset.url}
+                      alt="CBANA app typography scale showing SF Pro Rounded headings and Poppins body styles"
+                      caption="Type scale — SF Pro Rounded for headings, Poppins for body and UI labels, chosen for legibility across a multi-generational audience."
+                    />
+                    <CaseImage
+                      src={logosAsset.url}
+                      alt="CBANA conference theme logos and simplified app icon marks"
+                      caption="Conference theme marks alongside the simplified app icon built to stay legible at small sizes."
+                    />
                     <ImageSlot label="App icon + splash screen" />
                     <ImageSlot label="Full screen flow / key screens — Home, Schedule, Speakers" />
                   </div>
