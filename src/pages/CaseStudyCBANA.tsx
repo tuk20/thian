@@ -227,7 +227,7 @@ const CaseStudyCBANA = () => {
                     </p>
                   </div>
                   <CaseImage
-                    src={lofiAsset.url}
+                    src={lofiAsset}
                     alt="Low-fidelity wireframe of the CBANA Schedule screen showing a day selector and a timeline list of sessions with image, title, time, and location"
                     caption="Low-fidelity wireframe of the Schedule screen: day switcher, session timeline, and bottom tab navigation."
                   />
@@ -245,7 +245,7 @@ const CaseStudyCBANA = () => {
                   </div>
                   <div className="mt-6">
                     <CaseImage
-                      src={hifiAsset.url}
+                      src={hifiAsset}
                       alt="High-fidelity design of the CBANA Schedule screen in dark mode, with a session-in-progress dashboard card at the top, a day selector, and a timeline of sessions"
                       caption="High-fidelity Schedule screen: the in-progress dashboard sits above the day selector, so attendees see what's happening now before scanning the day."
                     />
@@ -308,7 +308,7 @@ const CaseStudyCBANA = () => {
 
                   <div className="space-y-6">
                     <CaseImage
-                      src={scheduleScreensAsset.url}
+                      src={scheduleScreensAsset}
                       alt="Three final CBANA Schedule screens showing day 23, 24 and 26 states, including empty and in-progress session cards"
                       caption="Final Schedule screens across all three conference days — the status card adapts between 'No Session in Progress' and a live session, while completed items are checked off down the timeline."
                     />
@@ -327,23 +327,23 @@ const CaseStudyCBANA = () => {
                   </div>
                   <div className="space-y-6">
                     <CaseImage
-                      src={colorsAsset.url}
+                      src={colorsAsset}
                       alt="CBANA app color palette: background layers, text colors, and two brand accent ramps"
                       caption="Color system — layered dark backgrounds with a blue primary accent and a green status accent, carried over from the conference materials."
                     />
                     <CaseImage
-                      src={typographyAsset.url}
+                      src={typographyAsset}
                       alt="CBANA app typography scale showing SF Pro Rounded headings and Poppins body styles"
                       caption="Type scale — SF Pro Rounded for headings, Poppins for body and UI labels, chosen for legibility across a multi-generational audience."
                     />
                     <CaseImage
-                      src={logosAsset.url}
+                      src={logosAsset}
                       alt="CBANA conference theme logos and simplified app icon marks"
                       caption="Conference theme marks alongside the simplified app icon built to stay legible at small sizes."
                     />
                     <ImageSlot label="App icon + splash screen" />
                     <CaseImage
-                      src={fullFlowAsset.url}
+                      src={fullFlowAsset}
                       alt="Full CBANA app screen flow: Games quiz, Schedule, CBANA TV, CBANA AI chatbot, Registration, and the App Store listing"
                       caption="The full app flow — Games, Schedule, CBANA TV, the CBANA AI chatbot, and Registration — all sharing the same dark surface, accent color and card patterns, alongside the shipped App Store listing."
                     />
