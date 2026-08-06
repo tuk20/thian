@@ -414,6 +414,18 @@ const CaseStudyCBANA = () => {
                     </li>
                     <li className="flex items-start">
                       <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>Nearly 900 of the 1,200 conference attendees (75%) registered and used the app — a strong adoption rate for a first-time native app built by a two-person team.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>The Schedule screen was one of the most consistently used sections of the app throughout the event, with attendees returning to it repeatedly across the four days.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                      <span>Feedback from the community was overwhelmingly positive — attendees were glad to see a small community organization like CBANA have an app this polished and functional for its own conference.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-2 h-2 bg-primary rounded-full mt-2 mr-3 flex-shrink-0"></span>
                       <span>The Schedule screen shipped as designed, with no post-handoff adjustments needed between the specs and the native build.</span>
                     </li>
                     <li className="flex items-start">
@@ -421,6 +433,15 @@ const CaseStudyCBANA = () => {
                       <span>The collaboration led to a commitment to bring design in from the start of the next conference cycle.</span>
                     </li>
                   </ul>
+                  <a
+                    href="https://apps.apple.com/us/app/cbana/id6761687586"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-6 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
+                  >
+                    View on the App Store
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
             </CaseStudySection>
