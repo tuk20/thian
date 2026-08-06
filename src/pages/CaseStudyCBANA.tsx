@@ -3,8 +3,7 @@ import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, ImageIcon, ExternalLink, Maximize2 } from "lucide-react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ArrowLeft, ArrowRight, ImageIcon, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import lofiAsset from "@/assets/cbana-schedule-lofi.png";
 import hifiAsset from "@/assets/cbana-schedule-hifi.png";
@@ -13,7 +12,6 @@ import colorsAsset from "@/assets/cbana-colors.png";
 import typographyAsset from "@/assets/cbana-typography.png";
 import logosAsset from "@/assets/cbana-logos.png";
 import fullFlowAsset from "@/assets/cbana-full-flow.webp";
-import screenFlowGif from "@/assets/cbana-screen-flow.gif";
 import appIconAsset from "@/assets/cbana-app-icon.png";
 
 const sections = [
@@ -34,31 +32,6 @@ const ImageSlot = ({ label }: { label: string }) => (
 const CaseImage = ({ src, alt, caption }: { src: string; alt: string; caption: string }) => (
   <figure className="rounded-xl border border-border bg-secondary/40 p-6 flex flex-col items-center gap-4">
     <img src={src} alt={alt} loading="lazy" className="max-h-[560px] w-auto rounded-lg" />
-    <figcaption className="text-sm text-muted-foreground text-center">{caption}</figcaption>
-  </figure>
-);
-
-const ExpandableImage = ({ src, alt, caption }: { src: string; alt: string; caption: string }) => (
-  <figure className="rounded-xl border border-border bg-secondary/40 p-6 flex flex-col items-center gap-4">
-    <Dialog>
-      <DialogTrigger asChild>
-        <button
-          type="button"
-          className="group relative rounded-lg overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-          aria-label={`Expand: ${alt}`}
-        >
-          <img src={src} alt={alt} className="w-[320px] sm:w-[420px] h-auto rounded-lg" />
-          <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-background/85 px-3 py-1.5 text-xs text-foreground opacity-90 transition-opacity group-hover:opacity-100">
-            <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />
-            Expand
-          </span>
-        </button>
-      </DialogTrigger>
-      <DialogContent className="max-w-3xl bg-background">
-        <img src={src} alt={alt} className="w-full h-auto rounded-lg" />
-        <p className="text-sm text-muted-foreground text-center">{caption}</p>
-      </DialogContent>
-    </Dialog>
     <figcaption className="text-sm text-muted-foreground text-center">{caption}</figcaption>
   </figure>
 );
@@ -378,11 +351,6 @@ const CaseStudyCBANA = () => {
                       src={fullFlowAsset}
                       alt="Full CBANA app screen flow: Games quiz, Schedule, CBANA TV, CBANA AI chatbot, Registration, and the App Store listing"
                       caption="The full app flow — Games, Schedule, CBANA TV, the CBANA AI chatbot, and Registration — all sharing the same dark surface, accent color and card patterns, alongside the shipped App Store listing."
-                    />
-                    <ExpandableImage
-                      src={screenFlowGif}
-                      alt="Animated walkthrough of the CBANA app, from splash screen through the main sections"
-                      caption="Animated walkthrough — the app in motion, from splash screen through Schedule, CBANA TV, the AI chatbot and Registration."
                     />
                   </div>
                 </div>
