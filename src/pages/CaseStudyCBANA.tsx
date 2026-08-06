@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import CaseStudyNav from "@/components/CaseStudyNav";
 import CaseStudySection from "@/components/CaseStudySection";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, ArrowRight, ImageIcon } from "lucide-react";
+import { ArrowLeft, ArrowRight, ImageIcon, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import lofiAsset from "@/assets/cbana-schedule-lofi.png.asset.json";
 import hifiAsset from "@/assets/cbana-schedule-hifi.png.asset.json";
@@ -76,6 +76,15 @@ const CaseStudyCBANA = () => {
               <p className="text-xl text-muted-foreground mb-6">
                 Designing a native mobile experience for the Chin Baptist Association of North America's 8th Conference
               </p>
+              <a
+                href="https://apps.apple.com/us/app/cbana/id6761687586"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium transition-opacity hover:opacity-90"
+              >
+                View on the App Store
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </header>
 
             {/* Project Overview */}
