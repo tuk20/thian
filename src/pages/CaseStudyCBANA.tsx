@@ -11,6 +11,7 @@ import scheduleScreensAsset from "@/assets/cbana-schedule-screens.png.asset.json
 import colorsAsset from "@/assets/cbana-colors.png.asset.json";
 import typographyAsset from "@/assets/cbana-typography.png.asset.json";
 import logosAsset from "@/assets/cbana-logos.png.asset.json";
+import fullFlowAsset from "@/assets/cbana-full-flow.png.asset.json";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
