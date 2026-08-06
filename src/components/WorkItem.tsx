@@ -94,8 +94,8 @@ const WorkItem = ({ industry, title, timeline, description, imageUrl, to = "/cas
               <div className="relative rounded-2xl overflow-hidden backdrop-blur-xl bg-card border border-border/30 px-[100vw] py-8 h-full flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent" />
                 <div className="flex flex-row items-center gap-6 max-w-7xl mx-auto w-full px-8">
-                  <div className="w-40 h-40 rounded-lg overflow-hidden flex-shrink-0 relative z-10">
-                    <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+                  <div className="w-40 h-40 rounded-lg overflow-hidden flex-shrink-0 relative z-10 bg-secondary flex items-center justify-center">
+                    <img src={imageUrl} alt={title} className="w-full h-full object-contain" />
                   </div>
                   <p className="text-muted-foreground text-lg leading-relaxed flex-1 relative z-10">
                     {description}
