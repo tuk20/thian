@@ -11,6 +11,7 @@ import scheduleScreensAsset from "@/assets/cbana-schedule-screens.png.asset.json
 import colorsAsset from "@/assets/cbana-colors.png.asset.json";
 import typographyAsset from "@/assets/cbana-typography.png.asset.json";
 import logosAsset from "@/assets/cbana-logos.png.asset.json";
+import fullFlowAsset from "@/assets/cbana-full-flow.png.asset.json";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -341,7 +342,11 @@ const CaseStudyCBANA = () => {
                       caption="Conference theme marks alongside the simplified app icon built to stay legible at small sizes."
                     />
                     <ImageSlot label="App icon + splash screen" />
-                    <ImageSlot label="Full screen flow / key screens — Home, Schedule, Speakers" />
+                    <CaseImage
+                      src={fullFlowAsset.url}
+                      alt="Full CBANA app screen flow: Games quiz, Schedule, CBANA TV, CBANA AI chatbot, Registration, and the App Store listing"
+                      caption="The full app flow — Games, Schedule, CBANA TV, the CBANA AI chatbot, and Registration — all sharing the same dark surface, accent color and card patterns, alongside the shipped App Store listing."
+                    />
                   </div>
                 </div>
 
