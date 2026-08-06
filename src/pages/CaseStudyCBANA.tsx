@@ -12,6 +12,7 @@ import colorsAsset from "@/assets/cbana-colors.png";
 import typographyAsset from "@/assets/cbana-typography.png";
 import logosAsset from "@/assets/cbana-logos.png";
 import fullFlowAsset from "@/assets/cbana-full-flow.webp";
+import screenFlowGif from "@/assets/cbana-screen-flow.gif";
 
 const sections = [
   { id: "overview", label: "Project Overview" },
@@ -346,6 +347,11 @@ const CaseStudyCBANA = () => {
                       src={fullFlowAsset}
                       alt="Full CBANA app screen flow: Games quiz, Schedule, CBANA TV, CBANA AI chatbot, Registration, and the App Store listing"
                       caption="The full app flow — Games, Schedule, CBANA TV, the CBANA AI chatbot, and Registration — all sharing the same dark surface, accent color and card patterns, alongside the shipped App Store listing."
+                    />
+                    <CaseImage
+                      src={screenFlowGif}
+                      alt="Animated walkthrough of the CBANA app, from splash screen through the main sections"
+                      caption="Animated walkthrough — the app in motion, from splash screen through Schedule, CBANA TV, the AI chatbot and Registration."
                     />
                   </div>
                 </div>
