@@ -271,7 +271,7 @@ const Index = () => {
             About Me
           </h2>
           <p className="text-2xl md:text-3xl text-muted-foreground leading-relaxed text-justify">
-            {`My path into UX started with curiosity. I taught myself design through YouTube, spent hours practicing in Figma, and turned that passion into a career. That self-taught start shaped how I work. I stay curious, focus on people, and break down tough problems into simple, usable experiences. I'm now earning my master's in human-computer interaction to deepen that foundation.`
+            {`My path into UX started with curiosity. I taught myself design through YouTube, spent hours practicing in Figma, and turned that passion into a career. That self-taught start shaped how I work. I stay curious, focus on people, and break down tough problems into simple, usable experiences. I recently earned my master's in human-computer interaction, deepening that foundation.`
               .split(" ")
               .map((word, index) => (
                 <span
