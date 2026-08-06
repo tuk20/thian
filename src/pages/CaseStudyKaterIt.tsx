@@ -482,13 +482,13 @@ const CaseStudyKaterIt = () => {
             {/* Next Case Study */}
             <div className="mt-16 pt-8 border-t border-border">
               <Link 
-                to="/case-study/mind-over-matter"
+                to="/case-study/cbana-conference-app"
                 className="group flex items-center justify-between p-6 bg-secondary rounded-xl hover:bg-secondary/80 transition-colors"
               >
                 <div>
                   <p className="text-sm text-muted-foreground mb-1">Next Case Study</p>
                   <p className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
-                    Mind Over Matter
+                    CBANA Conference App
                   </p>
                 </div>
                 <ArrowRight className="w-6 h-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
