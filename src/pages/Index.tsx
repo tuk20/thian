@@ -4,6 +4,7 @@ import WorkItem from "@/components/WorkItem";
 import AnimatedName from "@/components/AnimatedName";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { ArrowDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import portraitImage from "@/assets/portrait.jpg";
 import mentalHealthImage from "@/assets/mental-health-project.jpg";
 import kateritAppImage from "@/assets/katerit-app.png";
@@ -113,7 +114,7 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section with Immersive Entry Animation */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6">
+      <section className="relative min-h-[72svh] flex items-center justify-center overflow-hidden px-4 pb-12 pt-24 sm:px-6 md:min-h-[70vh]">
         {/* Glass Effect Background */}
         <div
           className="absolute inset-0 opacity-40"
@@ -248,19 +249,49 @@ const Index = () => {
               Design Systems
             </span>
           </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-          <ArrowDown className="w-6 h-6 text-muted-foreground" />
+          <Button asChild size="lg">
+            <a href="#works">
+              View selected work
+              <ArrowDown aria-hidden="true" />
+            </a>
+          </Button>
         </div>
       </section>
 
+      {/* Works Section */}
+      <section id="works" className="scroll-mt-16 bg-secondary px-6 py-16 md:py-20">
+        <div 
+          ref={projectsSection.ref}
+          className={`container mx-auto max-w-7xl transition-all duration-1000 motion-reduce:transition-none ${
+            projectsSection.isVisible 
+              ? "opacity-100 translate-y-0" 
+              : "opacity-0 translate-y-10"
+          }`}
+        >
+          <div className="mb-8 flex items-end justify-between gap-6 md:mb-12">
+            <div>
+              <p className="mb-2 text-sm font-semibold uppercase text-primary">Selected portfolio</p>
+              <h2 className="text-3xl font-bold text-foreground md:text-5xl">
+                Selected Works
+              </h2>
+            </div>
+            <p className="hidden max-w-sm text-right text-muted-foreground md:block">
+              Research and product design grounded in real people, clear decisions, and measurable outcomes.
+            </p>
+          </div>
+          <div>
+            {works.map((work) => (
+              <WorkItem key={work.to} {...work} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* About Section */}
       <section 
         id="about" 
         ref={aboutSection.ref}
-        className={`py-20 px-6 bg-secondary transition-all duration-1000 ${
+        className={`scroll-mt-16 py-20 px-6 transition-all duration-1000 ${
           aboutSection.isVisible 
             ? "opacity-100 translate-y-0" 
             : "opacity-0 translate-y-32"
@@ -288,7 +319,7 @@ const Index = () => {
       {/* Philosophy Section */}
       <section 
         id="philosophy" 
-        className="py-20 px-6"
+        className="scroll-mt-16 py-20 px-6 bg-secondary"
         onMouseEnter={() => setPhilosophyVisible(true)}
         onMouseLeave={() => setPhilosophyVisible(false)}
       >
@@ -334,34 +365,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Works Section */}
-      <section id="works" className="py-20 px-6 bg-secondary">
-        <div 
-          ref={projectsSection.ref}
-          className={`container mx-auto max-w-7xl transition-all duration-1000 ${
-            projectsSection.isVisible 
-              ? "opacity-100 translate-y-0" 
-              : "opacity-0 translate-y-10"
-          }`}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-foreground">
-            Selected Works
-          </h2>
-          <div className="hidden md:grid mb-4 px-6 grid-cols-[1fr_2fr_1fr] gap-4 text-xs uppercase tracking-wider text-muted-foreground">
-            <div>Industry</div>
-            <div>Work</div>
-            <div className="text-right">Timeline</div>
-          </div>
-          <div className="space-y-2">
-            {works.map((work, index) => (
-              <WorkItem key={index} {...work} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
+      <section id="contact" className="scroll-mt-16 py-20 px-6">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
             Let's Work Together
