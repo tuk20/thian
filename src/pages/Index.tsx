@@ -14,9 +14,6 @@ import cbanaFullFlow from "@/assets/cbana-full-flow.webp";
 const Index = () => {
   const [scrollY, setScrollY] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [tagsVisible, setTagsVisible] = useState(false);
-  const [allTagsAppeared, setAllTagsAppeared] = useState(false);
-  const [scrollLocked, setScrollLocked] = useState(false);
   const [philosophyVisible, setPhilosophyVisible] = useState(false);
   const [shapePositions, setShapePositions] = useState({
     shape1: { x: 0, y: 0 },
@@ -24,7 +21,6 @@ const Index = () => {
     shape3: { x: 0, y: 0 },
     shape4: { x: 0, y: 0 },
   });
-  const projectsSection = useScrollAnimation(0.3);
   const aboutSection = useScrollAnimation(0.2);
 
   const dodgeShape = (shapeName: keyof typeof shapePositions) => {
@@ -39,9 +35,6 @@ const Index = () => {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      if (window.scrollY > 50 && !tagsVisible) {
-        setTagsVisible(true);
-      }
     };
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -65,7 +58,7 @@ const Index = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [tagsVisible]);
+  }, []);
 
   const works = [
     {
@@ -225,26 +218,17 @@ const Index = () => {
           </div>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <span 
-              className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
-              }`}
-              style={{ transitionDelay: "0.2s" }}
+              className="rounded-full bg-primary-light px-5 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-300 hover:scale-105 motion-reduce:transition-none"
             >
               User Research
             </span>
             <span 
-              className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
-              }`}
-              style={{ transitionDelay: "0.5s" }}
+              className="rounded-full bg-primary-light px-5 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-300 hover:scale-105 motion-reduce:transition-none"
             >
               Interaction Design
             </span>
             <span 
-              className={`px-5 py-2 bg-primary-light text-primary rounded-full text-sm font-medium backdrop-blur-sm hover:scale-105 transition-all duration-700 ${
-                tagsVisible ? "opacity-100 scale-100" : "opacity-0 scale-0"
-              }`}
-              style={{ transitionDelay: "0.8s" }}
+              className="rounded-full bg-primary-light px-5 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-300 hover:scale-105 motion-reduce:transition-none"
             >
               Design Systems
             </span>
@@ -260,14 +244,7 @@ const Index = () => {
 
       {/* Works Section */}
       <section id="works" className="scroll-mt-16 bg-secondary px-6 py-16 md:py-20">
-        <div 
-          ref={projectsSection.ref}
-          className={`container mx-auto max-w-7xl transition-all duration-1000 motion-reduce:transition-none ${
-            projectsSection.isVisible 
-              ? "opacity-100 translate-y-0" 
-              : "opacity-0 translate-y-10"
-          }`}
-        >
+        <div className="container mx-auto max-w-7xl">
           <div className="mb-8 flex items-end justify-between gap-6 md:mb-12">
             <div>
               <p className="mb-2 text-sm font-semibold uppercase text-primary">Selected portfolio</p>
