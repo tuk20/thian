@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import WorkItem from "@/components/WorkItem";
-import AnimatedName from "@/components/AnimatedName";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ArrowDown } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowDown, FileText } from "lucide-react";
+import { Link } from "react-router-dom";
 import portraitImage from "@/assets/portrait.jpg";
 import mentalHealthImage from "@/assets/mental-health-project.jpg";
 import kateritAppImage from "@/assets/katerit-app.png";
@@ -12,52 +10,9 @@ import naicLogoImage from "@/assets/naic-logo.png";
 import cbanaFullFlow from "@/assets/cbana-full-flow.webp";
 
 const Index = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [philosophyVisible, setPhilosophyVisible] = useState(false);
-  const [shapePositions, setShapePositions] = useState({
-    shape1: { x: 0, y: 0 },
-    shape2: { x: 0, y: 0 },
-    shape3: { x: 0, y: 0 },
-    shape4: { x: 0, y: 0 },
-  });
-  const aboutSection = useScrollAnimation(0.2);
-
-  const dodgeShape = (shapeName: keyof typeof shapePositions) => {
-    const newX = Math.random() * 400 - 200;
-    const newY = Math.random() * 400 - 200;
-    setShapePositions(prev => ({
-      ...prev,
-      [shapeName]: { x: newX, y: newY }
-    }));
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    
-    // Handle hash scroll on page load
     const hash = window.location.hash.slice(1);
-    if (hash) {
-      setTimeout(() => {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
-    }
-    
-    window.addEventListener("scroll", handleScroll);
-    window.addEventListener("mousemove", handleMouseMove);
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    if (hash) setTimeout(() => document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" }), 100);
   }, []);
 
   const works = [
@@ -96,277 +51,112 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background overflow-hidden">
-      {/* Animated Background Gradients */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] animate-float opacity-0 animate-[float_6s_ease-in-out_infinite,fade-out_8s_ease-in_forwards]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[100px] opacity-0 animate-[float_6s_ease-in-out_infinite_2s,fade-out_8s_ease-in_2s_forwards]" />
-        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-accent/10 rounded-full blur-[150px] opacity-0 animate-[float_6s_ease-in-out_infinite_4s,fade-out_8s_ease-in_4s_forwards]" />
-      </div>
-
+    <div className="min-h-screen overflow-hidden">
       <Navigation />
 
-      {/* Hero Section with Immersive Entry Animation */}
-      <section className="relative min-h-[72svh] flex items-center justify-center overflow-hidden px-4 pb-12 pt-24 sm:px-6 md:min-h-[70vh]">
-        {/* Glass Effect Background */}
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: "var(--gradient-subtle)",
-            transform: `translateY(${scrollY * 0.5}px)`,
-          }}
-        />
-        
-        {/* Interactive Animated Glass Panels with Hover Effects */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-auto">
-          {/* Shape 1 - Left Square */}
-          <div 
-            className="absolute top-20 left-10 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-primary/10 backdrop-blur-3xl rounded-3xl rotate-12 opacity-100 cursor-pointer hover:bg-primary/20"
-            style={{ 
-              transform: `translate(calc(${mousePosition.x * 0.02}px + ${shapePositions.shape1.x}px), calc(${mousePosition.y * 0.02 + scrollY * 0.5}px + ${shapePositions.shape1.y}px)) rotate(12deg)`,
-              opacity: Math.max(0, 1 - scrollY * 0.003),
-              transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
-            }}
-            onClick={() => dodgeShape('shape1')}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '48% 52% 58% 42% / 53% 47% 53% 47%';
-              e.currentTarget.style.backgroundColor = 'hsl(280 65% 60% / 0.35)';
-              e.currentTarget.style.transform = 'scale(1.2) rotate(25deg)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderRadius = '1.5rem';
-              e.currentTarget.style.transform = `translate(calc(${mousePosition.x * 0.02}px + ${shapePositions.shape1.x}px), calc(${mousePosition.y * 0.02 + scrollY * 0.5}px + ${shapePositions.shape1.y}px)) rotate(12deg)`;
-              e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.1)';
-            }}
-          />
-          
-          {/* Shape 2 - Center Circle */}
-          <div 
-            className="absolute top-1/3 left-1/2 -translate-x-1/2 w-28 h-28 md:w-40 md:h-40 lg:w-56 lg:h-56 bg-secondary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-secondary/20" 
-            style={{ 
-              transform: `translate(calc(-50% + ${mousePosition.x * 0.02}px + ${shapePositions.shape2.x}px), calc(${mousePosition.y * 0.02 + scrollY * 0.45}px + ${shapePositions.shape2.y}px))`,
-              opacity: Math.max(0, 1 - scrollY * 0.003),
-              transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
-            }}
-            onClick={() => dodgeShape('shape2')}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '50% 50% 50% 50% / 40% 40% 60% 60%';
-              e.currentTarget.style.backgroundColor = 'hsl(160 55% 50% / 0.35)';
-              e.currentTarget.style.transform = 'translate(-50%, 0) scale(1.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderRadius = '9999px';
-              e.currentTarget.style.transform = `translate(calc(-50% + ${mousePosition.x * 0.02}px + ${shapePositions.shape2.x}px), calc(${mousePosition.y * 0.02 + scrollY * 0.45}px + ${shapePositions.shape2.y}px))`;
-              e.currentTarget.style.backgroundColor = 'hsl(var(--secondary) / 0.1)';
-            }}
-          />
-          
-          {/* Shape 3 - Right Star */}
-          <div 
-            className="absolute top-40 right-20 w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 bg-accent/10 backdrop-blur-3xl opacity-100 cursor-pointer hover:bg-accent/20"
-            style={{ 
-              transform: `translate(calc(${-mousePosition.x * 0.025}px + ${shapePositions.shape3.x}px), calc(${mousePosition.y * 0.025 + scrollY * 0.55}px + ${shapePositions.shape3.y}px)) rotate(0deg)`,
-              opacity: Math.max(0, 1 - scrollY * 0.003),
-              clipPath: 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)',
-              transition: 'all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)'
-            }}
-            onClick={() => dodgeShape('shape3')}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.clipPath = 'polygon(50% 0%, 100% 100%, 0% 100%)';
-              e.currentTarget.style.backgroundColor = 'hsl(45 85% 55% / 0.35)';
-              e.currentTarget.style.transform = 'scale(1.15) rotate(0deg)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.clipPath = 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-              e.currentTarget.style.transform = `translate(calc(${-mousePosition.x * 0.025}px + ${shapePositions.shape3.x}px), calc(${mousePosition.y * 0.025 + scrollY * 0.55}px + ${shapePositions.shape3.y}px)) rotate(0deg)`;
-              e.currentTarget.style.backgroundColor = 'hsl(var(--accent) / 0.1)';
-            }}
-          />
-          
-          {/* Shape 4 - Bottom Left Liquid Circle */}
-          <div 
-            className="absolute bottom-32 left-1/4 w-36 h-36 md:w-52 md:h-52 lg:w-72 lg:h-72 bg-primary/10 backdrop-blur-3xl rounded-full opacity-100 cursor-pointer hover:bg-primary/20"
-            style={{ 
-              transform: `translate(calc(${mousePosition.x * 0.015}px + ${shapePositions.shape4.x}px), calc(${mousePosition.y * 0.015 + scrollY * 0.4}px + ${shapePositions.shape4.y}px))`,
-              opacity: Math.max(0, 1 - scrollY * 0.003),
-              transition: 'all 1s cubic-bezier(0.4, 0, 0.2, 1)'
-            }}
-            onClick={() => dodgeShape('shape4')}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderRadius = '65% 35% 58% 42% / 53% 50% 50% 47%';
-              e.currentTarget.style.backgroundColor = 'hsl(200 70% 50% / 0.35)';
-              e.currentTarget.style.transform = 'scale(1.25) rotate(-20deg)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderRadius = '9999px';
-              e.currentTarget.style.transform = `translate(calc(${mousePosition.x * 0.015}px + ${shapePositions.shape4.x}px), calc(${mousePosition.y * 0.015 + scrollY * 0.4}px + ${shapePositions.shape4.y}px))`;
-              e.currentTarget.style.backgroundColor = 'hsl(var(--primary) / 0.1)';
-            }}
-          />
-        </div>
-        
-        {/* Hero Content */}
-        <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <p className="text-primary font-medium mb-4 tracking-wide uppercase text-sm animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            UX Designer
-          </p>
-          <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <AnimatedName 
-              name="Thian Uk" 
-              className="text-6xl md:text-7xl lg:text-8xl font-bold mb-12 text-foreground"
-            />
+      {/* Title page */}
+      <section className="ruled relative px-4 pb-16 pt-32 sm:px-6 md:pt-36">
+        <div className="container mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1.3fr_0.7fr]">
+          <div>
+            <p className="stamp mb-6 -rotate-2">Vol. 2026 · Portfolio</p>
+            <h1 className="font-serif text-6xl font-extrabold leading-[0.95] tracking-tight md:text-8xl">Thian Uk</h1>
+            <p className="mt-6 max-w-xl font-serif text-2xl leading-snug text-muted-foreground md:text-3xl">
+              A UX designer who <span className="whiteout text-foreground">erases friction</span> and sketches
+              products people can actually use.
+            </p>
+            <p className="mt-4 font-typewriter text-sm text-graphite">
+              Product · Accessibility · Research — M.S. HCI, DePaul University
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a href="#works" className="eraser-btn bg-primary text-primary-foreground">
+                Open the work <ArrowDown className="h-4 w-4" aria-hidden="true" />
+              </a>
+              <Link to="/resume" className="eraser-btn bg-card text-foreground">
+                <FileText className="h-4 w-4" aria-hidden="true" /> Resume
+              </Link>
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <span 
-              className="rounded-full bg-primary-light px-5 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-300 hover:scale-105 motion-reduce:transition-none"
-            >
-              User Research
-            </span>
-            <span 
-              className="rounded-full bg-primary-light px-5 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-300 hover:scale-105 motion-reduce:transition-none"
-            >
-              Interaction Design
-            </span>
-            <span 
-              className="rounded-full bg-primary-light px-5 py-2 text-sm font-medium text-primary backdrop-blur-sm transition-transform duration-300 hover:scale-105 motion-reduce:transition-none"
-            >
-              Design Systems
-            </span>
-          </div>
-          <Button asChild size="lg">
-            <a href="#works">
-              View selected work
-              <ArrowDown aria-hidden="true" />
-            </a>
-          </Button>
+          <figure className="paper-card relative mx-auto w-64 rotate-3 p-3 pb-10 md:w-full md:max-w-xs">
+            <span aria-hidden="true" className="absolute -top-3 left-6 h-6 w-20 -rotate-6 bg-eraser/60" />
+            <img src={portraitImage} alt="Portrait of Thian Uk" className="aspect-[4/5] w-full object-cover sepia-[.15]" />
+            <figcaption className="absolute bottom-2 left-0 right-0 text-center font-typewriter text-xs text-muted-foreground">
+              fig. 1 — the author
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      {/* Works Section */}
-      <section id="works" className="scroll-mt-16 bg-secondary px-6 py-16 md:py-20">
-        <div className="container mx-auto max-w-7xl">
-          <div className="mb-8 flex items-end justify-between gap-6 md:mb-12">
+      {/* Works */}
+      <section id="works" className="scroll-mt-16 border-y border-foreground/80 bg-secondary px-6 py-16 md:py-20">
+        <div className="container mx-auto max-w-6xl">
+          <div className="mb-6 flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="mb-2 text-sm font-semibold uppercase text-primary">Selected portfolio</p>
-              <h2 className="text-3xl font-bold text-foreground md:text-5xl">
-                Selected Works
-              </h2>
+              <p className="mb-2 font-typewriter text-sm uppercase tracking-widest text-primary">Chapter I</p>
+              <h2 className="font-serif text-4xl font-extrabold md:text-6xl">Selected Work</h2>
             </div>
-            <p className="hidden max-w-sm text-right text-muted-foreground md:block">
+            <p className="max-w-sm font-serif italic text-muted-foreground md:text-right">
               Research and product design grounded in real people, clear decisions, and measurable outcomes.
             </p>
           </div>
-          <div>
-            {works.map((work) => (
-              <WorkItem key={work.to} {...work} />
+          <div className="pencil-rule" />
+          {works.map((work, i) => (
+            <div key={work.to}>
+              <WorkItem {...work} index={i} />
+              {i < works.length - 1 && <div className="pencil-rule" />}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="ruled scroll-mt-16 px-6 py-20">
+        <div className="container mx-auto max-w-4xl">
+          <p className="mb-2 font-typewriter text-sm uppercase tracking-widest text-primary">Chapter II</p>
+          <h2 className="mb-8 font-serif text-4xl font-extrabold md:text-6xl">About the Author</h2>
+          <p className="font-serif text-2xl leading-relaxed text-foreground md:text-3xl">
+            <span className="float-left mr-3 font-serif text-7xl font-extrabold leading-[0.8] text-primary">M</span>
+            y path into UX started with curiosity. I taught myself design through YouTube, spent hours practicing in
+            Figma, and turned that passion into a career. That self-taught start shaped how I work: I stay curious,
+            focus on people, and break tough problems into simple, usable experiences. I recently earned my{" "}
+            <span className="whiteout">master's in human-computer interaction</span>, deepening that foundation.
+          </p>
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {[
+              ["Research-Driven", "Deep user insights inform every design decision."],
+              ["Collaborative", "Working closely with cross-functional teams."],
+              ["Impact-Focused", "Measuring success through user outcomes."],
+            ].map(([t, d], i) => (
+              <div key={t} className={`paper-card p-6 ${i === 1 ? "rotate-1" : "-rotate-1"}`}>
+                <p className="font-typewriter text-xs text-primary">Note {i + 1}</p>
+                <h3 className="mt-2 font-serif text-2xl font-bold">{t}</h3>
+                <p className="mt-2 text-muted-foreground">{d}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section 
-        id="about" 
-        ref={aboutSection.ref}
-        className={`scroll-mt-16 py-20 px-6 transition-all duration-1000 ${
-          aboutSection.isVisible 
-            ? "opacity-100 translate-y-0" 
-            : "opacity-0 translate-y-32"
-        }`}
-      >
-        <div className="container mx-auto max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground opacity-70 text-center">
-            About Me
-          </h2>
-          <p className="text-2xl md:text-3xl text-muted-foreground leading-relaxed text-justify">
-            {`My path into UX started with curiosity. I taught myself design through YouTube, spent hours practicing in Figma, and turned that passion into a career. That self-taught start shaped how I work. I stay curious, focus on people, and break down tough problems into simple, usable experiences. I recently earned my master's in human-computer interaction, deepening that foundation.`
-              .split(" ")
-              .map((word, index) => (
-                <span
-                  key={index}
-                  className="inline-block transition-all duration-300 hover:scale-110 hover:text-primary cursor-default mx-[0.25em]"
-                >
-                  {word}
-                </span>
-              ))}
+      {/* Contact */}
+      <section id="contact" className="scroll-mt-16 border-t border-foreground/80 bg-secondary px-6 py-20">
+        <div className="container mx-auto max-w-3xl text-center">
+          <p className="mb-2 font-typewriter text-sm uppercase tracking-widest text-primary">Epilogue</p>
+          <h2 className="mb-6 font-serif text-4xl font-extrabold md:text-6xl">Let's write the next chapter</h2>
+          <p className="mb-10 text-lg text-muted-foreground">
+            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
-        </div>
-      </section>
-
-      {/* Philosophy Section */}
-      <section 
-        id="philosophy" 
-        className="scroll-mt-16 py-20 px-6 bg-secondary"
-        onMouseEnter={() => setPhilosophyVisible(true)}
-        onMouseLeave={() => setPhilosophyVisible(false)}
-      >
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className={`text-3xl md:text-4xl font-bold mb-6 text-foreground opacity-70 transition-all duration-700 ${
-            philosophyVisible ? "opacity-100 translate-y-0" : "opacity-70 translate-y-0"
-          }`}>
-            Design Philosophy
-          </h2>
-          <p className={`text-xl md:text-2xl text-muted-foreground leading-relaxed mb-8 transition-all duration-700 ${
-            philosophyVisible ? "opacity-100 translate-y-0" : "opacity-60 translate-y-0"
-          }`}>
-            I believe great design is invisible. It guides users naturally, anticipates their needs, 
-            and creates delightful moments without demanding attention. Every project starts with empathy 
-            and ends with impact.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <div className={`transition-all duration-700 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
-              philosophyVisible ? "opacity-100 scale-100" : "opacity-60 scale-95"
-            }`}>
-              <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Research-Driven</h3>
-              <p className="text-muted-foreground">
-                Deep user insights inform every design decision
-              </p>
-            </div>
-            <div className={`transition-all duration-700 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
-              philosophyVisible ? "opacity-100 scale-100" : "opacity-60 scale-95"
-            }`}>
-              <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Collaborative</h3>
-              <p className="text-muted-foreground">
-                Working closely with cross-functional teams
-              </p>
-            </div>
-            <div className={`transition-all duration-700 hover:scale-110 hover:-translate-y-2 cursor-pointer ${
-              philosophyVisible ? "opacity-100 scale-100" : "opacity-60 scale-95"
-            }`}>
-              <h3 className="text-xl font-semibold mb-3 text-foreground hover:text-primary transition-colors duration-300">Impact-Focused</h3>
-              <p className="text-muted-foreground">
-                Measuring success through user outcomes
-              </p>
-            </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href="mailto:t.lianuk7@gmail.com" className="eraser-btn bg-primary text-primary-foreground">Get in touch</a>
+            <Link to="/resume" className="eraser-btn bg-card text-foreground">
+              <FileText className="h-4 w-4" aria-hidden="true" /> View resume
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="scroll-mt-16 py-20 px-6">
-        <div className="container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-            Let's Work Together
-          </h2>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-            I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
-          </p>
-          <a 
-            href="mailto:t.lianuk7@gmail.com" 
-            className="inline-block px-8 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-          >
-            Get In Touch
-          </a>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-6 border-t border-border">
-        <div className="container mx-auto max-w-7xl text-center">
-          <p className="text-muted-foreground">
-            © 2026 Thian Uk. Designed with purpose.
-          </p>
-        </div>
+      <footer className="px-6 py-10">
+        <p className="text-center font-typewriter text-sm text-muted-foreground">
+          © 2026 Thian Uk. Designed with purpose — and a well-worn pencil.
+        </p>
       </footer>
     </div>
   );
