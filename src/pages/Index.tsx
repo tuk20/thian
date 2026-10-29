@@ -78,7 +78,7 @@ const Index = () => {
           </div>
           <figure className="paper-card relative mx-auto w-64 rotate-3 p-3 pb-10 md:w-full md:max-w-xs">
             <span aria-hidden="true" className="absolute -top-3 left-6 h-6 w-20 -rotate-6 bg-eraser/60" />
-            <img src={(portraitImage as { url: string }).url} alt="Portrait of Thian Uk" className="aspect-[4/5] w-full object-cover sepia-[.15]" />
+            <img src={portraitImage} alt="Portrait of Thian Uk" className="aspect-[4/5] w-full object-cover sepia-[.15]" />
             <figcaption className="absolute bottom-2 left-0 right-0 text-center font-typewriter text-xs text-muted-foreground">
               fig. 1 — the author
             </figcaption>
