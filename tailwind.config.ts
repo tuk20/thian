@@ -15,9 +15,14 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        typewriter: ['"Special Elite"', 'Courier New', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
+        whiteout: "hsl(var(--whiteout))",
+        graphite: "hsl(var(--graphite))",
+        eraser: "hsl(var(--eraser))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
