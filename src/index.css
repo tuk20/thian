@@ -116,11 +116,13 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
-    cursor: none;
   }
 
-  body * {
-    cursor: none !important;
+  /* Stationery cursors: pencil by default, eraser on clickable things */
+  @media (pointer: fine) {
+    html, body * { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cg%20transform%3D%22rotate%2845%2016%2016%29%22%3E%3Crect%20x%3D%2212.5%22%20y%3D%22-2%22%20width%3D%227%22%20height%3D%224%22%20fill%3D%22%23e9a3ad%22%20stroke%3D%22%231f1e1b%22%20stroke-width%3D%221%22/%3E%3Crect%20x%3D%2212.5%22%20y%3D%222%22%20width%3D%227%22%20height%3D%222.5%22%20fill%3D%22%23b8b2a6%22%20stroke%3D%22%231f1e1b%22%20stroke-width%3D%221%22/%3E%3Crect%20x%3D%2212.5%22%20y%3D%224.5%22%20width%3D%227%22%20height%3D%2218%22%20fill%3D%22%23f2c230%22%20stroke%3D%22%231f1e1b%22%20stroke-width%3D%221%22/%3E%3Cpath%20d%3D%22M12.5%2022.5%20L16%2031%20L19.5%2022.5%20Z%22%20fill%3D%22%23f3dcb0%22%20stroke%3D%22%231f1e1b%22%20stroke-width%3D%221%22/%3E%3Cpath%20d%3D%22M15%2028.6%20L16%2031%20L17%2028.6%20Z%22%20fill%3D%22%231f1e1b%22/%3E%3C/g%3E%3C/svg%3E") 5 27, auto; }
+    a, a *, button, button *, [role="button"], label, summary, .cursor-pointer { cursor: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cg%20transform%3D%22rotate%28-30%2016%2016%29%22%3E%3Crect%20x%3D%225%22%20y%3D%2210%22%20width%3D%2222%22%20height%3D%2212%22%20rx%3D%222%22%20fill%3D%22%23e9a3ad%22%20stroke%3D%22%231f1e1b%22%20stroke-width%3D%221.2%22/%3E%3Crect%20x%3D%225%22%20y%3D%2210%22%20width%3D%228%22%20height%3D%2212%22%20rx%3D%222%22%20fill%3D%22%23006838%22%20stroke%3D%22%231f1e1b%22%20stroke-width%3D%221.2%22/%3E%3C/g%3E%3C/svg%3E") 16 16, pointer !important; }
+    input, textarea, [contenteditable] { cursor: text; }
   }
 
   .custom-cursor {
