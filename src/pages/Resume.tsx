@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 const resume = { url: "/Thian_Uk_Resume.pdf" };
 
 const Resume = () => {
-  useEffect(() => window.scrollTo(0, 0), []);
+  useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen">
       <Navigation />
