@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import WorkItem from "@/components/WorkItem";
 import { ArrowDown, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
-import portraitImage from "@/assets/portrait.jpg";
+import portraitImage from "@/assets/thian-portrait.png";
 import mentalHealthImage from "@/assets/mental-health-project.jpg";
 import kateritAppImage from "@/assets/katerit-app.png";
 import naicLogoImage from "@/assets/naic-logo.png";
