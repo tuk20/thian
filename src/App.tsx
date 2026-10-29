@@ -9,6 +9,7 @@ import CaseStudy from "./pages/CaseStudy";
 import CaseStudyCBANA from "./pages/CaseStudyCBANA";
 import CaseStudyNAIC from "./pages/CaseStudyNAIC";
 import CaseStudyKaterIt from "./pages/CaseStudyKaterIt";
+import Resume from "./pages/Resume";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/case-study/cbana-conference-app" element={<CaseStudyCBANA />} />
           <Route path="/case-study/naic-help-page" element={<CaseStudyNAIC />} />
           <Route path="/case-study/kater-it" element={<CaseStudyKaterIt />} />
+          <Route path="/resume" element={<Resume />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

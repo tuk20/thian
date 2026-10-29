@@ -1,101 +1,53 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Menu, X } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Menu, X, FileText } from "lucide-react";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const isMobile = useIsMobile();
   const location = useLocation();
   const navigate = useNavigate();
-  const isHomePage = location.pathname === "/";
 
-  const scrollToSection = (id: string) => {
-    if (isHomePage) {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
+  const goTo = (id: string) => {
+    setIsOpen(false);
+    if (location.pathname === "/") {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
     } else {
-      // Navigate to home page with hash
       navigate(`/#${id}`);
     }
-    setIsOpen(false);
   };
 
-  const navItems = [
-    { id: 'works', label: 'Works' },
-    { id: 'about', label: 'About' },
-    { id: 'philosophy', label: 'Philosophy' },
-    { id: 'contact', label: 'Contact' },
-  ];
+  const linkCls =
+    "font-typewriter text-sm uppercase tracking-widest text-muted-foreground hover:text-primary underline-offset-8 decoration-wavy hover:underline";
+
+  const items = (
+    <>
+      <button onClick={() => goTo("works")} className={linkCls}>Work</button>
+      <button onClick={() => goTo("about")} className={linkCls}>About</button>
+      <button onClick={() => goTo("contact")} className={linkCls}>Contact</button>
+      <Link to="/resume" onClick={() => setIsOpen(false)} className="eraser-btn bg-card px-4 py-2 text-xs text-foreground">
+        <FileText className="h-4 w-4" aria-hidden="true" /> Resume
+      </Link>
+    </>
+  );
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-4 sm:px-6 py-4">
-        <div className="flex items-center justify-between md:justify-center">
-          {/* Logo - Always visible */}
-          <Link 
-            to="/" 
-            className="text-xl font-semibold text-foreground hover:text-primary transition-all duration-300 hover:scale-110 md:absolute md:left-1/2 md:-translate-x-1/2"
-          >
-            THIAN
-          </Link>
-
-          {/* Desktop Navigation */}
-          {!isMobile && (
-            <div className="flex items-center gap-8">
-              {navItems.slice(0, 2).map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
-                >
-                  {item.label}
-                </button>
-              ))}
-              <div className="w-20" /> {/* Spacer for logo */}
-              {navItems.slice(2).map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-sm font-medium text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          )}
-
-          {/* Mobile Menu */}
-          {isMobile && (
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <button className="p-2 text-foreground hover:text-primary transition-colors">
-                  {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <nav className="flex flex-col gap-6 mt-8">
-                  {navItems.map((item) => (
-                    <button
-                      key={item.id}
-                      onClick={() => scrollToSection(item.id)}
-                      className="text-left text-lg font-medium text-muted-foreground hover:text-primary transition-colors py-2"
-                    >
-                      {item.label}
-                    </button>
-                  ))}
-                </nav>
-              </SheetContent>
-            </Sheet>
-          )}
-        </div>
+    <nav className="fixed left-0 right-0 top-0 z-50 border-b border-foreground/80 bg-background/90 backdrop-blur-sm">
+      <div className="container mx-auto flex items-center justify-between px-4 py-3 sm:px-6">
+        <Link to="/" className="font-serif text-2xl font-extrabold tracking-tight text-foreground hover:text-primary">
+          THIAN<span className="text-primary">.</span>
+        </Link>
+        <div className="hidden items-center gap-8 md:flex">{items}</div>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <button className="p-2 text-foreground md:hidden" aria-label="Open menu">
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </SheetTrigger>
+          <SheetContent side="right" className="w-[280px] bg-background">
+            <nav className="mt-10 flex flex-col items-start gap-6">{items}</nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </nav>
   );
