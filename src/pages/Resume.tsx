@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Download, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
-import resume from "@/assets/thian-uk-resume.pdf.asset.json";
+const resume = { url: "/Thian_Uk_Resume.pdf" };
 
 const Resume = () => {
   useEffect(() => window.scrollTo(0, 0), []);
